@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8CD17EDB20207D65003C8C10 /* Erad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Erad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD17EDB20207D65003C8C10 /* إيراد.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "إيراد.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17EDE20207D65003C8C10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CD17EE020207D65003C8C10 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		8CD17EE220207D65003C8C10 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -43,10 +43,10 @@
 		8CD17EE720207D65003C8C10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CD17EEA20207D65003C8C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CD17EEC20207D65003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CD17EF120207D65003C8C10 /* EradTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EradTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD17EF120207D65003C8C10 /* إيرادTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17EF520207D65003C8C10 /* EradTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradTests.swift; sourceTree = "<group>"; };
 		8CD17EF720207D65003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CD17EFC20207D65003C8C10 /* EradUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EradUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17F0020207D66003C8C10 /* EradUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradUITests.swift; sourceTree = "<group>"; };
 		8CD17F0220207D66003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,9 +89,9 @@
 		8CD17EDC20207D65003C8C10 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8CD17EDB20207D65003C8C10 /* Erad.app */,
-				8CD17EF120207D65003C8C10 /* EradTests.xctest */,
-				8CD17EFC20207D65003C8C10 /* EradUITests.xctest */,
+				8CD17EDB20207D65003C8C10 /* إيراد.app */,
+				8CD17EF120207D65003C8C10 /* إيرادTests.xctest */,
+				8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8CD17EDA20207D65003C8C10 /* Erad */ = {
+		8CD17EDA20207D65003C8C10 /* إيراد */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "Erad" */;
+			buildConfigurationList = 8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيراد" */;
 			buildPhases = (
 				8CD17ED720207D65003C8C10 /* Sources */,
 				8CD17ED820207D65003C8C10 /* Frameworks */,
@@ -143,14 +143,14 @@
 			);
 			dependencies = (
 			);
-			name = Erad;
+			name = "إيراد";
 			productName = Erad;
-			productReference = 8CD17EDB20207D65003C8C10 /* Erad.app */;
+			productReference = 8CD17EDB20207D65003C8C10 /* إيراد.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8CD17EF020207D65003C8C10 /* EradTests */ = {
+		8CD17EF020207D65003C8C10 /* إيرادTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8CD17F0820207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradTests" */;
+			buildConfigurationList = 8CD17F0820207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيرادTests" */;
 			buildPhases = (
 				8CD17EED20207D65003C8C10 /* Sources */,
 				8CD17EEE20207D65003C8C10 /* Frameworks */,
@@ -161,14 +161,14 @@
 			dependencies = (
 				8CD17EF320207D65003C8C10 /* PBXTargetDependency */,
 			);
-			name = EradTests;
+			name = "إيرادTests";
 			productName = EradTests;
-			productReference = 8CD17EF120207D65003C8C10 /* EradTests.xctest */;
+			productReference = 8CD17EF120207D65003C8C10 /* إيرادTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8CD17EFB20207D65003C8C10 /* EradUITests */ = {
+		8CD17EFB20207D65003C8C10 /* إيرادUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradUITests" */;
+			buildConfigurationList = 8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيرادUITests" */;
 			buildPhases = (
 				8CD17EF820207D65003C8C10 /* Sources */,
 				8CD17EF920207D65003C8C10 /* Frameworks */,
@@ -179,9 +179,9 @@
 			dependencies = (
 				8CD17EFE20207D65003C8C10 /* PBXTargetDependency */,
 			);
-			name = EradUITests;
+			name = "إيرادUITests";
 			productName = EradUITests;
-			productReference = 8CD17EFC20207D65003C8C10 /* EradUITests.xctest */;
+			productReference = 8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "Erad" */;
+			buildConfigurationList = 8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "إيراد" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -223,9 +223,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8CD17EDA20207D65003C8C10 /* Erad */,
-				8CD17EF020207D65003C8C10 /* EradTests */,
-				8CD17EFB20207D65003C8C10 /* EradUITests */,
+				8CD17EDA20207D65003C8C10 /* إيراد */,
+				8CD17EF020207D65003C8C10 /* إيرادTests */,
+				8CD17EFB20207D65003C8C10 /* إيرادUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,12 +289,12 @@
 /* Begin PBXTargetDependency section */
 		8CD17EF320207D65003C8C10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8CD17EDA20207D65003C8C10 /* Erad */;
+			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
 			targetProxy = 8CD17EF220207D65003C8C10 /* PBXContainerItemProxy */;
 		};
 		8CD17EFE20207D65003C8C10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8CD17EDA20207D65003C8C10 /* Erad */;
+			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
 			targetProxy = 8CD17EFD20207D65003C8C10 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -466,7 +466,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Erad.app/Erad";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/إيراد.app/إيراد";
 			};
 			name = Debug;
 		};
@@ -482,7 +482,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Erad.app/Erad";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/إيراد.app/إيراد";
 			};
 			name = Release;
 		};
@@ -519,7 +519,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "Erad" */ = {
+		8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "إيراد" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CD17F0320207D66003C8C10 /* Debug */,
@@ -528,7 +528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "Erad" */ = {
+		8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيراد" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CD17F0620207D66003C8C10 /* Debug */,
@@ -537,7 +537,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8CD17F0820207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradTests" */ = {
+		8CD17F0820207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيرادTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CD17F0920207D66003C8C10 /* Debug */,
@@ -546,7 +546,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradUITests" */ = {
+		8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيرادUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CD17F0C20207D66003C8C10 /* Debug */,
