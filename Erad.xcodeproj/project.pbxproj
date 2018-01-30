@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EDE20207D65003C8C10 /* AppDelegate.swift */; };
+		8CD17EE120207D65003C8C10 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EE020207D65003C8C10 /* FirstViewController.swift */; };
+		8CD17EE320207D65003C8C10 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EE220207D65003C8C10 /* SecondViewController.swift */; };
+		8CD17EE620207D65003C8C10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE420207D65003C8C10 /* Main.storyboard */; };
+		8CD17EE820207D65003C8C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE720207D65003C8C10 /* Assets.xcassets */; };
+		8CD17EEB20207D65003C8C10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */; };
+		8CD17EF620207D65003C8C10 /* EradTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EF520207D65003C8C10 /* EradTests.swift */; };
+		8CD17F0120207D66003C8C10 /* EradUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17F0020207D66003C8C10 /* EradUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CD17EF220207D65003C8C10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD17EDA20207D65003C8C10;
+			remoteInfo = Erad;
+		};
+		8CD17EFD20207D65003C8C10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD17EDA20207D65003C8C10;
+			remoteInfo = Erad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8CD17EDB20207D65003C8C10 /* Erad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Erad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD17EDE20207D65003C8C10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8CD17EE020207D65003C8C10 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		8CD17EE220207D65003C8C10 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8CD17EE520207D65003C8C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8CD17EE720207D65003C8C10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8CD17EEA20207D65003C8C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8CD17EEC20207D65003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CD17EF120207D65003C8C10 /* EradTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EradTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD17EF520207D65003C8C10 /* EradTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradTests.swift; sourceTree = "<group>"; };
+		8CD17EF720207D65003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CD17EFC20207D65003C8C10 /* EradUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EradUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CD17F0020207D66003C8C10 /* EradUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradUITests.swift; sourceTree = "<group>"; };
+		8CD17F0220207D66003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8CD17ED820207D65003C8C10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD17EEE20207D65003C8C10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD17EF920207D65003C8C10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CD17ED220207D65003C8C10 = {
+			isa = PBXGroup;
+			children = (
+				8CD17EDD20207D65003C8C10 /* Erad */,
+				8CD17EF420207D65003C8C10 /* EradTests */,
+				8CD17EFF20207D66003C8C10 /* EradUITests */,
+				8CD17EDC20207D65003C8C10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8CD17EDC20207D65003C8C10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CD17EDB20207D65003C8C10 /* Erad.app */,
+				8CD17EF120207D65003C8C10 /* EradTests.xctest */,
+				8CD17EFC20207D65003C8C10 /* EradUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CD17EDD20207D65003C8C10 /* Erad */ = {
+			isa = PBXGroup;
+			children = (
+				8CD17EDE20207D65003C8C10 /* AppDelegate.swift */,
+				8CD17EE020207D65003C8C10 /* FirstViewController.swift */,
+				8CD17EE220207D65003C8C10 /* SecondViewController.swift */,
+				8CD17EE420207D65003C8C10 /* Main.storyboard */,
+				8CD17EE720207D65003C8C10 /* Assets.xcassets */,
+				8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */,
+				8CD17EEC20207D65003C8C10 /* Info.plist */,
+			);
+			path = Erad;
+			sourceTree = "<group>";
+		};
+		8CD17EF420207D65003C8C10 /* EradTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CD17EF520207D65003C8C10 /* EradTests.swift */,
+				8CD17EF720207D65003C8C10 /* Info.plist */,
+			);
+			path = EradTests;
+			sourceTree = "<group>";
+		};
+		8CD17EFF20207D66003C8C10 /* EradUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8CD17F0020207D66003C8C10 /* EradUITests.swift */,
+				8CD17F0220207D66003C8C10 /* Info.plist */,
+			);
+			path = EradUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8CD17EDA20207D65003C8C10 /* Erad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "Erad" */;
+			buildPhases = (
+				8CD17ED720207D65003C8C10 /* Sources */,
+				8CD17ED820207D65003C8C10 /* Frameworks */,
+				8CD17ED920207D65003C8C10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Erad;
+			productName = Erad;
+			productReference = 8CD17EDB20207D65003C8C10 /* Erad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8CD17EF020207D65003C8C10 /* EradTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CD17F0820207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradTests" */;
+			buildPhases = (
+				8CD17EED20207D65003C8C10 /* Sources */,
+				8CD17EEE20207D65003C8C10 /* Frameworks */,
+				8CD17EEF20207D65003C8C10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CD17EF320207D65003C8C10 /* PBXTargetDependency */,
+			);
+			name = EradTests;
+			productName = EradTests;
+			productReference = 8CD17EF120207D65003C8C10 /* EradTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8CD17EFB20207D65003C8C10 /* EradUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradUITests" */;
+			buildPhases = (
+				8CD17EF820207D65003C8C10 /* Sources */,
+				8CD17EF920207D65003C8C10 /* Frameworks */,
+				8CD17EFA20207D65003C8C10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CD17EFE20207D65003C8C10 /* PBXTargetDependency */,
+			);
+			name = EradUITests;
+			productName = EradUITests;
+			productReference = 8CD17EFC20207D65003C8C10 /* EradUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CD17ED320207D65003C8C10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = KSU;
+				TargetAttributes = {
+					8CD17EDA20207D65003C8C10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					8CD17EF020207D65003C8C10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8CD17EDA20207D65003C8C10;
+					};
+					8CD17EFB20207D65003C8C10 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8CD17EDA20207D65003C8C10;
+					};
+				};
+			};
+			buildConfigurationList = 8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "Erad" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8CD17ED220207D65003C8C10;
+			productRefGroup = 8CD17EDC20207D65003C8C10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CD17EDA20207D65003C8C10 /* Erad */,
+				8CD17EF020207D65003C8C10 /* EradTests */,
+				8CD17EFB20207D65003C8C10 /* EradUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8CD17ED920207D65003C8C10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CD17EEB20207D65003C8C10 /* LaunchScreen.storyboard in Resources */,
+				8CD17EE820207D65003C8C10 /* Assets.xcassets in Resources */,
+				8CD17EE620207D65003C8C10 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD17EEF20207D65003C8C10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD17EFA20207D65003C8C10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8CD17ED720207D65003C8C10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CD17EE320207D65003C8C10 /* SecondViewController.swift in Sources */,
+				8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */,
+				8CD17EE120207D65003C8C10 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD17EED20207D65003C8C10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CD17EF620207D65003C8C10 /* EradTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CD17EF820207D65003C8C10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CD17F0120207D66003C8C10 /* EradUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CD17EF320207D65003C8C10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CD17EDA20207D65003C8C10 /* Erad */;
+			targetProxy = 8CD17EF220207D65003C8C10 /* PBXContainerItemProxy */;
+		};
+		8CD17EFE20207D65003C8C10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CD17EDA20207D65003C8C10 /* Erad */;
+			targetProxy = 8CD17EFD20207D65003C8C10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CD17EE420207D65003C8C10 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CD17EE520207D65003C8C10 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CD17EEA20207D65003C8C10 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8CD17F0320207D66003C8C10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8CD17F0420207D66003C8C10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8CD17F0620207D66003C8C10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Erad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KSU.Erad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8CD17F0720207D66003C8C10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Erad/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KSU.Erad;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8CD17F0920207D66003C8C10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EradTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KSU.EradTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Erad.app/Erad";
+			};
+			name = Debug;
+		};
+		8CD17F0A20207D66003C8C10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EradTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KSU.EradTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Erad.app/Erad";
+			};
+			name = Release;
+		};
+		8CD17F0C20207D66003C8C10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EradUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KSU.EradUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Erad;
+			};
+			name = Debug;
+		};
+		8CD17F0D20207D66003C8C10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = EradUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = KSU.EradUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Erad;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "Erad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CD17F0320207D66003C8C10 /* Debug */,
+				8CD17F0420207D66003C8C10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "Erad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CD17F0620207D66003C8C10 /* Debug */,
+				8CD17F0720207D66003C8C10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CD17F0820207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CD17F0920207D66003C8C10 /* Debug */,
+				8CD17F0A20207D66003C8C10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "EradUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CD17F0C20207D66003C8C10 /* Debug */,
+				8CD17F0D20207D66003C8C10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8CD17ED320207D65003C8C10 /* Project object */;
+}
