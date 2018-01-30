@@ -104,6 +104,7 @@
 				8CD17EE220207D65003C8C10 /* SecondViewController.swift */,
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
 				8CD17EE720207D65003C8C10 /* Assets.xcassets */,
+				8CD17F0E202086D9003C8C10 /* New Group */,
 				8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */,
 				8CD17EEC20207D65003C8C10 /* Info.plist */,
 			);
@@ -126,6 +127,13 @@
 				8CD17F0220207D66003C8C10 /* Info.plist */,
 			);
 			path = EradUITests;
+			sourceTree = "<group>";
+		};
+		8CD17F0E202086D9003C8C10 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
