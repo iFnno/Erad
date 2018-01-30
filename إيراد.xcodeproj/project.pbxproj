@@ -49,6 +49,8 @@
 		8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17F0020207D66003C8C10 /* EradUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradUITests.swift; sourceTree = "<group>"; };
 		8CD17F0220207D66003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CD17F0F2020FFA2003C8C10 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = "../../../../Dropbox/Graduation Project/شعار إيراد/Erad/Logo.png"; sourceTree = "<group>"; };
+		8CD17F10202103B4003C8C10 /* Logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_transparent.png; path = "../../../../Dropbox/Graduation Project/شعار إيراد/Erad/Logo_transparent.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +106,7 @@
 				8CD17EE220207D65003C8C10 /* SecondViewController.swift */,
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
 				8CD17EE720207D65003C8C10 /* Assets.xcassets */,
-				8CD17F0E202086D9003C8C10 /* New Group */,
+				8CD17F0E202086D9003C8C10 /* Images */,
 				8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */,
 				8CD17EEC20207D65003C8C10 /* Info.plist */,
 			);
@@ -129,11 +131,13 @@
 			path = EradUITests;
 			sourceTree = "<group>";
 		};
-		8CD17F0E202086D9003C8C10 /* New Group */ = {
+		8CD17F0E202086D9003C8C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8CD17F10202103B4003C8C10 /* Logo_transparent.png */,
+				8CD17F0F2020FFA2003C8C10 /* Logo.png */,
 			);
-			path = "New Group";
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
