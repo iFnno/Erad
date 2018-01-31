@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y9C-XE-hkU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y9C-XE-hkU">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,11 +19,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="kW5-Hz-HLA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="YWO-9c-JFA"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="third" id="YWO-9c-JFA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoZ-Mk-7h0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="-1067"/>
+            <point key="canvasLocation" x="786" y="-1068"/>
         </scene>
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="786" y="-321"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -97,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="335"/>
+            <point key="canvasLocation" x="786" y="371"/>
         </scene>
         <!--Item-->
         <scene sceneID="FLT-ib-e21">
@@ -109,11 +109,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Jac-vE-pGK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="JbF-0e-TmT"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="fourth" id="JbF-0e-TmT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwW-B7-1d3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="1056"/>
+            <point key="canvasLocation" x="786" y="1054"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cmR-Cm-y2G">
@@ -195,6 +195,8 @@
     <resources>
         <image name="Logo.png" width="1234" height="1647"/>
         <image name="first" width="30" height="30"/>
-        <image name="second" width="40" height="40"/>
+        <image name="fourth" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+        <image name="third" width="30" height="30"/>
     </resources>
 </document>
