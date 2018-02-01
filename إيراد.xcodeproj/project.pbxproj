@@ -15,6 +15,7 @@
 		8CD17EEB20207D65003C8C10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */; };
 		8CD17EF620207D65003C8C10 /* EradTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EF520207D65003C8C10 /* EradTests.swift */; };
 		8CD17F0120207D66003C8C10 /* EradUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17F0020207D66003C8C10 /* EradUITests.swift */; };
+		8CD17F142021E12A003C8C10 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17F132021E12A003C8C10 /* Logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +50,7 @@
 		8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17F0020207D66003C8C10 /* EradUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradUITests.swift; sourceTree = "<group>"; };
 		8CD17F0220207D66003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CD17F0F2020FFA2003C8C10 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = "../../../../Dropbox/Graduation Project/شعار إيراد/Erad/Logo.png"; sourceTree = "<group>"; };
-		8CD17F10202103B4003C8C10 /* Logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_transparent.png; path = "../../../../Dropbox/Graduation Project/شعار إيراد/Erad/Logo_transparent.png"; sourceTree = "<group>"; };
+		8CD17F132021E12A003C8C10 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +134,7 @@
 		8CD17F0E202086D9003C8C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8CD17F10202103B4003C8C10 /* Logo_transparent.png */,
-				8CD17F0F2020FFA2003C8C10 /* Logo.png */,
+				8CD17F132021E12A003C8C10 /* Logo.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -248,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD17EEB20207D65003C8C10 /* LaunchScreen.storyboard in Resources */,
+				8CD17F142021E12A003C8C10 /* Logo.png in Resources */,
 				8CD17EE820207D65003C8C10 /* Assets.xcassets in Resources */,
 				8CD17EE620207D65003C8C10 /* Main.storyboard in Resources */,
 			);
