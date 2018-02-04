@@ -35,20 +35,39 @@ class WorkTimeViewController: UIViewController {
     }
     
     @IBAction func reset(_ sender: Any) {
-        
         if hour == 0  && min == 0 && secon == 0 {
             
-            } else {
-        secon = 0
-        min = 0
-        hour = 0
-        seconds.text = "00"
-        minutes.text = "00"
-        hours.text = "00"
-        timer.invalidate()
-        start.isEnabled = true
+        } else {
+        let alertController = UIAlertController(title: "إنهاء وقت العمل", message: "هل انت متأكد من  إنهائك وقت العمل؟ ", preferredStyle: UIAlertControllerStyle.alert)
+        
+        //CREATING OK BUTTON
+        
+        let OKAction = UIAlertAction(title: "نعم", style: .default) { (action:UIAlertAction!) in
+            
+            // Code in this block will trigger when OK button tapped.
+            self.secon = 0
+            self.min = 0
+            self.hour = 0
+            self.seconds.text = "00"
+            self.minutes.text = "00"
+            self.hours.text = "00"
+            self.timer.invalidate()
+            self.start.isEnabled = true
             self.start.backgroundColor = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
-        isRunnnig = false
+            self.isRunnnig = false
+
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(OKAction)
+        
+        // Create Cancel button
+        let cancelAction = UIAlertAction(title: "تراجع", style: .cancel) { (action:UIAlertAction!) in
+            print("Cancel button tapped");
+        }
+        alertController.addAction(cancelAction)
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
+        
     }
     }
     
@@ -111,5 +130,11 @@ class CustomNavigationBar: UINavigationBar {
         }
     }
 }
-
+public class makeAlert {
+    class func ShowAlert(title: String, message: String, in vc: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "حسناً", style: UIAlertActionStyle.default, handler: nil))
+        vc.present(alert, animated: true, completion: nil)
+    }
+}
 
