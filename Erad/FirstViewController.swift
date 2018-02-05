@@ -7,9 +7,22 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class FirstViewController: UIViewController {
 
+    @IBAction func logoutButton(_ sender: UIButton) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
+                self.present(ViewController, animated: true, completion: nil)
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }}
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
