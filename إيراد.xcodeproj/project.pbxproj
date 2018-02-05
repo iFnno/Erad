@@ -15,6 +15,7 @@
 		60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D99F942022DD6900334513 /* WorkTimeViewController.swift */; };
 		618CBFF299B336080093F36A /* Pods_______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3468401F70F2DE4BA9E3731 /* Pods_______UITests.framework */; };
 		8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */; };
+		8CA94A1E2028E4900054D032 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */; };
 		8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EDE20207D65003C8C10 /* AppDelegate.swift */; };
 		8CD17EE120207D65003C8C10 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EE020207D65003C8C10 /* FirstViewController.swift */; };
 		8CD17EE620207D65003C8C10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE420207D65003C8C10 /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		864E458777AE2A3DB6F08952 /* Pods-إيرادTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BE429155EA2F4900C2998D3 /* Pods-إيراد.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيراد.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيراد/Pods-إيراد.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		8CD17EDB20207D65003C8C10 /* إيراد.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "إيراد.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17EDE20207D65003C8C10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CD17EE020207D65003C8C10 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -138,10 +140,11 @@
 			isa = PBXGroup;
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
-				8CD17EDE20207D65003C8C10 /* AppDelegate.swift */,
+				8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */,
 				8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */,
 				8CD17EE020207D65003C8C10 /* FirstViewController.swift */,
 				60D99F942022DD6900334513 /* WorkTimeViewController.swift */,
+				8CD17EDE20207D65003C8C10 /* AppDelegate.swift */,
 				8CD17EE720207D65003C8C10 /* Assets.xcassets */,
 				8CD17F0E202086D9003C8C10 /* Images */,
 				8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */,
@@ -497,6 +500,7 @@
 			files = (
 				8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */,
 				60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */,
+				8CA94A1E2028E4900054D032 /* ResetPasswordViewController.swift in Sources */,
 				8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */,
 				8CD17EE120207D65003C8C10 /* FirstViewController.swift in Sources */,
 			);
