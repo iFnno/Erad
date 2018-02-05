@@ -101,7 +101,6 @@ class WorkTimeViewController: UIViewController {
     }
 }
 class CustomNavigationBar: UINavigationBar {
-    
     // NavigationBar height
     var customHeight : CGFloat = 48
     
@@ -119,13 +118,19 @@ class CustomNavigationBar: UINavigationBar {
             var stringFromClass = NSStringFromClass(subview.classForCoder)
             if stringFromClass.contains("BarBackground") {
                 subview.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: customHeight)
-                subview.backgroundColor = UIColor(red: 0.9373, green: 0.9373, blue: 0.9373, alpha: 1.0)
+                subview.backgroundColor = UIColor.white //UIColor(red: 0.9373, green: 0.9373, blue: 0.9373, alpha: 1.0)
+
             }
             
             stringFromClass = NSStringFromClass(subview.classForCoder)
             if stringFromClass.contains("BarContent") {
                 subview.frame = CGRect(x: subview.frame.origin.x, y: 5 , width: subview.frame.width, height: customHeight)
-                subview.backgroundColor = UIColor(red: 0.9373, green: 0.9373, blue: 0.9373, alpha: 1.0)
+                subview.backgroundColor = UIColor.white //UIColor(red: 0.9373, green: 0.9373, blue: 0.9373, alpha: 1.0)
+                subview.layer.masksToBounds = false
+                subview.layer.shadowColor = UIColor.gray.cgColor
+                subview.layer.shadowOpacity = 0.1
+                subview.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+                subview.layer.shadowRadius = 1
             }
         }
     }
