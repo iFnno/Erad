@@ -28,7 +28,7 @@
         <!--الملف الشخصي-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="PersonalProfileViewController" customModule="ا_يراد" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="logoutButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="mo5-EF-osZ"/>
+                                    <action selector="logoutButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="9If-PS-FKH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -493,7 +493,7 @@
                     <connections>
                         <outlet property="emailField" destination="U9v-Ax-g3A" id="aQL-tg-2nL"/>
                         <outlet property="passwordField" destination="Ogq-w1-KB4" id="zGP-F1-n8g"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="loginSegue" id="K8I-qc-I7t"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="loginSegue" customClass="SegueFromLeft" id="K8I-qc-I7t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VST-Us-1iL" userLabel="First Responder" sceneMemberID="firstResponder"/>
