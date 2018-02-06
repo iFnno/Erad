@@ -134,6 +134,7 @@ class CustomNavigationBar: UINavigationBar {
             }
         }
     }
+    
 }
 public class makeAlert {
     class func ShowAlert(title: String, message: String, in vc: UIViewController) {

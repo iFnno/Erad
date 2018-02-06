@@ -1,8 +1,8 @@
 //
-//  FirstViewController.swift
-//  Erad
+//  SplitViewController.swift
+//  إيراد
 //
-//  Created by Raghad Almojil on 1/30/18.
+//  Created by Afnan S on 2/5/18.
 //  Copyright © 2018 KSU. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class FirstViewController: UIViewController {
+class SplitViewController: UISplitViewController {
 
     @IBAction func logoutButton(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
@@ -25,14 +25,12 @@ class FirstViewController: UIViewController {
         }}
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
-
