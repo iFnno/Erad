@@ -26,6 +26,9 @@
 		602E5F9D2028C28B004A4B88 /* ShoppingCartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E5F9C2028C28B004A4B88 /* ShoppingCartsViewController.swift */; };
 		602E5F9E2028C28B004A4B88 /* ShoppingCartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E5F9C2028C28B004A4B88 /* ShoppingCartsViewController.swift */; };
 		602E5F9F2028C28B004A4B88 /* ShoppingCartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E5F9C2028C28B004A4B88 /* ShoppingCartsViewController.swift */; };
+		602E5FA12028C95A004A4B88 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E5FA02028C95A004A4B88 /* SplitViewController.swift */; };
+		602E5FA22028C95A004A4B88 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E5FA02028C95A004A4B88 /* SplitViewController.swift */; };
+		602E5FA32028C95A004A4B88 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602E5FA02028C95A004A4B88 /* SplitViewController.swift */; };
 		602EB01C2027886200B5C05A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 602EB01B2027886200B5C05A /* Logo.png */; };
 		60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D99F942022DD6900334513 /* WorkTimeViewController.swift */; };
 		618CBFF299B336080093F36A /* Pods_______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3468401F70F2DE4BA9E3731 /* Pods_______UITests.framework */; };
@@ -64,6 +67,7 @@
 		602E5F942028BA43004A4B88 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		602E5F982028BD10004A4B88 /* ProductsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsMenuViewController.swift; sourceTree = "<group>"; };
 		602E5F9C2028C28B004A4B88 /* ShoppingCartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartsViewController.swift; sourceTree = "<group>"; };
+		602E5FA02028C95A004A4B88 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		60D99F942022DD6900334513 /* WorkTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeViewController.swift; sourceTree = "<group>"; };
 		864E458777AE2A3DB6F08952 /* Pods-إيرادTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			children = (
 				8CD17EDE20207D65003C8C10 /* AppDelegate.swift */,
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
+				602E5FA02028C95A004A4B88 /* SplitViewController.swift */,
 				602E5F9C2028C28B004A4B88 /* ShoppingCartsViewController.swift */,
 				602E5F982028BD10004A4B88 /* ProductsMenuViewController.swift */,
 				602E5F902028B467004A4B88 /* RootViewController.swift */,
@@ -521,6 +526,7 @@
 				8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */,
 				602E5F992028BD10004A4B88 /* ProductsMenuViewController.swift in Sources */,
 				602E5F952028BA43004A4B88 /* MenuTableViewCell.swift in Sources */,
+				602E5FA12028C95A004A4B88 /* SplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD17EF620207D65003C8C10 /* EradTests.swift in Sources */,
+				602E5FA22028C95A004A4B88 /* SplitViewController.swift in Sources */,
 				602E5F9A2028BD10004A4B88 /* ProductsMenuViewController.swift in Sources */,
 				602E5F9E2028C28B004A4B88 /* ShoppingCartsViewController.swift in Sources */,
 				602E5F8E2028A578004A4B88 /* File.swift in Sources */,
@@ -542,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD17F0120207D66003C8C10 /* EradUITests.swift in Sources */,
+				602E5FA32028C95A004A4B88 /* SplitViewController.swift in Sources */,
 				602E5F9B2028BD10004A4B88 /* ProductsMenuViewController.swift in Sources */,
 				602E5F9F2028C28B004A4B88 /* ShoppingCartsViewController.swift in Sources */,
 				602E5F8F2028A578004A4B88 /* File.swift in Sources */,

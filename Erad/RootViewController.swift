@@ -14,7 +14,6 @@ class RootViewController: UIViewController, UITableViewDelegate , UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -64,10 +63,10 @@ class RootViewController: UIViewController, UITableViewDelegate , UITableViewDat
     func openShoppingCart() {
         self.splitViewController?.preferredDisplayMode = .automatic
         let viewController : ShoppingCartsViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShoppingCartsViewController") as! ShoppingCartsViewController
+         let navigationController2 = UINavigationController(rootViewController: viewController)
+
+        self.splitViewController?.showDetailViewController(navigationController2, sender: self)
         
-         let navigationController = UINavigationController(rootViewController: viewController)
-         
-         self.splitViewController?.showDetailViewController(navigationController, sender: self)
         
     }
 

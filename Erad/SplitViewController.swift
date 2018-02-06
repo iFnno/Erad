@@ -1,5 +1,5 @@
 //
-//  ShoppingCartsViewController.swift
+//  SplitViewController.swift
 //  إيراد
 //
 //  Created by Afnan S on 2/5/18.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ShoppingCartsViewController: UIViewController {
+class SplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-
 }
