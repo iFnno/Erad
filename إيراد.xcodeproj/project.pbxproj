@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		21EC640F8620C5DF61677460 /* Pods_______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F94454566D210559B31B2D /* Pods_______UITests.framework */; };
 		2A03D07912558C862CAF1E5F /* Pods_______Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */; };
+		600F0569202B428B002A1815 /* ProductsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */; };
+		600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */; };
+		600F056B202B42A4002A1815 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A22202986230054D032 /* File.swift */; };
+		600F056C202B42AC002A1815 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A282029868A0054D032 /* SplitViewController.swift */; };
+		60252C52202B410C00E571FC /* AccountingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60252C51202B410C00E571FC /* AccountingViewController.swift */; };
 		602E5F892028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
 		602E5F8A2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
 		602E5F8B2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
@@ -47,18 +52,18 @@
 /* Begin PBXFileReference section */
 		032CDB9F285AB4A37DB5C569 /* Pods-إيرادTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests.release.xcconfig"; sourceTree = "<group>"; };
 		3CB737C37ECA5D1BDCE1B613 /* Pods-إيراد.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيراد.release.xcconfig"; path = "Pods/Target Support Files/Pods-إيراد/Pods-إيراد.release.xcconfig"; sourceTree = "<group>"; };
+		60252C51202B410C00E571FC /* AccountingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountingViewController.swift; sourceTree = "<group>"; };
 		602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		60D99F942022DD6900334513 /* WorkTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeViewController.swift; sourceTree = "<group>"; };
-		666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_______Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_______Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7436C82FB8DFF31C8E5C93FC /* Pods-إيرادUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		8CA94A22202986230054D032 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8CA94A23202986890054D032 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsMenuViewController.swift; sourceTree = "<group>"; };
-		8CA94A262029868A0054D032 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartsViewController.swift; sourceTree = "<group>"; };
 		8CA94A282029868A0054D032 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		8CA94A292029877E0054D032 /* PersonalProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalProfileViewController.swift; sourceTree = "<group>"; };
@@ -74,10 +79,10 @@
 		8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17F0020207D66003C8C10 /* EradUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradUITests.swift; sourceTree = "<group>"; };
 		8CD17F0220207D66003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96F94454566D210559B31B2D /* Pods_______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_______UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96F94454566D210559B31B2D /* Pods_______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_______UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97DA4BEEA00504CB3B0BD38E /* Pods-إيرادTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE63D1D050353563CE0F522C /* Pods-إيراد.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيراد.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيراد/Pods-إيراد.debug.xcconfig"; sourceTree = "<group>"; };
-		F42E1F9D282DCF8C4FA8A279 /* Pods_______.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_______.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42E1F9D282DCF8C4FA8A279 /* Pods_______.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_______.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C719F719C068C247CFDF9E /* Pods-إيرادUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,13 +161,13 @@
 			isa = PBXGroup;
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
+				60252C51202B410C00E571FC /* AccountingViewController.swift */,
 				8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */,
 				8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */,
 				604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */,
 				8CA94A23202986890054D032 /* File.swift */,
 				8CA94A292029877E0054D032 /* PersonalProfileViewController.swift */,
 				8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */,
-				8CA94A262029868A0054D032 /* RootViewController.swift */,
 				8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */,
 				8CA94A282029868A0054D032 /* SplitViewController.swift */,
 				60D99F942022DD6900334513 /* WorkTimeViewController.swift */,
@@ -523,10 +528,15 @@
 			files = (
 				8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */,
 				60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */,
+				600F056C202B42AC002A1815 /* SplitViewController.swift in Sources */,
 				8CA94A2A2029877E0054D032 /* PersonalProfileViewController.swift in Sources */,
 				8CA94A1E2028E4900054D032 /* ResetPasswordViewController.swift in Sources */,
 				8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */,
+				600F056B202B42A4002A1815 /* File.swift in Sources */,
+				600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */,
 				604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */,
+				600F0569202B428B002A1815 /* ProductsMenuViewController.swift in Sources */,
+				60252C52202B410C00E571FC /* AccountingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
