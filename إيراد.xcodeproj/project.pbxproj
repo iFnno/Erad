@@ -20,6 +20,7 @@
 		602EB01C2027886200B5C05A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 602EB01B2027886200B5C05A /* Logo.png */; };
 		604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */; };
 		60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D99F942022DD6900334513 /* WorkTimeViewController.swift */; };
+		60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */; };
 		8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */; };
 		8CA94A1E2028E4900054D032 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */; };
 		8CA94A2A2029877E0054D032 /* PersonalProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A292029877E0054D032 /* PersonalProfileViewController.swift */; };
@@ -57,6 +58,7 @@
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		60D99F942022DD6900334513 /* WorkTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeViewController.swift; sourceTree = "<group>"; };
+		60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_______Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7436C82FB8DFF31C8E5C93FC /* Pods-إيرادUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -162,12 +164,13 @@
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
 				60252C51202B410C00E571FC /* AccountingViewController.swift */,
+				8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */,
+				60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */,
 				8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */,
 				8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */,
 				604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */,
 				8CA94A23202986890054D032 /* File.swift */,
 				8CA94A292029877E0054D032 /* PersonalProfileViewController.swift */,
-				8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */,
 				8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */,
 				8CA94A282029868A0054D032 /* SplitViewController.swift */,
 				60D99F942022DD6900334513 /* WorkTimeViewController.swift */,
@@ -536,6 +539,7 @@
 				600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */,
 				604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */,
 				600F0569202B428B002A1815 /* ProductsMenuViewController.swift in Sources */,
+				60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */,
 				60252C52202B410C00E571FC /* AccountingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

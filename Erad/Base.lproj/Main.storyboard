@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y9C-XE-hkU">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -158,10 +158,45 @@
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.83137254901960778" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="بدء وقت العمل ">
+                                        <fragment content="بدء">
                                             <attributes>
                                                 <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="27" name="GeezaPro-Bold"/>
+                                                <font key="NSFont" size="27" name="CourierNewPS-BoldMT"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="27" name="SFMono-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="وقت">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="27" name="CourierNewPS-BoldMT"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="27" name="SFMono-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="العمل">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="27" name="CourierNewPS-BoldMT"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="27" name="SFMono-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -253,28 +288,107 @@
             <objects>
                 <viewController storyboardIdentifier="ProductsMenuViewController" id="4RN-Jy-4Lk" customClass="ProductsMenuViewController" customModule="ا_يراد" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vae-h9-Z3k">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1500" height="960"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZ6-BN-61t">
-                                <rect key="frame" x="361" y="537" width="46" height="30"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bJb-Eh-r7D">
+                                <rect key="frame" x="0.0" y="0.0" width="1500" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muH-J4-0bd">
+                                <rect key="frame" x="0.0" y="56" width="1500" height="110"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="l47-ad-SNl">
+                                        <rect key="frame" x="8" y="5" width="277" height="101"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="7E5-mB-grs"/>
+                                            <constraint firstAttribute="width" constant="277" id="T0e-w6-1Io"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="selectedSegment:" destination="4RN-Jy-4Lk" eventType="valueChanged" id="Eb1-u2-tJK"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92421899519999995" green="0.93336967829999995" blue="0.93336967829999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="l47-ad-SNl" secondAttribute="trailing" id="9aD-iV-clJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="l47-ad-SNl" secondAttribute="bottom" constant="5" id="aQL-vV-zy6"/>
+                                    <constraint firstItem="l47-ad-SNl" firstAttribute="leading" secondItem="muH-J4-0bd" secondAttribute="leading" constant="8" id="kbu-MA-52g"/>
+                                    <constraint firstItem="l47-ad-SNl" firstAttribute="centerY" secondItem="muH-J4-0bd" secondAttribute="centerY" id="rEb-vQ-3Ms"/>
+                                </constraints>
+                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u6r-RX-7CA">
+                                <rect key="frame" x="20" y="174" width="760" height="446"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="dYS-9F-xMv" kind="show" id="Ytx-mD-n7J"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C3K-SA-I8j">
+                                    <size key="itemSize" width="134" height="132"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ProductCell" reuseIdentifier="ProductCell" id="pA2-3F-6Mp" customClass="ProductCollectionViewCell" customModule="ا_يراد" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="132"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="132"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-AG-26O">
+                                                    <rect key="frame" x="20" y="38" width="94" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="ProductName" destination="Hw6-AG-26O" id="iAy-uc-eVN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.42745098040000001" green="0.76862745099999996" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="muH-J4-0bd" firstAttribute="leading" secondItem="vae-h9-Z3k" secondAttribute="leading" id="7uw-BL-K9s"/>
+                            <constraint firstAttribute="trailing" secondItem="muH-J4-0bd" secondAttribute="trailing" id="E4K-8y-hMe"/>
+                            <constraint firstItem="muH-J4-0bd" firstAttribute="trailing" secondItem="bJb-Eh-r7D" secondAttribute="trailing" id="FbQ-ih-5k1"/>
+                            <constraint firstItem="muH-J4-0bd" firstAttribute="top" secondItem="bJb-Eh-r7D" secondAttribute="bottom" id="HNx-8Z-ufa"/>
+                            <constraint firstItem="muH-J4-0bd" firstAttribute="leading" secondItem="bJb-Eh-r7D" secondAttribute="leading" id="WZA-wZ-wmS"/>
+                            <constraint firstItem="muH-J4-0bd" firstAttribute="top" secondItem="vae-h9-Z3k" secondAttribute="top" constant="56" id="hat-zU-LHr"/>
+                            <constraint firstAttribute="bottom" secondItem="muH-J4-0bd" secondAttribute="bottom" constant="794" id="zG3-Eu-TsX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ISH-Gs-cZC"/>
                     </view>
                     <navigationItem key="navigationItem" id="9FK-md-N37">
                         <barButtonItem key="backBarButtonItem" title="رجوع" id="AmB-dO-lVw"/>
                     </navigationItem>
+                    <size key="freeformSize" width="1500" height="1024"/>
+                    <connections>
+                        <outlet property="ProductsCollectionView" destination="u6r-RX-7CA" id="2WL-G8-ORQ"/>
+                        <outlet property="searchDisplayController" destination="U23-IY-YaK" id="wzP-Sd-UqU"/>
+                        <outlet property="selectedSegment" destination="l47-ad-SNl" id="fTV-au-VUH"/>
+                        <outlet property="widthConstraint" destination="T0e-w6-1Io" id="eVe-b0-Znz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eW-Gv-EbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="U23-IY-YaK">
+                    <connections>
+                        <outlet property="delegate" destination="4RN-Jy-4Lk" id="8mg-6r-3fu"/>
+                        <outlet property="searchContentsController" destination="4RN-Jy-4Lk" id="T44-hR-98A"/>
+                        <outlet property="searchResultsDataSource" destination="4RN-Jy-4Lk" id="n0M-R0-55j"/>
+                        <outlet property="searchResultsDelegate" destination="4RN-Jy-4Lk" id="Hd4-kJ-lAp"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1634" y="1822"/>
+            <point key="canvasLocation" x="1919.53125" y="1821.6796874999998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yej-0n-zma">
@@ -297,7 +411,7 @@
             <objects>
                 <viewController id="dYS-9F-xMv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qzO-IU-awv">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ydo-nG-wLe"/>
@@ -336,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTr-Z3-Zvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2405" y="1822"/>
+            <point key="canvasLocation" x="3083" y="1822"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G1i-zx-GD6">
@@ -369,7 +483,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="menuCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="GfW-rg-Xzr" customClass="MenuTableViewCell" customModule="ا_يراد" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="menuCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="GfW-rg-Xzr" customClass="MenuTableViewCell" customModule="ا_يراد" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GfW-rg-Xzr" id="o64-cu-Pw4">
@@ -474,9 +588,6 @@
                                 <state key="normal" title="نسيت كلمة المرور ">
                                     <color key="titleColor" red="0.4839091599" green="0.71912240979999997" blue="0.82748842239999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
-                                <connections>
-                                    <segue destination="r9W-Hi-7qY" kind="show" id="MAp-OL-qX0"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="LZV-bW-c3d">
                                 <rect key="frame" x="247" y="155" width="257" height="218"/>
@@ -489,7 +600,7 @@
                     <connections>
                         <outlet property="emailField" destination="U9v-Ax-g3A" id="aQL-tg-2nL"/>
                         <outlet property="passwordField" destination="Ogq-w1-KB4" id="zGP-F1-n8g"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="loginSegue" customClass="SegueFromLeft" id="K8I-qc-I7t"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="loginSegue" id="K8I-qc-I7t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VST-Us-1iL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -593,8 +704,4 @@
         <image name="second" width="30" height="30"/>
         <image name="third" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="MAp-OL-qX0"/>
-        <segue reference="Ytx-mD-n7J"/>
-    </inferredMetricsTieBreakers>
 </document>
