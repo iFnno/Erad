@@ -12,6 +12,7 @@ class ShoppingCartsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "عربات التسوق"
     }
     
 

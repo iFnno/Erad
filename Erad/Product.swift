@@ -7,19 +7,24 @@
 //
 
 import Foundation
-
+import UIKit
 struct Product {
     
     var pname : String!
     var imgUrl : String!
     var inventory : Int!
-    var price : Double!  //ID
+    var price : Double!
+    var image : UIImage
+    var description : String!
+    var pID : String!
     
-    init (pname:String, imgUrl : String, inventory : Int, price : Double) {
+    init (pname:String, img : UIImage, inventory : Int, price : Double, desc : String, pID : String) {
         self.pname = pname
-        self.imgUrl = imgUrl
+        self.image = img
         self.inventory = inventory
         self.price = price
-      
-}
+        self.description = desc
+        self.pID = pID
+    }
+
 }

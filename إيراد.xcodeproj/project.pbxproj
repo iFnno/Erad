@@ -19,6 +19,12 @@
 		602E5F8B2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
 		602EB01C2027886200B5C05A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 602EB01B2027886200B5C05A /* Logo.png */; };
 		604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */; };
+		606212C42039546500B9D5A8 /* MakeReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */; };
+		606212C62039574C00B9D5A8 /* MakeReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */; };
+		606212C8203B3CD300B9D5A8 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */; };
+		606212CD203B472900B9D5A8 /* LogoAnimated2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 606212CC203B472200B9D5A8 /* LogoAnimated2.mp4 */; };
+		608BD7DD2034244E00E83119 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608BD7DC2034244D00E83119 /* ProductDetailsViewController.swift */; };
+		608BD7E22038C41100E83119 /* ShoppingCardItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608BD7E12038C41100E83119 /* ShoppingCardItems.swift */; };
 		60ACDC612032A375009E7AE5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ACDC602032A375009E7AE5 /* Product.swift */; };
 		60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D99F942022DD6900334513 /* WorkTimeViewController.swift */; };
 		60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */; };
@@ -58,6 +64,12 @@
 		602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReceiptViewController.swift; sourceTree = "<group>"; };
+		606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReceiptTableViewCell.swift; sourceTree = "<group>"; };
+		606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		606212CC203B472200B9D5A8 /* LogoAnimated2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = LogoAnimated2.mp4; sourceTree = "<group>"; };
+		608BD7DC2034244D00E83119 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		608BD7E12038C41100E83119 /* ShoppingCardItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCardItems.swift; sourceTree = "<group>"; };
 		60ACDC602032A375009E7AE5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		60D99F942022DD6900334513 /* WorkTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeViewController.swift; sourceTree = "<group>"; };
 		60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -165,9 +177,14 @@
 			isa = PBXGroup;
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
+				606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */,
+				606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */,
+				606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */,
+				608BD7DC2034244D00E83119 /* ProductDetailsViewController.swift */,
 				60ACDC602032A375009E7AE5 /* Product.swift */,
 				60252C51202B410C00E571FC /* AccountingViewController.swift */,
 				8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */,
+				608BD7E12038C41100E83119 /* ShoppingCardItems.swift */,
 				60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */,
 				8CA94A1D2028E4900054D032 /* ResetPasswordViewController.swift */,
 				8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */,
@@ -179,6 +196,7 @@
 				60D99F942022DD6900334513 /* WorkTimeViewController.swift */,
 				8CA94A22202986230054D032 /* File.swift */,
 				8CD17EDE20207D65003C8C10 /* AppDelegate.swift */,
+				606212CC203B472200B9D5A8 /* LogoAnimated2.mp4 */,
 				8CD17EE720207D65003C8C10 /* Assets.xcassets */,
 				8CD17F0E202086D9003C8C10 /* Images */,
 				8CD17EE920207D65003C8C10 /* LaunchScreen.storyboard */,
@@ -340,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606212CD203B472900B9D5A8 /* LogoAnimated2.mp4 in Resources */,
 				602EB01C2027886200B5C05A /* Logo.png in Resources */,
 				8CD17EEB20207D65003C8C10 /* LaunchScreen.storyboard in Resources */,
 				602E5F892028A1ED004A4B88 /* GoogleService-Info.plist in Resources */,
@@ -532,18 +551,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606212C62039574C00B9D5A8 /* MakeReceiptTableViewCell.swift in Sources */,
 				8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */,
 				60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */,
 				600F056C202B42AC002A1815 /* SplitViewController.swift in Sources */,
+				606212C42039546500B9D5A8 /* MakeReceiptViewController.swift in Sources */,
 				8CA94A2A2029877E0054D032 /* PersonalProfileViewController.swift in Sources */,
 				8CA94A1E2028E4900054D032 /* ResetPasswordViewController.swift in Sources */,
 				8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */,
 				600F056B202B42A4002A1815 /* File.swift in Sources */,
+				608BD7DD2034244E00E83119 /* ProductDetailsViewController.swift in Sources */,
 				600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */,
 				604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */,
+				608BD7E22038C41100E83119 /* ShoppingCardItems.swift in Sources */,
 				600F0569202B428B002A1815 /* ProductsMenuViewController.swift in Sources */,
 				60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */,
 				60252C52202B410C00E571FC /* AccountingViewController.swift in Sources */,
+				606212C8203B3CD300B9D5A8 /* LaunchScreenViewController.swift in Sources */,
 				60ACDC612032A375009E7AE5 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
