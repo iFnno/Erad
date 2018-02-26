@@ -9,7 +9,7 @@
 import UIKit
 
 class ProductDetailsViewController: UIViewController {
-    var productInfo : Product = Product(pname: "", img: #imageLiteral(resourceName: "Logo.png"), inventory: 0, price: 0, desc: "", pID: "")
+    var productInfo : Product = Product(pname: "", img: #imageLiteral(resourceName: "Logo.png"), inventory: 0, price: 0, desc: "", pID: "", category: "")
     var quantity : Int = 1
     @IBOutlet weak var selectedQuantity: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -45,7 +45,7 @@ class ProductDetailsViewController: UIViewController {
     
     @IBAction func addToCart(_ sender: Any) {
         if self.quantity != 0 {
-        let item = ShoppingCardItem(pname: self.productInfo.pname, quantity: self.quantity, price: self.productInfo.price, pID: self.productInfo.pID)
+            let item = ShoppingCardItem(pname: self.productInfo.pname, quantity: self.quantity, price: self.productInfo.price, pID: self.productInfo.pID, category: self.productInfo.category)
        // let controller = self.navigationController?.popViewController(animated: true)
         //controller.shoppingCard.append(item)
         _ = self.navigationController?.popViewController(animated: true)

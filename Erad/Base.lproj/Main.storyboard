@@ -276,7 +276,7 @@
                                 </constraints>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u6r-RX-7CA">
-                                <rect key="frame" x="0.0" y="174" width="1500" height="786"/>
+                                <rect key="frame" x="0.0" y="251" width="1500" height="709"/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C3K-SA-I8j">
                                     <size key="itemSize" width="201" height="201"/>
@@ -298,15 +298,22 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQF-yV-981">
                                                     <rect key="frame" x="13" y="152" width="118" height="38"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-AG-26O">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-AG-26O">
                                                             <rect key="frame" x="0.0" y="3" width="118" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="Product Name">
+                                                                    <attributes>
+                                                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <font key="NSFont" size="20" name="LucidaGrande"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.40791362524032593" green="0.3718220591545105" blue="0.56650638580322266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.33333333333333331" green="0.28627450980392155" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="118" id="Jt0-dF-HTD"/>
                                                         <constraint firstAttribute="height" constant="38" id="O68-if-pHk"/>
@@ -364,6 +371,15 @@
                                     <action selector="currentShoppingCardButton:" destination="4RN-Jy-4Lk" eventType="touchUpInside" id="OGG-dI-ejZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3t-3H-0jk">
+                                <rect key="frame" x="45" y="188" width="121" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="المخزون"/>
+                                <connections>
+                                    <action selector="inventoryButton:" destination="4RN-Jy-4Lk" eventType="touchUpInside" id="tyf-X0-iTR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -372,7 +388,7 @@
                             <constraint firstAttribute="trailing" secondItem="muH-J4-0bd" secondAttribute="trailing" id="E4K-8y-hMe"/>
                             <constraint firstItem="muH-J4-0bd" firstAttribute="trailing" secondItem="bJb-Eh-r7D" secondAttribute="trailing" id="FbQ-ih-5k1"/>
                             <constraint firstItem="muH-J4-0bd" firstAttribute="top" secondItem="bJb-Eh-r7D" secondAttribute="bottom" id="HNx-8Z-ufa"/>
-                            <constraint firstItem="u6r-RX-7CA" firstAttribute="top" secondItem="muH-J4-0bd" secondAttribute="bottom" constant="8" id="SP5-0j-aOz"/>
+                            <constraint firstItem="u6r-RX-7CA" firstAttribute="top" secondItem="muH-J4-0bd" secondAttribute="bottom" constant="85" id="SP5-0j-aOz"/>
                             <constraint firstItem="muH-J4-0bd" firstAttribute="leading" secondItem="bJb-Eh-r7D" secondAttribute="leading" id="WZA-wZ-wmS"/>
                             <constraint firstItem="bJb-Eh-r7D" firstAttribute="trailing" secondItem="ISH-Gs-cZC" secondAttribute="trailing" id="hGI-s6-dhw"/>
                             <constraint firstItem="muH-J4-0bd" firstAttribute="top" secondItem="vae-h9-Z3k" secondAttribute="top" constant="56" id="hat-zU-LHr"/>
@@ -397,6 +413,7 @@
                         <outlet property="widthConstraint" destination="T0e-w6-1Io" id="eVe-b0-Znz"/>
                         <segue destination="i8s-RO-T28" kind="show" identifier="showDetails" id="cta-GJ-4VJ"/>
                         <segue destination="gyK-dq-UiG" kind="show" identifier="shoppingCard" id="8g2-DN-Mhn"/>
+                        <segue destination="Lkl-qs-vCa" kind="show" identifier="invSeg" id="Q7p-wq-xPT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eW-Gv-EbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -679,13 +696,20 @@
                                     <action selector="plus:" destination="i8s-RO-T28" eventType="touchUpInside" id="c0A-QT-RdC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-3P-XZH">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-3P-XZH">
                                 <rect key="frame" x="158" y="825" width="453" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40791362520000002" green="0.3718220592" blue="0.56650638580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                <color key="backgroundColor" red="0.42745098039215684" green="0.2627450980392157" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="اضافة الى العربة"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="اضافة الى العربة">
+                                            <attributes>
+                                                <font key="NSFont" size="27" name="GeezaPro"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -737,6 +761,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAi-UQ-J3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2996.875" y="1821.6796874999998"/>
+        </scene>
+        <!--Inventory View Controller-->
+        <scene sceneID="xFM-y5-I6c">
+            <objects>
+                <viewController id="Lkl-qs-vCa" customClass="InventoryViewController" customModule="ا_يراد" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Ua-ah-e3p">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GcU-8a-gQ2">
+                                <rect key="frame" x="0.0" y="77" width="768" height="834"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="invCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="invCell" rowHeight="135" id="gP6-lX-En0" customClass="InventoryTableViewCell" customModule="ا_يراد" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="135"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gP6-lX-En0" id="Ah5-XD-QdF">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="134.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pF-hB-9rV">
+                                                    <rect key="frame" x="34" y="7" width="120" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9r-4t-hrI">
+                                                    <rect key="frame" x="188" y="11" width="228" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ0-Td-OCt">
+                                                    <rect key="frame" x="608" y="32" width="115" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Label">
+                                                            <attributes>
+                                                                <font key="NSFont" size="23" name="LucidaGrande"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="img" destination="7pF-hB-9rV" id="NyT-oS-SJk"/>
+                                            <outlet property="inventory" destination="kJ0-Td-OCt" id="zGK-co-hgz"/>
+                                            <outlet property="name" destination="u9r-4t-hrI" id="XML-aU-nFb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lkl-qs-vCa" id="zOz-oR-ax3"/>
+                                    <outlet property="delegate" destination="Lkl-qs-vCa" id="pVk-4X-mR7"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="stt-dI-6C8"/>
+                    </view>
+                    <connections>
+                        <outlet property="ListTable" destination="GcU-8a-gQ2" id="XnT-rB-j37"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wei-8X-QaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3684.375" y="1826.9531249999998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G1i-zx-GD6">
@@ -1009,6 +1103,6 @@
         <image name="third" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sio-Ng-K0G"/>
+        <segue reference="j9L-iS-Eke"/>
     </inferredMetricsTieBreakers>
 </document>

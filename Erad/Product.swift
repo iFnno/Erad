@@ -17,14 +17,22 @@ struct Product {
     var image : UIImage
     var description : String!
     var pID : String!
+    var category : String!
     
-    init (pname:String, img : UIImage, inventory : Int, price : Double, desc : String, pID : String) {
+    init (pname:String, img : UIImage, inventory : Int, price : Double, desc : String, pID : String, category : String) {
         self.pname = pname
         self.image = img
         self.inventory = inventory
         self.price = price
         self.description = desc
         self.pID = pID
+        self.category = category
+    }
+    
+    init(pname:String, img : UIImage, inventory : Int) {
+        self.pname = pname
+        self.image = img
+        self.inventory = inventory
     }
 
 }

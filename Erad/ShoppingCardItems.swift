@@ -13,12 +13,14 @@ struct ShoppingCardItem {
     var quantity : Int!
     var price : Double!
     var pID : String!
+    var category : String!
     
-    init (pname:String, quantity : Int, price : Double, pID : String) {
+    init (pname:String, quantity : Int, price : Double, pID : String, category : String) {
         self.pname = pname
         self.quantity = quantity
         self.price = price
         self.pID = pID
+        self.category = category
     }
     
 }

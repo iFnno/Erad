@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 var shoppingCard : [ShoppingCardItem] = [] 
     var amount : Double! = 0.0
+    var receiptID : Int = 0
+    var ref : DatabaseReference!
     @IBOutlet weak var itemsTable: UITableView!
     
     @IBOutlet weak var amountL: UILabel!
@@ -52,10 +55,70 @@ var shoppingCard : [ShoppingCardItem] = []
     }
     
     @IBAction func makeSaleOperationButton(_ sender: Any) {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateToAppend = String(formatter.string(from: date))
+        let userID = Auth.auth().currentUser?.uid.description
+        formatter.dateFormat = "HH:mm"
+        let timeToAppend = String(formatter.string(from: date))
+        print(timeToAppend)
+        
+        
+        self.ref = Database.database().reference()
+            let ch = self.ref.child("receipts").childByAutoId()
+        
+        ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.receiptID ,"time": timeToAppend,"total price":self.amount,"products": ""])
+        for ind in shoppingCard {
+            ch.child("products").child(ind.pname).setValue(["price": ind.price,"quantity": ind.quantity])
+            self.ref.child("Categories").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
+                let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
+                if num > 0 {
+                let newnum = num - ind.quantity
+                let newnumString = Int(newnum)
+                   self.ref.child("Categories").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
+                } else {
+                    let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
+                    makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
+                }
+                    
+                })
+        }
+        self.empty()
         
     }
     
     @IBAction func pauseSaleOperationButton(_ sender: Any) {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateToAppend = String(formatter.string(from: date))
+        let userID = Auth.auth().currentUser?.uid.description
+        formatter.dateFormat = "HH:mm"
+        let timeToAppend = String(formatter.string(from: date))
+        print(timeToAppend)
+        
+        
+        self.ref = Database.database().reference()
+        let ch = self.ref.child("pausedReceipts").childByAutoId()
+        
+        ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.receiptID ,"time": timeToAppend,"total price":self.amount,"products": ""])
+        for ind in shoppingCard {
+            ch.child("products").child(ind.pname).setValue(["price": ind.price,"quantity": ind.quantity])
+            self.ref.child("Categories").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
+                let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
+                if num > 0 {
+                    let newnum = num - ind.quantity
+                    let newnumString = Int(newnum)
+                    self.ref.child("Categories").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
+                } else {
+                    let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
+                    makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
+                }
+                
+            })
+        }
+        self.empty()
         
     }
     
@@ -107,5 +170,26 @@ var shoppingCard : [ShoppingCardItem] = []
         let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
         previousViewController.shoppingCard.removeAll()
         previousViewController.currentShoppingCardButton.isHidden = true
+    }
+}
+extension String {
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    
+    /*  func substring(from: Int) -> String {
+     let fromIndex = index(self.startIndex, offsetBy: from)
+     return substring(from: fromIndex)
+     }
+     
+     func substring(to: Int) -> String {
+     let toIndex = index(from: to)
+     return substring(to: toIndex)
+     } */
+    
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return substring(with: startIndex..<endIndex)
     }
 }

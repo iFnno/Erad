@@ -11,12 +11,18 @@ import Firebase
 var num : Int = 3
 class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UICollectionViewDataSource {
     var ref: DatabaseReference!
+    var childIndex : Int! = 0
     @IBOutlet weak var ProductsCollectionView: UICollectionView! /* {
         didSet {
             ProductsCollectionView.delegate = self
             ProductsCollectionView.dataSource = self
         }
     } */
+    
+    @IBAction func inventoryButton(_ sender: Any) {
+        performSegue(withIdentifier: "invSeg", sender: self)
+    }
+    
     var shoppingCard : [ShoppingCardItem] = []
      var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     @IBOutlet weak var currentShoppingCardButton: UIButton!
@@ -85,146 +91,67 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         switch (selectedSegment.selectedSegmentIndex)
         {
         case 0 :
-                fillAllItems()
+             //   fillAllItems()
                 cell.ProductName.text = self.allCat[indexPath.row].pname
                     cell.imgView.image = self.allCat[indexPath.row].image
             print("All cat are")
             print(allCat)
         case 1 :
-            if cat1.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){
-                    self.cat1.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat1[indexPath.row].pname
-                    cell.imgView.image = self.cat1[indexPath.row].image
-                }
-            } else {
                 cell.ProductName.text = cat1[indexPath.row].pname
                cell.imgView.image = self.cat1[indexPath.row].image
-            }
+            
 
         case 2 :
-            if cat2.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){
-                    self.cat2.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat2[indexPath.row].pname
-                    cell.imgView.image = self.cat2[indexPath.row].image
-                }
-            } else {
+           
                 cell.ProductName.text = cat2[indexPath.row].pname
                cell.imgView.image = self.cat2[indexPath.row].image
-            }
+            
         case 3 :
-            if cat3.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat3.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat3[indexPath.row].pname
-                    cell.imgView.image = self.cat3[indexPath.row].image
-                }
-            } else {
+          
                 cell.ProductName.text = cat3[indexPath.row].pname
                 cell.imgView.image = self.cat3[indexPath.row].image
-            }
+            
         case 4 :
-            if cat4.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat4.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat4[indexPath.row].pname
-                    cell.imgView.image = self.cat4[indexPath.row].image
-                }
-            } else {
+           
                 cell.ProductName.text = cat4[indexPath.row].pname
                 cell.imgView.image = self.cat4[indexPath.row].image
-            }
+            
         case 5 :
-            if cat5.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat5.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat5[indexPath.row].pname
-                    cell.imgView.image = self.cat5[indexPath.row].image
-                }
-            } else {
+          
                 cell.ProductName.text = cat5[indexPath.row].pname
                 cell.imgView.image = self.cat5[indexPath.row].image
-            }
+            
         case 6 :
-            if cat6.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat6.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat6[indexPath.row].pname
-                    cell.imgView.image = self.cat6[indexPath.row].image
-                }
-            } else {
+          
                 cell.ProductName.text = cat6[indexPath.row].pname
                 cell.imgView.image = self.cat6[indexPath.row].image
-            }
+            
         case 7 :
-            if cat7.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat7.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat7[indexPath.row].pname
-                    cell.imgView.image = self.cat7[indexPath.row].image
-                }
-            } else {
+            
                 cell.ProductName.text = cat7[indexPath.row].pname
                 cell.imgView.image = self.cat7[indexPath.row].image
-            }
+            
         case 8 :
-            if cat8.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat8.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat8[indexPath.row].pname
-                    cell.imgView.image = self.cat8[indexPath.row].image
-                }
-            } else {
+            
                 cell.ProductName.text = cat8[indexPath.row].pname
                 cell.imgView.image = self.cat8[indexPath.row].image
-            }
+            
         case 9 :
-            if cat9.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat9.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat9[indexPath.row].pname
-                    cell.imgView.image = self.cat9[indexPath.row].image
-                }
-            } else {
+          
                 cell.ProductName.text = cat9[indexPath.row].pname
                 cell.imgView.image = self.cat9[indexPath.row].image
-            }
+            
             
         case 10 :
-            if cat10.count == 0 {
-                self.category.removeAll()
-                fillItems()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                    self.cat10.append(contentsOf: self.category)
-                    cell.ProductName.text = self.cat10[indexPath.row].pname
-                    cell.imgView.image = self.cat10[indexPath.row].image
-                }
-            } else {
+           
                 cell.ProductName.text = cat10[indexPath.row].pname
                 cell.imgView.image = self.cat10[indexPath.row].image
-            }
+            
             
         default:
-            ()
+            cell.ProductName.text = allCat[indexPath.row].pname
+            cell.imgView.image = self.allCat[indexPath.row].image
+            
             
          
         }
@@ -241,7 +168,6 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     override func viewDidAppear(_ animated: Bool) {
-        
         if shoppingCard.count != 0 {
             self.currentShoppingCardButton.isHidden = false
  }
@@ -261,6 +187,9 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         ref = Database.database().reference().child("Categories")
         ref.observe(DataEventType.value, with: { (snapshot) in
          if snapshot.childrenCount > 0 {
+            self.catNumbers.removeAll()
+            self.catNames.removeAll()
+            self.i = 1
         for cat in snapshot.children.allObjects as! [DataSnapshot] {
             let caname = (cat.key.description as NSString) as String
             self.catNumbers.append(Int(cat.childrenCount))
@@ -291,12 +220,13 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font as Any , NSAttributedStringKey.foregroundColor: UIColor.lightGray],
                                                for: .normal)
         let font2 = UIFont.boldSystemFont(ofSize: 24.0)
-       // let c = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
+        let c = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
         selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font2 as Any , NSAttributedStringKey.foregroundColor: UIColor.white],
                                                for: .selected)
          selectedSegment.selectedSegmentIndex = 0
-        let ref2 = Database.database().reference().child("Categories").childByAutoId()
-        ref2.observe(DataEventType.value, with: { (snapshot) in
+        let ref2 = Database.database().reference().child("Categories")
+        ref2.observe(DataEventType.childAdded, with: { (snapshot) in
+            self.childIndex = self.childIndex + 1
             if snapshot.childrenCount > 0 {
                 for c in snapshot.children.allObjects as! [DataSnapshot] {
                     let eventsObject = c.value as? [String: AnyObject]
@@ -305,14 +235,41 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
                     let productdesc  = eventsObject?["description"] as! String
                     let productinv  = eventsObject?["inventory"] as! Int
                     let productPrice  = eventsObject?["price"] as! Double
+                    let productCategory = eventsObject?["category"] as! String
                     let productKey = c.key.description as NSString
                     let url1 = URL(string: productimg)
                     let data1 = try? Data(contentsOf: url1! )
                     //NSData(contentsOf: url! as URL)
                     let img1 : UIImage = UIImage(data: data1! as Data)!
                     
-                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String)
+                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory)
                     self.allCat.append(oneProduct)
+                    switch (self.childIndex)
+                    {
+                    case 1 :
+                        self.cat1.append(oneProduct)
+                    case 2 :
+                        self.cat2.append(oneProduct)
+                    case 3 :
+                        self.cat3.append(oneProduct)
+                    case 4 :
+                        self.cat4.append(oneProduct)
+                    case 5 :
+                        self.cat5.append(oneProduct)
+                    case 6 :
+                        self.cat6.append(oneProduct)
+                    case 7 :
+                        self.cat7.append(oneProduct)
+                    case 8 :
+                        self.cat8.append(oneProduct)
+                    case 9 :
+                        self.cat9.append(oneProduct)
+                    case 10 :
+                        self.cat10.append(oneProduct)
+                        
+                    default:
+                        self.allCat.append(oneProduct)
+                    }
                     print("one product is")
                     print(oneProduct)
                 }
@@ -326,53 +283,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         selectedSegment.selectedSegmentIndex = 0
         ProductsCollectionView.reloadData()
     }
-    func fillItems() -> Void {
-        let ref2 = Database.database().reference().child("Categories").child(self.catNames[selectedSegment.selectedSegmentIndex - 1])
-        ref2.observe(DataEventType.value, with: { (snapshot) in
-            if snapshot.childrenCount > 0 {
-                for c in snapshot.children.allObjects as! [DataSnapshot] {
-                    let eventsObject = c.value as? [String: AnyObject]
-                    let productName  = eventsObject?["name"] as! String
-                    let productimg  = eventsObject?["picPath"] as! String
-                    let productdesc  = eventsObject?["description"] as! String
-                     let productinv  = eventsObject?["inventory"] as! Int
-                    let productPrice  = eventsObject?["price"] as! Double
-                    let productKey = c.key.description as NSString
-                    let url1 = URL(string: productimg)
-                    let data1 = try? Data(contentsOf: url1! )
-                    //NSData(contentsOf: url! as URL)
-                    let img1 : UIImage = UIImage(data: data1! as Data)!
-                    
-                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String)
-                    self.category.append(oneProduct)
-                  //  self.allCat.append(oneProduct)
-                }
-            }
-        })
-    }
-    func fillAllItems() -> Void {
-        let ref2 = Database.database().reference().child("Categories").childByAutoId()
-        ref2.observe(DataEventType.value, with: { (snapshot) in
-            if snapshot.childrenCount > 0 {
-                for c in snapshot.children.allObjects as! [DataSnapshot] {
-                    let eventsObject = c.value as? [String: AnyObject]
-                    let productName  = eventsObject?["name"] as! String
-                    let productimg  = eventsObject?["picPath"] as! String
-                    let productdesc  = eventsObject?["description"] as! String
-                    let productinv  = eventsObject?["inventory"] as! Int
-                    let productPrice  = eventsObject?["price"] as! Double
-                    let productKey = c.key.description as NSString
-                    let url1 = URL(string: productimg)
-                    let data1 = try? Data(contentsOf: url1! )
-                    //NSData(contentsOf: url! as URL)
-                    let img1 : UIImage = UIImage(data: data1! as Data)!
-                    
-                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String)
-                    self.allCat.append(oneProduct)
-                }
-            }
-        })
-    }
+ 
     fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 10.0)
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -437,16 +348,19 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
           if segue.identifier == "shoppingCard" {
             let controller = segue.destination as! MakeReceiptViewController
             controller.shoppingCard = shoppingCard
-
-            
+        }
+        
+        if segue.identifier == "invSeg" {
+            _ = segue.destination as! InventoryViewController
         }
     }
 }
 extension UISegmentedControl {
     func removeBorders() {
-       let c = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
+     //  let c = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
+        let g = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.55, alpha: 1.0)
         setBackgroundImage(imageWithColor(color: UIColor.white), for: .normal, barMetrics: .default)
-        setBackgroundImage(imageWithColor(color: c), for: .selected, barMetrics: .default)
+        setBackgroundImage(imageWithColor(color: g), for: .selected, barMetrics: .default)
         setDividerImage(imageWithColor(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         tintColor = UIColor.black
     }
