@@ -27,7 +27,7 @@ class LaunchScreenViewController: UIViewController {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
         } catch { }
         
-        let path = Bundle.main.path(forResource: "LogoAnimated2", ofType:"mp4")
+        let path = Bundle.main.path(forResource: "Erad-Animated", ofType:"mp4")
         
         player = AVPlayer(url: URL(fileURLWithPath: path!) as URL)
         let playerLayer = AVPlayerLayer(player: player)

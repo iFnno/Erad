@@ -57,7 +57,6 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         {
         case 0 :
             returnValue = allCat.count
-            print(allCat.count)
         case 1 :
             returnValue = catNumbers[0]
         case 2 :
@@ -94,8 +93,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
              //   fillAllItems()
                 cell.ProductName.text = self.allCat[indexPath.row].pname
                     cell.imgView.image = self.allCat[indexPath.row].image
-            print("All cat are")
-            print(allCat)
+
         case 1 :
                 cell.ProductName.text = cat1[indexPath.row].pname
                cell.imgView.image = self.cat1[indexPath.row].image
@@ -270,8 +268,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
                     default:
                         self.allCat.append(oneProduct)
                     }
-                    print("one product is")
-                    print(oneProduct)
+                   
                 }
             }
         })
