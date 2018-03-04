@@ -24,36 +24,6 @@ class InventoryViewController: UIViewController , UITableViewDelegate, UITableVi
         if(FirebaseApp.app() == nil){
             FirebaseApp.configure()
         }
-      /*   ref = Database.database().reference().child("Categories")
-        ref.observe(DataEventType.childAdded, with: { (snapshot) in
-            if snapshot.childrenCount > 0 {
-                for c in snapshot.children.allObjects as! [DataSnapshot] {
-                    let eventsObject = c.value as? [String: AnyObject]
-                    let productName  = eventsObject?["name"] as! String
-                    let productimg  = eventsObject?["picPath"] as! String
-                    let productinv  = eventsObject?["inventory"] as! Int
-                    let url1 = URL(string: productimg)
-                    let data1 = try? Data(contentsOf: url1! )
-                    //NSData(contentsOf: url! as URL)
-                    let img1 : UIImage = UIImage(data: data1! as Data)!
-                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv)
-                    print(oneProduct)
-                    self.ProductsList.append(oneProduct)
-                }
-                self.ListTable.reloadData()
-            }
-        }) */
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.ProductsList.removeAll()
         let ref = Database.database().reference().child("Categories")
         ref.observe(DataEventType.childAdded, with: { (snapshot) in
             if snapshot.childrenCount > 0 {
@@ -72,7 +42,16 @@ class InventoryViewController: UIViewController , UITableViewDelegate, UITableVi
                 self.ListTable.reloadData()
             }
         })
+        
+        // Do any additional setup after loading the view.
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
     func tableView( _ booksTable: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ProductsList.count
         

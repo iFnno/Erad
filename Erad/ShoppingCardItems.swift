@@ -23,4 +23,10 @@ struct ShoppingCardItem {
         self.category = category
     }
     
+    init(pname:String, quantity : Int, price : Double) {
+        self.pname = pname
+        self.quantity = quantity
+        self.price = price
+    }
+    
 }

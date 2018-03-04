@@ -34,5 +34,4 @@ struct Product {
         self.image = img
         self.inventory = inventory
     }
-
 }

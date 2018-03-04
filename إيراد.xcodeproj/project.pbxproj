@@ -20,6 +20,8 @@
 		602E5F8B2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
 		602EB01C2027886200B5C05A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 602EB01B2027886200B5C05A /* Logo.png */; };
 		604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */; };
+		6058C1DC204B35B2002E108F /* PausedShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */; };
+		6058C1DE204B3CAA002E108F /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058C1DD204B3CAA002E108F /* Receipt.swift */; };
 		606212C42039546500B9D5A8 /* MakeReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */; };
 		606212C62039574C00B9D5A8 /* MakeReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */; };
 		606212C8203B3CD300B9D5A8 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */; };
@@ -70,6 +72,8 @@
 		602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
+		6058C1DD204B3CAA002E108F /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReceiptViewController.swift; sourceTree = "<group>"; };
 		606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -191,11 +195,14 @@
 			isa = PBXGroup;
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
+				6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */,
 				60C5069F204091E500E07077 /* InventoryTableViewCell.swift */,
 				606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */,
 				606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */,
 				601E80DE204705400038E9E2 /* ReceiptPageViewController.swift */,
 				60C5069D2040904800E07077 /* InventoryViewController.swift */,
+				8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */,
+				6058C1DD204B3CAA002E108F /* Receipt.swift */,
 				606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */,
 				608BD7DC2034244D00E83119 /* ProductDetailsViewController.swift */,
 				60ACDC602032A375009E7AE5 /* Product.swift */,
@@ -208,7 +215,6 @@
 				604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */,
 				8CA94A23202986890054D032 /* File.swift */,
 				8CA94A292029877E0054D032 /* PersonalProfileViewController.swift */,
-				8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */,
 				8CA94A282029868A0054D032 /* SplitViewController.swift */,
 				60D99F942022DD6900334513 /* WorkTimeViewController.swift */,
 				8CA94A22202986230054D032 /* File.swift */,
@@ -583,6 +589,8 @@
 				600F056B202B42A4002A1815 /* File.swift in Sources */,
 				608BD7DD2034244E00E83119 /* ProductDetailsViewController.swift in Sources */,
 				601E80DF204705400038E9E2 /* ReceiptPageViewController.swift in Sources */,
+				6058C1DE204B3CAA002E108F /* Receipt.swift in Sources */,
+				6058C1DC204B35B2002E108F /* PausedShoppingCartTableViewCell.swift in Sources */,
 				600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */,
 				604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */,
 				60C506A0204091E500E07077 /* InventoryTableViewCell.swift in Sources */,
@@ -760,7 +768,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 962VFYAU45;
 				INFOPLIST_FILE = Erad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KSU.Erad;
@@ -776,7 +784,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 962VFYAU45;
 				INFOPLIST_FILE = Erad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KSU.Erad;

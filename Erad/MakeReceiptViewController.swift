@@ -15,6 +15,7 @@ var shoppingCard : [ShoppingCardItem] = []
     var receiptID : Int = 0
     var ReceivedAmountText : Double! = 0.0
     var RemainingAmount : Double! = 0.0
+    var paused = false
     var ref : DatabaseReference!
     @IBOutlet weak var itemsTable: UITableView!
     
@@ -38,13 +39,13 @@ var shoppingCard : [ShoppingCardItem] = []
     }
     
 
-    func tableView( _ booksTable: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView( _ itemsTable: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shoppingCard.count
         
     }
     
-    func tableView( _ booksTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = booksTable.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! MakeReceiptTableViewCell
+    func tableView( _ itemsTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = itemsTable.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! MakeReceiptTableViewCell
         cell.selectionStyle = .none
         cell.pName.text = self.shoppingCard[indexPath.row].pname
         cell.Quantity.text = String(self.shoppingCard[indexPath.row].quantity)
@@ -62,8 +63,6 @@ var shoppingCard : [ShoppingCardItem] = []
     
     @IBAction func makeSaleOperationButton(_ sender: Any) {
 
-        
-        
             self.ref = Database.database().reference()
             let ch = self.ref.child("receipts").childByAutoId()
         for ind in shoppingCard {
