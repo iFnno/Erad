@@ -29,9 +29,11 @@ struct Product {
         self.category = category
     }
     
-    init(pname:String, img : UIImage, inventory : Int) {
+    init(pname:String, img : UIImage, inventory : Int, pID:String, category: String) {
         self.pname = pname
         self.image = img
         self.inventory = inventory
+        self.pID = pID
+        self.category = category
     }
 }

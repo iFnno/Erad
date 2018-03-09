@@ -36,6 +36,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
   //  var selectedProduct : Product = Product(pname: "", img: #imageLiteral(resourceName: "Logo.png"), inventory: 0, price: 0, desc: "")
     @IBOutlet weak var scrollview: UIScrollView!
     var category : [Product] = []
+    var inventoryArray : [Product] = []
     var catNames : [String] = []
     var catNumbers : [Int] = []
     var allCat : [Product] = []
@@ -50,6 +51,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     var cat9 : [Product] = []
     var cat10 : [Product] = []
     var desiredWidthChange : Double = 1500.0
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var returnValue = 0
@@ -180,11 +182,16 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         self.currentShoppingCardButton.isHidden = true
+
+        let image = UIImage(named: "Menu1.png")
+        let button = UIBarButtonItem.init(image: image, style: UIBarButtonItemStyle.plain, target: self.splitViewController!.displayModeButtonItem.target, action: self.splitViewController!.displayModeButtonItem.action)
+        button.tintColor = UIColor.black
+        self.navigationItem.leftBarButtonItem = button
         selectedSegment.removeAllSegments()
         selectedSegment.insertSegment(withTitle: "الكل" , at: i, animated: true)
-        ref = Database.database().reference().child("Categories")
+        ref = Database.database().reference().child("products")
         ref.observe(DataEventType.value, with: { (snapshot) in
-         if snapshot.childrenCount > 0 {
+         if snapshot.childrenCount > 0 && self.catNames == [] {
             self.catNumbers.removeAll()
             self.catNames.removeAll()
             self.i = 1
@@ -222,7 +229,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font2 as Any , NSAttributedStringKey.foregroundColor: UIColor.white],
                                                for: .selected)
          selectedSegment.selectedSegmentIndex = 0
-        let ref2 = Database.database().reference().child("Categories")
+        let ref2 = Database.database().reference().child("products")
         ref2.observe(DataEventType.childAdded, with: { (snapshot) in
             self.childIndex = self.childIndex + 1
             if snapshot.childrenCount > 0 {
@@ -241,7 +248,9 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
                     let img1 : UIImage = UIImage(data: data1! as Data)!
                     
                     let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory)
+                    let inP = Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory)
                     self.allCat.append(oneProduct)
+                    self.inventoryArray.append(inP)
                     switch (self.childIndex)
                     {
                     case 1 :
@@ -345,10 +354,12 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
           if segue.identifier == "shoppingCard" {
             let controller = segue.destination as! MakeReceiptViewController
             controller.shoppingCard = shoppingCard
+            controller.paused = false
         }
         
         if segue.identifier == "invSeg" {
-            _ = segue.destination as! InventoryViewController
+            let c = segue.destination as! InventoryViewController
+            c.ProductsList = self.inventoryArray
         }
     }
 }

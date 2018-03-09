@@ -15,6 +15,7 @@ struct Receipt {
     var time : String!
     var employeeID : String!
     var products : [ShoppingCardItem]!
+    var key : String!
     
     init (id : Int, date : String, totalPrice : Double, time : String, employeeID : String, products : [ShoppingCardItem]) {
         self.id = id
@@ -31,5 +32,25 @@ struct Receipt {
         self.employeeID = employeeID
         self.time = time
         self.date = date
+    }
+    init (id : Int, date : String, totalPrice : Double, time : String, employeeID : String, key : String) {
+        self.id = id
+        self.totalPrice = totalPrice
+        self.employeeID = employeeID
+        self.time = time
+        self.date = date
+        self.key = key
+    }
+    init (id :Int, date: String, time : String ,totalPrice: Double, products : [ShoppingCardItem]){
+        self.id = id
+        self.date = date
+        self.totalPrice = totalPrice
+        self.products = products }
+    
+    init (id :Int, date: String, time : String ,totalPrice: Double, key : String){
+        self.id = id
+        self.date = date
+        self.totalPrice = totalPrice
+        self.key = key
     }
 }

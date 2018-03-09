@@ -49,7 +49,7 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loginSegue" {
-                let controller = segue.destination as! MyTabBarController
+                let controller = segue.destination as! WorkTimeViewController
             }
     }
 

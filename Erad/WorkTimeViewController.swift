@@ -7,13 +7,26 @@
 //
 
 import UIKit
-
+import Firebase
+var startedAlready = false
+var startTime : String! = "2017/12/12 00:00:00"
 class WorkTimeViewController: UIViewController {
     var secon = 0
     var timer = Timer()
     var isRunnnig = false
     var min = 0
     var hour = 0
+    var date : String! = ""
+    var fromTab = false
+    var totalTime : String! = ""
+    var ref : DatabaseReference!
+    
+    @IBOutlet weak var todayDate: UILabel!
+    
+    @IBOutlet weak var later: UIButton!
+    @IBAction func laterButton(_ sender: Any) {
+        performSegue(withIdentifier: "tabSeg", sender: self)
+    }
     @IBOutlet weak var seconds: UILabel!
     
     @IBOutlet weak var minutes: UILabel!
@@ -25,14 +38,31 @@ class WorkTimeViewController: UIViewController {
     @IBOutlet weak var start: UIButton!
     
     @IBAction func start(_ sender: Any) {
-        if !isRunnnig {
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WorkTimeViewController.action), userInfo: nil, repeats: true)
-            start.isEnabled = false
+        startedAlready = true // 1
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let timeToAppend = String(formatter.string(from: date))
+        startTime = timeToAppend
+        print("start")
+        print(timeToAppend)
+        print(startTime)
+        run()
+            self.start.isEnabled = false
             self.start.backgroundColor = UIColor(red: 0.8667, green: 0.8667, blue: 0.8667, alpha: 1)
-            isRunnnig = true
+        if self.fromTab == false {
+            self.performSegue(withIdentifier: "tabSeg", sender: self)
         }
-        
+
     }
+    func run() -> Void {
+         if !self.isRunnnig {
+         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(WorkTimeViewController.action), userInfo: nil, repeats: true)
+            self.isRunnnig = true
+
+        }
+    }
+
     
     @IBAction func reset(_ sender: Any) {
         if hour == 0  && min == 0 && secon == 0 {
@@ -45,6 +75,8 @@ class WorkTimeViewController: UIViewController {
         let OKAction = UIAlertAction(title: "نعم", style: .default) { (action:UIAlertAction!) in
             
             // Code in this block will trigger when OK button tapped.
+            startedAlready = false
+            self.totalTime = String(self.hour) + ":" + String(self.min) + ":" + String(self.secon)
             self.secon = 0
             self.min = 0
             self.hour = 0
@@ -55,8 +87,26 @@ class WorkTimeViewController: UIViewController {
             self.start.isEnabled = true
             self.start.backgroundColor = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
             self.isRunnnig = false
+            
+            let userID = (Auth.auth().currentUser?.uid.description)!
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let todaysDate = String(formatter.string(from: date))
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let currentTime = String(formatter.string(from: date))
+            self.ref = Database.database().reference()
+            self.ref.child("employees").child(userID).child("workingTime").child(todaysDate).childByAutoId().setValue(["checkIn": startTime,"checkOut": currentTime ,"totalShiftTime": self.totalTime])
+            
+            startTime = "00:00:00"
+
+            
+            
+            
 
             _ = self.navigationController?.popViewController(animated: true)
+            let previousViewController = self.navigationController?.viewControllers.last as! PersonalProfileViewController
+            previousViewController.started = false
         }
         alertController.addAction(OKAction)
         
@@ -73,30 +123,73 @@ class WorkTimeViewController: UIViewController {
     
     @objc func action()
     {
-        secon += 1
-        seconds.text = String(secon)
-        
-        if secon == 60 {
-            secon = 0
-            min += 1
+            secon = secon + 1
             seconds.text = String(secon)
-            minutes.text = String(min)
-        }
-        if min == 60 {
-            min = 0
-            hour += 1
-            minutes.text = String(min)
-            hours.text = String(hour)
-        }
+            
+            if secon == 60 {
+                secon = 0
+                min = min + 1
+                seconds.text = String(secon)
+                minutes.text = String(min)
+            }
+            if min == 60 {
+                min = 0
+                hour = hour + 1
+                minutes.text = String(min)
+                hours.text = String(hour)
+            }
+            
+
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        seconds.text = "00"
-        minutes.text = "00"
-        hours.text = "00"
         if #available(iOS 11.0, *) {
             self.additionalSafeAreaInsets.top = 20
+        }
+        if self.fromTab == true {
+            self.later.isHidden = true
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.hour = 0
+        self.min = 0
+        self.secon = 0
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        self.date = String(formatter.string(from: date))
+        self.todayDate.text = self.date
+       if startedAlready == true {
+         let date = Date()
+         let formatter = DateFormatter()
+         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+         let startTime1 = formatter.date(from: startTime)!
+         let units: Set<Calendar.Component> = [.hour, .minute, .second]
+         let difference = Calendar.current.dateComponents(units, from: startTime1, to: date)
+         self.hour = difference.hour!
+         self.min = difference.minute!
+         self.secon = difference.second!
+         seconds.text = String(self.secon)
+         minutes.text = String(self.min)
+         hours.text = String(self.hour)
+        self.run()
+        self.start.isEnabled = false
+        self.start.backgroundColor = UIColor(red: 0.8667, green: 0.8667, blue: 0.8667, alpha: 1)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tabSeg" {
+            let controller = segue.destination as! MyTabBarController
+            
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if self.fromTab == true {
+        let previousViewController = self.navigationController?.viewControllers.last as! PersonalProfileViewController
+        previousViewController.started = startedAlready
+            if startedAlready == true {
+        }
         }
     }
 }
@@ -134,6 +227,7 @@ class CustomNavigationBar: UINavigationBar {
             }
         }
     }
+
     
 }
 public class makeAlert {

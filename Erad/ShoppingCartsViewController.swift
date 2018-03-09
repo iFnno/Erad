@@ -9,21 +9,23 @@
 import UIKit
 import Firebase
 class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
-var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+
     @IBOutlet weak var pausedTable: UITableView!
     var pausedList : [Receipt] = []
+    var productsList : [ShoppingCardItem] = []
     var ref : DatabaseReference!
+    var ref1 : DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "عربات التسوق"
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+        self.title = "عربات التسوق المعلقة"
+        let image = UIImage(named: "Menu1.png")
+        let button = UIBarButtonItem.init(image: image, style: UIBarButtonItemStyle.plain, target: self.splitViewController!.displayModeButtonItem.target, action: self.splitViewController!.displayModeButtonItem.action)
+        button.tintColor = UIColor.black
+        self.navigationItem.leftBarButtonItem = button
+        self.pausedTable.reloadData()
         
-        let ref = Database.database().reference().child("pausedReceipts")
-        ref.observe(DataEventType.value, with: { (snapshot) in
+        let ref = Database.database().reference()
+        ref.child("pausedReceipts").observe(DataEventType.value, with: { (snapshot) in
             if snapshot.childrenCount > 0 {
                 self.pausedList.removeAll()
             
@@ -34,13 +36,16 @@ var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
                     let employeeID  = eventsObject?["employeeID"] as! String
                     let totalPrice  = eventsObject?["totalPrice"] as! Double
                     let time  = eventsObject?["time"] as! String
-                    let onereceipt = Receipt(id: id, date: date, totalPrice: totalPrice, time: time, employeeID: employeeID)
+                        let key = c.key.description as NSString
+                    let onereceipt = Receipt(id: id, date: date, totalPrice: totalPrice, time: time, employeeID: employeeID, key : key as String)
                     self.pausedList.append(onereceipt)
+                    print(self.pausedList)
+                    print("rima")
                 }
                 self.pausedTable.reloadData()
             }
         })
-
+        
     }
     func tableView( _ booksTable: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pausedList.count
@@ -48,7 +53,6 @@ var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     }
     
     func tableView( _ booksTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        self.activityIndicator.stopAnimating()
         let cell = booksTable.dequeueReusableCell(withIdentifier: "pausedCell", for: indexPath) as! PausedShoppingCartTableViewCell
         cell.selectionStyle = .none
         cell.id.text = String(self.pausedList[indexPath.row].id)
@@ -73,9 +77,9 @@ var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
                 let controller = segue.destination as! MakeReceiptViewController
                 controller.amount = self.pausedList[indexPath.row].totalPrice
                 controller.paused = true
-                controller.receiptID = self.pausedList[indexPath.row].id!
+               // controller.receiptID = self.pausedList[indexPath.row].id!
                 controller.RemainingAmount = 0
-                controller.shoppingCard = self.pausedList[indexPath.row].products
+                controller.passedReceipt = self.pausedList[indexPath.row]
             }
         }
     }

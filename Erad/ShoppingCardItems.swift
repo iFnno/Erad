@@ -23,10 +23,20 @@ struct ShoppingCardItem {
         self.category = category
     }
     
-    init(pname:String, quantity : Int, price : Double) {
+    init(category:String, quantity : Int, price : Double,  pID : String) {
+        self.category = category
+        self.quantity = quantity
+        self.price = price
+        self.pID = pID
+    }
+    init (pname:String, quantity : Int, price : Double, pID : String) {
         self.pname = pname
         self.quantity = quantity
         self.price = price
+        self.pID = pID
     }
-    
+    init(pname:String, quantity : Int, price : Double) {
+        self.pname = pname
+        self.quantity = quantity
+        self.price = price}
 }
