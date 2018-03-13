@@ -103,8 +103,10 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "refund" {
             let controller = segue.destination as! RefundViewController
-            controller.RceiptDetsils = Rdetsils
+            controller.ReceiptDetsils = Rdetsils
             controller.itemsList = items
+            controller.RefundedItemsList = self.items
+            controller.amount = self.amount
             
         }
     }

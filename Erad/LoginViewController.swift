@@ -51,7 +51,14 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
         if segue.identifier == "loginSegue" {
                 let controller = segue.destination as! WorkTimeViewController
             }
+        if segue.identifier == "forget" {
+            let controller = segue.destination as! ResetPasswordViewController
+        }
     }
+    
 
-
+    @IBAction func forgetPass(_ sender: Any) {
+        self.performSegue(withIdentifier: "forget", sender: self)
+    }
+    
 }

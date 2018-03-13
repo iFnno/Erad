@@ -26,56 +26,57 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
     var RemainingAmount : Double! = 0.0
     var ReceivedAmount : Double! = 0.0
     var receiptID : Int = 0
-    var HTMLString : String = ""
+    var HTMLString : String = "s"
     var userName : String = ""
     var userID : String = ""
     var paused = false
     
-    @IBOutlet weak var Remaining: UILabel!
     var shoppingCard : [ShoppingCardItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "فاتورة جديدة رقم #" + String(self.receiptID)
-        self.Remaining.text = String(self.RemainingAmount)
         userID = (Auth.auth().currentUser?.uid.description)!
-       self.ref = Database.database().reference()
-      /*  ref.child("employees").child("0malZZrfHaQC2QLMJZbVgZ5LNb82").observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as! NSDictionary
-            let Fname  = value["firstName"] as! String
-            let Lname = value["lastName"] as! String
-            let x = Fname + Lname
-        self.userName.append(x)
-        }) */
-
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let dateToAppend = String(formatter.string(from: date))
         formatter.dateFormat = "HH:mm"
         let timeToAppend = String(formatter.string(from: date))
-        self.HTMLString = "<html><body>Erad <br> مرحباً بك <br> فاتورة رقم #" + String(self.receiptID)
+     //   DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+        self.HTMLString = "<html><style type='text/css'>html,body {text-align: center;}, table {align: center; text-align: center;} </style><body><h1>Erad </h1><h2> مرحباً بك <br> فاتورة رقم #  " + String(self.receiptID)
         //<img src=https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/Screen%20Shot%202018-02-27%20at%209.15.35%20AM.png?alt=media&token=14e08dd1-fa5d-4078-a93c-45e6c3990f24><br>
         self.HTMLString = self.HTMLString + "<br> الوقت"
-        self.HTMLString = self.HTMLString + timeToAppend + "<br>  التاريخ"
-        self.HTMLString = self.HTMLString + dateToAppend + "<br> الموظف "
-        self.HTMLString = self.HTMLString + self.userName + "<br></body></html>"
+        self.HTMLString = self.HTMLString + timeToAppend + "<br>التاريخ"
+        self.HTMLString = self.HTMLString + dateToAppend + "<br>  الموظف "
+        self.HTMLString = self.HTMLString + self.userName + "</h2><br><table width='880'  cellspacing='0' cellpadding='0'>"
+        self.HTMLString = self.HTMLString + "<tr><th><h2> السعر </h2></th> <th><h2> الكمية </h2></th> <th><h2> اسم المنتج</h2></th></tr>"
         
+         ref = Database.database().reference()
         
         let ch = self.ref.child("receipts").childByAutoId()
         
         ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","RemainingAmount":self.RemainingAmount,"ReceivedAmount":self.ReceivedAmount])
         for ind in shoppingCard {
             ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
+            self.HTMLString = self.HTMLString + "<tr border-bottom='1pt'><td align='center'><h3>" + String(ind.price)
+            self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + String(ind.quantity)
+            self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + ind.pname
+            self.HTMLString = self.HTMLString + "</h3></td></tr>"
 
         // Do any additional setup after loading the view.
     }
+        self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.amount) + "</h2></td><td align='right' colspan = '2'><h3>المجموع</h3></td></tr>"
+         self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.ReceivedAmount) + "</h2></td><td align='right' colspan = '2'><h3>المبلغ المستلم</h3></td></tr>"
+        
+        self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.RemainingAmount) + "</h2></td><td align='right' colspan = '2'><h3>الباقي</h3></td></tr></table></body></html>"
+       
+        //self.navigationItem.hidesBackButton = false
+        
+            self.webView.loadHTMLString(self.HTMLString , baseURL: nil) //}
         self.navigationItem.hidesBackButton = true
         
         let newBackButton = UIBarButtonItem(title: "رجوع", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ReceiptPageViewController.back(sender:)))
         self.navigationItem.rightBarButtonItem = newBackButton
-        self.navigationItem.hidesBackButton = false
-        
-        self.webView.loadHTMLString(self.HTMLString , baseURL: nil)
     }
     @objc func back(sender: UIBarButtonItem) {
         if self.paused == true {
@@ -102,19 +103,12 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
     }
     
     @IBAction func print(_ sender: Any) {
-        
-
-     /*   var pInfo :UIPrintInfo = UIPrintInfo.printInfo()
-        pInfo.outputType = UIPrintInfoOutputType.general
-        pInfo.jobName = (webView.request?.url?.absoluteString)!
-        pInfo.orientation = UIPrintInfoOrientation.portrait
-        
         var printController = UIPrintInteractionController.shared
-        printController.printInfo = pInfo
+        printController.printFormatter = self.wkWebViewPrintFormatter()
         printController.showsPageRange = true
         printController.printFormatter = webView.viewPrintFormatter()
-        printController.present(animated: true, completionHandler: nil) */
-
+        printController.present(animated: true, completionHandler: nil)
+     
     }
     
     
@@ -138,6 +132,8 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
             let email = textField?.text
             composeVC.setToRecipients([email!])
             let ss = "فاتورة"
+            let wkPDFData = ReceiptPageViewController.generate(using: self.wkWebViewPrintFormatter())
+            composeVC.addAttachmentData( wkPDFData, mimeType: "application/pdf", fileName: "Receipt.pdf")
             composeVC.setSubject(ss)
             composeVC.setMessageBody(self.HTMLString, isHTML: true)
             
@@ -166,6 +162,54 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         
         controller.dismiss(animated: true, completion: nil)
     }
-   
+    
+    
+    class func generate(using printFormatter: UIPrintFormatter) -> Data {
+        
+        // assign the print formatter to the print page renderer
+        let renderer = UIPrintPageRenderer()
+        renderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
+        
+        // assign paperRect and printableRect values
+        let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+        renderer.setValue(page, forKey: "paperRect")
+        renderer.setValue(page, forKey: "printableRect")
+        
+        // create pdf context and draw each page
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, .zero, nil)
+        
+        for i in 0..<renderer.numberOfPages {
+            UIGraphicsBeginPDFPage()
+            renderer.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
+        
+        UIGraphicsEndPDFContext();
+        
+        // save data to a pdf file and return
+        guard nil != (try? pdfData.write(to: outputURL, options: .atomic))
+            else { fatalError("Error writing PDF data to file.") }
+        
+        return pdfData as Data
+    }
+    private class var outputURL: URL {
+        
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            else { fatalError("Error getting user's document directory.") }
+        
+        let url = directory.appendingPathComponent(outputFileName).appendingPathExtension("pdf")
+        Swift.print("open \(url.path)")
+        return url
+    }
+    
+    private class var outputFileName: String {
+        return "generated-\(Int(Date().timeIntervalSince1970))"
+    }
+    private func wkWebViewPrintFormatter() -> UIPrintFormatter {
+        return webView.viewPrintFormatter()
+    }
+    private func loadIntoWKWebView(_ data: Data) {
+        webView.load(data, mimeType: "application/pdf", characterEncodingName: "utf-8", baseURL: Bundle.main.bundleURL)
+    }
 }
 

@@ -24,7 +24,11 @@ class PersonalProfileViewController: UIViewController {
     var timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let x = String(formatter.string(from: date))
+        self.dateLabel.text = x
         // Dovary additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +53,12 @@ class PersonalProfileViewController: UIViewController {
             hoursLabel.text = String(self.hours)
             self.run()
             
+        }
+        if startedAlready == false {
+          timer.invalidate()
+            secondsLabel.text = "0"
+            minutesLabel.text = "0"
+            hoursLabel.text = "0"
         }
     }
     func run() -> Void {

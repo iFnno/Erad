@@ -15,6 +15,8 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
     var productsList : [ShoppingCardItem] = []
     var ref : DatabaseReference!
     var ref1 : DatabaseReference!
+    var ref3 : DatabaseReference!
+    var userN : String! = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "عربات التسوق المعلقة"
@@ -55,10 +57,19 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
     func tableView( _ booksTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = booksTable.dequeueReusableCell(withIdentifier: "pausedCell", for: indexPath) as! PausedShoppingCartTableViewCell
         cell.selectionStyle = .none
+        ref3 = Database.database().reference()
+        ref3.child("employees").child(self.pausedList[indexPath.row].employeeID).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! NSDictionary
+            let Fname  = value["firstName"] as! String
+            let Lname = value["lastName"] as! String
+            let x = Fname + Lname
+            self.userN = x
+            Swift.print(x, separator: "us ", terminator: "usern")
+        })
         cell.id.text = String(self.pausedList[indexPath.row].id)
         cell.date.text = self.pausedList[indexPath.row].date
         cell.time.text = self.pausedList[indexPath.row].time
-        cell.employeeID.text = self.pausedList[indexPath.row].employeeID
+        cell.employeeID.text = self.userN
         return cell
     }
     

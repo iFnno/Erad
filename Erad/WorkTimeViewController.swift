@@ -187,11 +187,9 @@ class WorkTimeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         if self.fromTab == true {
         let previousViewController = self.navigationController?.viewControllers.last as! PersonalProfileViewController
-        previousViewController.started = startedAlready
-            if startedAlready == true {
-        }
-        }
+       // previousViewController.started = startedAlready
     }
+}
 }
 class CustomNavigationBar: UINavigationBar {
     // NavigationBar height

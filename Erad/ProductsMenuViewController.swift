@@ -225,8 +225,8 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font as Any , NSAttributedStringKey.foregroundColor: UIColor.lightGray],
                                                for: .normal)
         let font2 = UIFont.boldSystemFont(ofSize: 24.0)
-        let c = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
-        selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font2 as Any , NSAttributedStringKey.foregroundColor: UIColor.white],
+        let c = UIColor(hue: 0.55, saturation: 0.55, brightness: 0.64, alpha: 1.0)
+        selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font2 as Any , NSAttributedStringKey.foregroundColor: c],
                                                for: .selected)
          selectedSegment.selectedSegmentIndex = 0
         let ref2 = Database.database().reference().child("products")
@@ -366,9 +366,8 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
 extension UISegmentedControl {
     func removeBorders() {
      //  let c = UIColor(red: 0.6, green: 0.8314, blue: 0.9569, alpha: 1.0)
-        let g = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.55, alpha: 1.0)
         setBackgroundImage(imageWithColor(color: UIColor.white), for: .normal, barMetrics: .default)
-        setBackgroundImage(imageWithColor(color: g), for: .selected, barMetrics: .default)
+        setBackgroundImage(imageWithColor(color: UIColor.white), for: .selected, barMetrics: .default)
         setDividerImage(imageWithColor(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         tintColor = UIColor.black
     }

@@ -15,6 +15,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var pausedShoppingCard : [ShoppingCardItem] = []
     var inipausedShoppingCard : [ShoppingCardItem] = []
     var amount : Double! = 0.0
+    var userN : String! = ""
     
     var ReceivedAmountText : Double! = 0.0
     var RemainingAmount : Double! = 0.0
@@ -23,6 +24,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var ref : DatabaseReference!
     var ref1 : DatabaseReference!
     var ref2 : DatabaseReference!
+    var ref3 : DatabaseReference!
     var passedReceipt : Receipt! = Receipt(id: 0, date: "", totalPrice: 0, time: "", employeeID: "", key: "")
     @IBOutlet weak var itemsTable: UITableView!
     
@@ -67,11 +69,18 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
             }
 
         
+       
         
-     /*   print("Afnann")
-        print(self.passedReceipt) */
-        
-        
+        let userID1 = (Auth.auth().currentUser?.uid.description)!
+        ref3 = Database.database().reference()
+        ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! NSDictionary
+            let Fname  = value["firstName"] as! String
+            let Lname = value["lastName"] as! String
+            let x = Fname + Lname
+            self.userN = x
+            Swift.print(x, separator: "us ", terminator: "usern")
+        })
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -357,8 +366,10 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                 print(self.pausedShoppingCard)
                 controller.shoppingCard = self.pausedShoppingCard
                 controller.paused = true
+                controller.userName = self.userN
             } else {
             controller.shoppingCard = self.shoppingCard
+            controller.userName = self.userN
             }
            // controller.amount = self.amount
             receiptID = incrementID()
@@ -366,6 +377,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
             controller.ReceivedAmount = self.ReceivedAmountText
             controller.RemainingAmount = self.RemainingAmount
             controller.amount = self.amount
+            controller.userName = self.userN
         }
     }
     func incrementID() -> Int {

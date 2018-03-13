@@ -65,7 +65,6 @@ class ProductDetailsViewController: UIViewController {
         productName.text = self.productInfo.pname
         productPrice.text = String(self.productInfo.price)
         productDesc.text = self.productInfo.description
-        productInventory.text = String(self.productInfo.inventory)
         self.selectedQuantity.text = String(self.quantity)
 
         // Do any additional setup after loading the view.
