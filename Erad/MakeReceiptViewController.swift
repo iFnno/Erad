@@ -16,6 +16,9 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var inipausedShoppingCard : [ShoppingCardItem] = []
     var amount : Double! = 0.0
     var userN : String! = ""
+    var email : String! = "manager@gmail.com"
+    var cost : Double! = 0.0
+    var valid : Bool = false
     
     var ReceivedAmountText : Double! = 0.0
     var RemainingAmount : Double! = 0.0
@@ -25,6 +28,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var ref1 : DatabaseReference!
     var ref2 : DatabaseReference!
     var ref3 : DatabaseReference!
+    var ref4 : DatabaseReference!
     var passedReceipt : Receipt! = Receipt(id: 0, date: "", totalPrice: 0, time: "", employeeID: "", key: "")
     @IBOutlet weak var itemsTable: UITableView!
     
@@ -40,7 +44,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         ReceifedAmount.delegate = self as UITextFieldDelegate
         if self.paused == true {
             
-          ref1 = Database.database().reference()
+          ref1 = Database.database().reference().child(companyName)
         ref1.child("pausedReceipts").child(self.passedReceipt.key).child("products").observe(DataEventType.value, with: { (snapshot1) in
             if snapshot1.childrenCount > 0 {
                 self.inipausedShoppingCard.removeAll()
@@ -51,7 +55,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                     let price = eventsObject1!["price"] as! Double
                     let quantity = eventsObject1!["quantity"] as! Int
                     let category = eventsObject1!["category"] as! String
-                    self.ref2 = Database.database().reference().child("products")
+                    self.ref2 = Database.database().reference().child(companyName).child("products")
                         self.ref2.child(category).child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                             let value = snapshot.value as? NSDictionary
                             let productName  = value?["name"] as! String
@@ -72,12 +76,12 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
        
         
         let userID1 = (Auth.auth().currentUser?.uid.description)!
-        ref3 = Database.database().reference()
+        ref3 = Database.database().reference().child(companyName)
         ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as! NSDictionary
             let Fname  = value["firstName"] as! String
             let Lname = value["lastName"] as! String
-            let x = Fname + Lname
+            let x = Fname + " " + Lname
             self.userN = x
             Swift.print(x, separator: "us ", terminator: "usern")
         })
@@ -129,7 +133,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func makeSaleOperationButton(_ sender: Any) {
         if self.paused == true {
-            self.ref = Database.database().reference()
+            self.ref = Database.database().reference().child(companyName)
             let ch = self.ref.child("receipts").childByAutoId()
             for ind in pausedShoppingCard {
                 self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -138,38 +142,35 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                         let newnum = num - ind.quantity
                         let newnumString = Int(newnum)
                         self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
-                        // self.ReceivedAmountText = self.ReceifedAmount.text as? Double
-                        if let cost = Double(self.ReceifedAmount.text!) {
-                            if cost > 0 {
-                                print("The user entered a value price of \(cost)")
-                                self.ReceivedAmountText = cost
-                                self.RemainingAmount = self.ReceivedAmountText - self.amount
-                                self.performSegue(withIdentifier: "showReceipt", sender: self)
-                            self.ref.child("pausedReceipts").child(self.passedReceipt.key).removeValue(completionBlock: { (error, refer) in
-                                    if error != nil {
-                                        print(error)
-                                    } else {
-                                        print(refer)
-                                        print("Child Removed Correctly")
-                                    }
-                                })
-
-                            } else {
-                                makeAlert.ShowAlert(title: "المبلغ المستلم غير صحيح", message: "عذراً ادخل المبلغ المستلم بشكل صحيح" , in: self)
-                            }
-                        } else {
-                            print("Not a valid number: \(self.ReceifedAmount.text!)")
-                        }
-                        
                     } else {
                         let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
                         makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
                     }
-                    
-                })
+            })
+            }
+            
+            if let cost = Double(self.ReceifedAmount.text!) {
+                if cost >= self.amount {
+                    print("The user entered a value price of \(cost)")
+                    self.ReceivedAmountText = cost
+                    self.RemainingAmount = self.ReceivedAmountText - self.amount
+                    self.performSegue(withIdentifier: "showReceipt", sender: self)
+                    self.valid = true
+                } else {
+                    while self.valid == false {
+                    self.emailText()
+                    if cost >= self.amount {
+                        print("The user entered a value price of \(cost)")
+                        self.ReceivedAmountText = cost
+                        self.RemainingAmount = self.ReceivedAmountText - self.amount
+                        self.performSegue(withIdentifier: "showReceipt", sender: self)
+                        self.valid = true
+                        }
+                }
+            }
             }
         } else {
-            self.ref = Database.database().reference()
+            self.ref = Database.database().reference().child(companyName)
             let ch = self.ref.child("receipts").childByAutoId()
         for ind in shoppingCard {
             self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -180,28 +181,22 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                 let newnumString = Int(newnum)
                    self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
                    // self.ReceivedAmountText = self.ReceifedAmount.text as? Double
-                    if let cost = Double(self.ReceifedAmount.text!) {
-                        if cost > 0 {
-                        print("The user entered a value price of \(cost)")
-                        self.ReceivedAmountText = cost
-                        self.RemainingAmount = self.ReceivedAmountText - self.amount
-                        self.performSegue(withIdentifier: "showReceipt", sender: self)
-                        } else {
-                            makeAlert.ShowAlert(title: "المبلغ المستلم غير صحيح", message: "عذراً ادخل المبلغ المستلم بشكل صحيح" , in: self)
-                        }
-                    } else {
-                        print("Not a valid number: \(self.ReceifedAmount.text!)")
-                    }
+//here
                     if num == 5 {
                         let composeVC = MFMailComposeViewController()
                         composeVC.mailComposeDelegate = self
                         
                         // Configure the fields of the interface.
-                        let email = "asa-cute@hotmail.com"
-                        composeVC.setToRecipients([email])
-                        let ss = "مخزون المنتج" + ind.pname + "منخفض"
+                        self.ref4 = Database.database().reference().child(companyName).child("manager")
+                        self.ref4.observeSingleEvent(of: .value, with: { (snapshot) in
+                            self.email = snapshot.childSnapshot(forPath: "email").value as! String
+                        })
+                        composeVC.setToRecipients([self.email])
+                        let ss = "Low Inventory of prouduct " + ind.pname
                         composeVC.setSubject(ss)
-                        let mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname + "من تصنيف" + ind.category + " اقل من 5 <br> شكراً </body>,/html>"
+                        var mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname
+                        mess = mess  + "من تصنيف " + ind.category + " اقل من 5"
+                        mess = mess + "<br> شكراً </body>,/html>"
                         composeVC.setMessageBody( mess, isHTML: true)
                         
                         // Present the view controller modally.
@@ -209,14 +204,33 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                         
                         
                     }
-                   
                 } else {
                     let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
                     makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
                 }
-                    
                 })
         }
+            if let cost = Double(self.ReceifedAmount.text!) {
+                if cost >= self.amount {
+                    print("The user entered a value price of \(cost)")
+                    self.ReceivedAmountText = cost
+                    self.RemainingAmount = self.ReceivedAmountText - self.amount
+                    self.performSegue(withIdentifier: "showReceipt", sender: self)
+                    self.valid = true
+                } else {
+                    while self.valid == false {
+                        self.emailText()
+                        if cost >= self.amount {
+                            print("The user entered a value price of \(cost)")
+                            self.ReceivedAmountText = cost
+                            self.RemainingAmount = self.ReceivedAmountText - self.amount
+                            self.performSegue(withIdentifier: "showReceipt", sender: self)
+                            self.valid = true
+                        }
+                    }
+                }
+            }
+            
       /*  let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
         previousViewController.shoppingCard.removeAll()
         previousViewController.currentShoppingCardButton.isHidden = true */
@@ -237,25 +251,13 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         print(timeToAppend)
         
         
-        self.ref = Database.database().reference()
+        self.ref = Database.database().reference().child(companyName)
         let ch = self.ref.child("pausedReceipts").childByAutoId()
         receiptID = incrementID()
         ch.setValue(["date": dateToAppend,"employeeID": userID,"id":receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": ""])
         
         for ind in shoppingCard {
             ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category": ind.category])
-            self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
-                let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
-                if num > 0 {
-                    let newnum = num - ind.quantity
-                    let newnumString = Int(newnum)
-                    self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
-                } else {
-                    let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
-                    makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
-                }
-                
-            })
         }
         self.empty()
         }
@@ -270,7 +272,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
             let OKAction = UIAlertAction(title: "نعم", style: .default) { (action:UIAlertAction!) in
                 
                 // Code in this block will trigger when OK button tapped.
-                self.ref = Database.database().reference()
+                self.ref = Database.database().reference().child(companyName)
                 self.ref.child("pausedReceipts").child(self.passedReceipt.key).removeValue(completionBlock: { (error, refer) in
                     if error != nil {
                         print(error)
@@ -400,6 +402,30 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         
         controller.dismiss(animated: true, completion: nil)
     }
+func emailText () {
+    //1. Create the alert controller.
+    let alert = UIAlertController(title: "المبلغ المستلم غير صحيح", message: "عذراً ادخل المبلغ المستلم بشكل صحيح", preferredStyle: .alert)
+    
+    //2. Add the text field. You can configure it however you need.
+    alert.addTextField { (textField) in
+        textField.text = ""
+    }
+    
+    // 3. Grab the value from the text field, and print it when the user clicks OK.
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+        let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+        
+        
+        // Configure the fields of the interface.
+        let s = textField?.text
+        self.cost = Double(s!) ?? 0.0
+        
+        // Present the view controller modally.
+    }))
+    
+    // 4. Present the alert.
+    self.present(alert, animated: true, completion: nil)
+}
 }
 extension String {
     func index(from: Int) -> Index {

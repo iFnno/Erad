@@ -39,7 +39,7 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
         let backItem = UIBarButtonItem()
         backItem.title = "رجوع"
-        ref1 = Database.database().reference()
+        ref1 = Database.database().reference().child(companyName)
         ref1.child("receipts").child(self.Rdetsils.key).child("products").observe(DataEventType.value, with: { (snapshot1) in
             //if the reference have values
             if snapshot1.childrenCount > 0 {

@@ -95,7 +95,7 @@ class WorkTimeViewController: UIViewController {
             let todaysDate = String(formatter.string(from: date))
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let currentTime = String(formatter.string(from: date))
-            self.ref = Database.database().reference()
+            self.ref = Database.database().reference().child(companyName)
             self.ref.child("employees").child(userID).child("workingTime").child(todaysDate).childByAutoId().setValue(["checkIn": startTime,"checkOut": currentTime ,"totalShiftTime": self.totalTime])
             
             startTime = "00:00:00"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z5h-6P-F9r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y9C-XE-hkU">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -421,6 +421,45 @@
             </objects>
             <point key="canvasLocation" x="2253.90625" y="-1064.0625"/>
         </scene>
+        <!--Sales Report View Controller-->
+        <scene sceneID="Dzr-pE-abH">
+            <objects>
+                <viewController id="one-sq-ACa" customClass="SalesReportViewController" customModule="ا_يراد" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pdg-Z0-9Ma">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2T5-FN-Pzf">
+                                <rect key="frame" x="0.0" y="367" width="768" height="608"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="salesCell" rowHeight="103" id="Vcy-jQ-SM1" customClass="SalesReportTableViewCell" customModule="ا_يراد" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="103"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vcy-jQ-SM1" id="th8-QG-lo0">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="102.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="one-sq-ACa" id="1kH-eU-kmA"/>
+                                    <outlet property="delegate" destination="one-sq-ACa" id="vkx-W4-x7f"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mdR-YJ-Jst"/>
+                    </view>
+                    <connections>
+                        <outlet property="salesTable" destination="2T5-FN-Pzf" id="ohy-UM-MoT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbH-kO-8a0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2780.46875" y="-341.015625"/>
+        </scene>
         <!--Personal Profile View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -462,17 +501,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aE6-Uh-nhf">
-                                <rect key="frame" x="20" y="85" width="109" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.65022289752960205" green="0.82474851608276367" blue="0.94511938095092773" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="تسجيل الخروج">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="sb8-by-n8b"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejf-OA-KeQ">
                                 <rect key="frame" x="168" y="769" width="26" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -531,6 +559,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aE6-Uh-nhf">
+                                <rect key="frame" x="619" y="322" width="109" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.65022289752960205" green="0.82474851608276367" blue="0.94511938095092773" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="تسجيل الخروج">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="sb8-by-n8b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -744,21 +783,43 @@
             </objects>
             <point key="canvasLocation" x="-966.40625" y="0.0"/>
         </scene>
-        <!--التقارير-->
+        <!--Reports View Controller-->
         <scene sceneID="p0D-R3-ybr">
             <objects>
-                <viewController id="m1a-tl-u5m" sceneMemberID="viewController">
+                <viewController id="m1a-tl-u5m" customClass="ReportsViewController" customModule="ا_يراد" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k22-z1-mky">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-EZ-b4D">
+                                <rect key="frame" x="164" y="64" width="441" height="441"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="sales"/>
+                                <connections>
+                                    <action selector="salesButton:" destination="m1a-tl-u5m" eventType="touchUpInside" id="GNd-sg-poM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYs-S7-PD5">
+                                <rect key="frame" x="164" y="513" width="441" height="441"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Working hours"/>
+                                <connections>
+                                    <action selector="workingHoursButton:" destination="m1a-tl-u5m" eventType="touchUpInside" id="sk2-z4-6X1"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="J91-p4-ZWW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="التقارير" image="reports" id="sDM-Hh-Vdj"/>
+                    <navigationItem key="navigationItem" id="vy7-XW-XFb"/>
+                    <connections>
+                        <segue destination="one-sq-ACa" kind="show" identifier="salesSeg" id="cXv-c1-TpX"/>
+                        <segue destination="1rD-AN-nkd" kind="show" identifier="hoursSeg" id="TaW-hy-Nb1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEm-ES-yG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="383"/>
+            <point key="canvasLocation" x="1633.59375" y="382.6171875"/>
         </scene>
         <!--Products Menu View Controller-->
         <scene sceneID="KFY-IY-R74">
@@ -1582,6 +1643,50 @@
             </objects>
             <point key="canvasLocation" x="2404.6875" y="1118.5546875"/>
         </scene>
+        <!--Working Hours Report View Controller-->
+        <scene sceneID="Sj2-5R-99g">
+            <objects>
+                <viewController id="1rD-AN-nkd" customClass="WorkingHoursReportViewController" customModule="ا_يراد" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R52-Gi-YFz">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-RR-SCs">
+                                <rect key="frame" x="0.0" y="368" width="768" height="607"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hoursCell" rowHeight="95" id="P6f-6V-oeq" customClass="WorkingHoursReportTableViewCell" customModule="ا_يراد" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="768" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P6f-6V-oeq" id="oUs-iZ-dmt">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="94.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1rD-AN-nkd" id="oIF-8e-PYI"/>
+                                    <outlet property="delegate" destination="1rD-AN-nkd" id="GO7-x2-tDl"/>
+                                </connections>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLB-tc-aKM">
+                                <rect key="frame" x="0.0" y="64" width="768" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EF3-Dn-FZB"/>
+                    </view>
+                    <connections>
+                        <outlet property="hoursTable" destination="AIr-RR-SCs" id="iy1-rI-Vj6"/>
+                        <outlet property="picker" destination="ZLB-tc-aKM" id="sf5-1y-mOl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmb-gr-PqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2779.6875" y="365.625"/>
+        </scene>
         <!--المحاسبة-->
         <scene sceneID="eKp-Jw-mZa">
             <objects>
@@ -1769,7 +1874,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="xYh-Ji-v1D" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="m1a-tl-u5m" kind="relationship" relationship="viewControllers" id="Z2D-52-LiI"/>
+                        <segue destination="hJz-Qc-GQh" kind="relationship" relationship="viewControllers" id="Z2D-52-LiI"/>
                         <segue destination="DUN-OO-pOg" kind="relationship" relationship="viewControllers" id="3NW-KQ-f1j"/>
                         <segue destination="lCq-Ea-Kwp" kind="relationship" relationship="viewControllers" id="Tme-Th-YgH"/>
                     </connections>
@@ -1816,20 +1921,41 @@
             </objects>
             <point key="canvasLocation" x="785.9375" y="-321.09375"/>
         </scene>
+        <!--التقارير-->
+        <scene sceneID="e2m-K4-zGY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hJz-Qc-GQh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="التقارير" image="reports" id="sDM-Hh-Vdj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LbI-dH-LAY">
+                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="m1a-tl-u5m" kind="relationship" relationship="rootViewController" id="fd2-dI-PVw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngd-Na-ysF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785.9375" y="382.6171875"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Drawing" width="1055" height="632"/>
         <image name="Erad--N" width="297" height="396"/>
+        <image name="Working hours" width="3333" height="3333"/>
         <image name="first" width="30" height="30"/>
         <image name="fourth" width="30" height="30"/>
         <image name="icons8-email-filled-100" width="100" height="100"/>
         <image name="icons8-forward-filled-100" width="100" height="100"/>
         <image name="icons8-print-100" width="100" height="100"/>
         <image name="reports" width="32" height="32"/>
+        <image name="sales" width="3333" height="3333"/>
         <image name="third" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sio-Ng-K0G"/>
+        <segue reference="z8p-ll-RGc"/>
         <segue reference="VWS-qw-29S"/>
         <segue reference="YFJ-9c-u95"/>
         <segue reference="tjY-gI-dtC"/>

@@ -26,7 +26,7 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
         self.navigationItem.leftBarButtonItem = button
         self.pausedTable.reloadData()
         
-        let ref = Database.database().reference()
+        let ref = Database.database().reference().child(companyName)
         ref.child("pausedReceipts").observe(DataEventType.value, with: { (snapshot) in
             if snapshot.childrenCount > 0 {
                 self.pausedList.removeAll()
@@ -57,7 +57,7 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
     func tableView( _ booksTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = booksTable.dequeueReusableCell(withIdentifier: "pausedCell", for: indexPath) as! PausedShoppingCartTableViewCell
         cell.selectionStyle = .none
-        ref3 = Database.database().reference()
+        ref3 = Database.database().reference().child(companyName)
         ref3.child("employees").child(self.pausedList[indexPath.row].employeeID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as! NSDictionary
             let Fname  = value["firstName"] as! String

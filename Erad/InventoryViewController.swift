@@ -20,7 +20,7 @@ class InventoryViewController: UIViewController , UITableViewDelegate, UITableVi
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(activityIndicator)
-        ref = Database.database().reference().child("products")
+        ref = Database.database().reference().child(companyName).child("products")
 
         
         // Do any additional setup after loading the view.

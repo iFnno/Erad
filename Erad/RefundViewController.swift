@@ -11,13 +11,16 @@ import Firebase
 
 class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var ReceiptDetsils : Receipt!
+    var NewReceipt : Receipt!
     var itemsList : [ShoppingCardItem] = [] // the actual list ps: this will not change
     var RefundedItemsList : [ShoppingCardItem] = []
-    let ref = Database.database().reference()
+    let ref = Database.database().reference().child(companyName)
+    var ref3 : DatabaseReference!
     var reckey : String!
     var amount : Double! = 0.0
     var counter = 0
-    let currentEmployee = (Auth.auth().currentUser?.uid.description)!
+    var currentEmployee : String! = ""
+    var userN : String! = ""
     
     
     @IBOutlet weak var rtotalPrice: UILabel!
@@ -52,67 +55,12 @@ class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                 print("Child Removed Correctly")
                             }})}}}})
             
-            // add new receipt
-            var value = [String : Any]()
-            value = ["ReceivedAmount": self.ReceiptDetsils.ReceivedAmount,
-                     "RemainingAmount": self.ReceiptDetsils.RemainingAmount,
-                     "date":todaysDate,
-                     "employeeID": self.ReceiptDetsils.employeeID,
-                     "id": self.ReceiptDetsils.id,
-                     "time": currentTime,
-                     "totalPrice": self.amount,
-                     "refundEmployeeID": self.currentEmployee]
-            self.ref.child("receipts").childByAutoId().setValue(value)
+            // new receipt
+            self.NewReceipt = Receipt(id: self.ReceiptDetsils.id , date: todaysDate, time: currentTime, totalPrice: self.amount, employeeID: self.ReceiptDetsils.employeeID, ReceivedAmount: self.ReceiptDetsils.ReceivedAmount, RemainingAmount: self.ReceiptDetsils.RemainingAmount, refundEmployeeID: self.currentEmployee)
             
-            //update product/s quantity
-            self.ref.child("receipts").observe(DataEventType.value , with: {(snapshot)
-                in
-                if snapshot.exists(){
-                    for receipt in snapshot.children.allObjects as! [DataSnapshot] {
-                        let eventsObject = receipt.value as? [String: AnyObject]
-                        let id = self.ReceiptDetsils.id
-                        let receiptID = eventsObject?["id"]
-                        let receiptKey = receipt.key.description as NSString
-                        if (id == receiptID as? Int){
-                            while self.counter < self.itemsList.count{
-                                self.ref.child("receipts").child(receiptKey as! String).child("products").child(self.itemsList[self.counter].pID).setValue(
-                                    ["category": self.itemsList[self.counter].category,
-                                     "price": self.itemsList[self.counter].price,
-                                     "quantity": self.itemsList[self.counter].quantity,
-                                     "updatedQuantity": self.RefundedItemsList[self.counter].quantity
-                                    ])
-                                //update inventory
-                                let newProductQuantity = self.itemsList[self.counter].quantity - self.RefundedItemsList[self.counter].quantity
-                                self.ref.child("products").child(self.itemsList[self.counter].category).child(self.itemsList[self.counter].pID).observe(DataEventType.value , with: {(snapshot)
-                                    in
-                                    if snapshot.exists(){ print("inventory snapshot exit")
-                                        for product in snapshot.children.allObjects as! [DataSnapshot] {
-                                            print("inventory loop")
-                                            let eventsObject1 = product.value as? [String: AnyObject]
-                                            let category = eventsObject1?["category"]
-                                            let cost =  eventsObject1?["cost"]
-                                            let description =  eventsObject1?["description"]
-                                            let name =  eventsObject1?["name"]
-                                            let picName =  eventsObject1?["picName"]
-                                            let picPath =  eventsObject1?["picPath"]
-                                            let price =  eventsObject1?["price"]
-                                            let inventory = eventsObject1?["inventory"]
-                                            let updateInventory = inventory as! Int + newProductQuantity
-                                            
-                                            self.ref.child("products").child(self.itemsList[self.counter].category).child(self.itemsList[self.counter].pID).updateChildValues(
-                                                ["inventory": updateInventory  ,
-                                                 "category": category,
-                                                 "cost": cost,
-                                                 "description": description,
-                                                 "name": name,
-                                                 "picName": picName,
-                                                 "picPath": picPath,
-                                                 "price": price ]) }}})
-                                self.counter = self.counter+1
-                            }}}}})
+            //perform segue
+            self.performSegue(withIdentifier: "goReceipt", sender: self)
             
-            self.navigationController?.popToRootViewController(animated: true)
-           // self.performSegue(withIdentifier: "goReceipt", sender: self)
             
         }//ok action
         alertController.addAction(OKAction)
@@ -124,18 +72,82 @@ class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Present Dialog message
         self.present(alertController, animated: true, completion:nil)}
     
+    func updateReceipt(){
+        //update product/s quantity
+        self.ref.child("receipts").observe(DataEventType.value , with: {(snapshot)
+            in
+            if snapshot.exists(){
+                for receipt in snapshot.children.allObjects as! [DataSnapshot] {
+                    let eventsObject = receipt.value as? [String: AnyObject]
+                    let id = self.ReceiptDetsils.id
+                    let receiptID = eventsObject?["id"]
+                    let receiptKey = receipt.key.description as NSString
+                    if (id == receiptID as? Int){
+                        while self.counter < self.itemsList.count{
+                            print("receiptKey:", receiptKey )
+                            self.ref.child("receipts").child(receiptKey as! String).child("products").child(self.itemsList[self.counter].pID).updateChildValues(
+                                ["category": self.itemsList[self.counter].category,
+                                 "price": self.itemsList[self.counter].price,
+                                 "quantity": self.itemsList[self.counter].quantity,
+                                 "updatedQuantity": self.RefundedItemsList[self.counter].quantity
+                                ])
+                            //update inventory
+                            let newProductQuantity = self.itemsList[self.counter].quantity - self.RefundedItemsList[self.counter].quantity
+                            self.ref.child("products").child(self.itemsList[self.counter].category).child(self.itemsList[self.counter].pID).observe(DataEventType.value , with: {(snapshot)
+                                in
+                                if snapshot.exists(){ print("inventory snapshot exit")
+                                    for product in snapshot.children.allObjects as! [DataSnapshot] {
+                                        print("inventory loop")
+                                        let eventsObject1 = product.value as? [String: AnyObject]
+                                        let category = eventsObject1?["category"]
+                                        let cost =  eventsObject1?["cost"]
+                                        let description =  eventsObject1?["description"]
+                                        let name =  eventsObject1?["name"]
+                                        let picName =  eventsObject1?["picName"]
+                                        let picPath =  eventsObject1?["picPath"]
+                                        let price =  eventsObject1?["price"]
+                                        let inventory = eventsObject1?["inventory"]
+                                        let updateInventory = inventory as! Int + newProductQuantity
+                                        
+                                        self.ref.child("products").child(self.itemsList[self.counter].category).child(self.itemsList[self.counter].pID).updateChildValues(
+                                            ["inventory": updateInventory  ,
+                                             "category": category,
+                                             "cost": cost,
+                                             "description": description,
+                                             "name": name,
+                                             "picName": picName,
+                                             "picPath": picPath,
+                                             "price": price ]) }}})
+                            self.counter = self.counter+1
+                        }}}}})
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        currentEmployee = Auth.auth().currentUser?.uid.description
         self.title = "استرجاع منتج"
         self.rid.text = String (ReceiptDetsils.id)
         self.rdate.text = ReceiptDetsils.date
-        self.rtotalPrice.text = String (ReceiptDetsils.totalPrice) + " SR"
+        self.amount = 0
+        self.rtotalPrice.text = String(self.amount) + " SR"
         print("number of items list", itemsList.count)
         productTabel.delegate = self
         productTabel.dataSource = self
         productTabel.reloadData()
+        let userID1 = (Auth.auth().currentUser?.uid.description)!
+        ref3 = Database.database().reference().child(companyName)
+        ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! NSDictionary
+            let Fname  = value["firstName"] as! String
+            let Lname = value["lastName"] as! String
+            let x = Fname + " " + Lname
+            self.userN = x
+            Swift.print(x, separator: "us ", terminator: "usern")
+        })
+        
         
     }
     
@@ -158,12 +170,13 @@ class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.name.text = itemsList[indexPath.row].pname
         cell.onMButtonTapped = {
             let num = self.RefundedItemsList[indexPath.row].quantity
-            if(num != 0){
+            if(num != 0) // 0 beacuse the user maight not retirn one of the items in the list
+            {
                 let num = num!-1
                 print(num)
                 cell.quantity.text = String(num)
                 self.RefundedItemsList[indexPath.row].quantity = num
-                self.amount = self.amount - self.RefundedItemsList[indexPath.row].price
+                self.amount = self.amount + self.RefundedItemsList[indexPath.row].price
                 self.rtotalPrice.text = String(self.amount) + " SR"
             }}
         cell.onPButtonTapped = {
@@ -173,22 +186,20 @@ class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print(num)
                 cell.quantity.text = String(num)
                 self.RefundedItemsList[indexPath.row].quantity = num
-                self.amount = self.amount + self.RefundedItemsList[indexPath.row].price
+                self.amount = self.amount - self.RefundedItemsList[indexPath.row].price
                 self.rtotalPrice.text = String(self.amount) + " SR"
             }}
         return cell
         
     }
-  /*  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goReceipt" {
             let controller = segue.destination as! ReceiptPageViewController
-            controller.receiptID = Int(self.rid.text)
-            controller.ReceivedAmount = 0
-            controller.RemainingAmount = 0
-            controller.amount = self.amount
-            controller.shoppingCard = self.
+          controller.refundReceipt = self.NewReceipt
+            controller.fromRefund = true
+            controller.userName = self.userN
         }
-    } */
+    }
 
     
     

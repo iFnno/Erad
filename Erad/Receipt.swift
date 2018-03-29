@@ -18,6 +18,8 @@ struct Receipt {
     var key : String!
     var ReceivedAmount: Int!
     var RemainingAmount: Int!
+    var refundEmployeeID : String!
+
     
     init (id : Int, date : String, totalPrice : Double, time : String, employeeID : String, products : [ShoppingCardItem]) {
         self.id = id
@@ -64,5 +66,14 @@ struct Receipt {
         self.ReceivedAmount = ReceivedAmount
         self.RemainingAmount = RemainingAmount
         
+    }
+    init (id :Int, date: String, time : String ,totalPrice: Double, employeeID : String, ReceivedAmount: Int, RemainingAmount: Int , refundEmployeeID : String){
+        self.id = id
+        self.date = date
+        self.totalPrice = totalPrice
+        self.employeeID = employeeID
+        self.ReceivedAmount = ReceivedAmount
+        self.RemainingAmount = RemainingAmount
+        self.refundEmployeeID = refundEmployeeID
     }
 }

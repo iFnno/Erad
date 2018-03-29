@@ -25,17 +25,20 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
     var amount : Double! = 0.0
     var RemainingAmount : Double! = 0.0
     var ReceivedAmount : Double! = 0.0
-    var receiptID : Int = 0
+   var receiptID : Int = 0
     var HTMLString : String = "s"
     var userName : String = ""
     var userID : String = ""
     var paused = false
+    var picPath : String! = ""
+    var fromRefund = false
+    var refundReceipt : Receipt! = Receipt(id: 0, date: "", time: "", totalPrice: 0, employeeID: "", ReceivedAmount: 0, RemainingAmount: 0, refundEmployeeID: "")
     
     var shoppingCard : [ShoppingCardItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "فاتورة جديدة رقم #" + String(self.receiptID)
         userID = (Auth.auth().currentUser?.uid.description)!
+        ref = Database.database().reference().child(companyName)
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -43,18 +46,40 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         formatter.dateFormat = "HH:mm"
         let timeToAppend = String(formatter.string(from: date))
      //   DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
-        self.HTMLString = "<html><style type='text/css'>html,body {text-align: center;}, table {align: center; text-align: center;} </style><body><h1>Erad </h1><h2> مرحباً بك <br> فاتورة رقم #  " + String(self.receiptID)
-        //<img src=https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/Screen%20Shot%202018-02-27%20at%209.15.35%20AM.png?alt=media&token=14e08dd1-fa5d-4078-a93c-45e6c3990f24><br>
+        if fromRefund == false {
+            self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
+                let num = snapshot.childSnapshot(forPath: "ReceiptID").value as! Int
+                self.receiptID = num + 1
+                let newnumString = Int(self.receiptID)
+                self.ref.child("manager").updateChildValues(["ReceiptID":newnumString])
+            })
+        self.HTMLString = "<html><style type='text/css'>html,body {text-align: center;}, table {align: center; text-align: center;} </style><body>"
+        self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.picPath = snapshot.childSnapshot(forPath: "picPath").value as! String
+        })
+        
+        
+        self.HTMLString = self.HTMLString + "<img src=" + self.picPath + "><br>"
+        
+        
+        
+        
+         self.HTMLString = self.HTMLString + "<h1>" + companyName + "</h1><h2> مرحباً بك <br> فاتورة رقم #  " + String(self.receiptID)
+
         self.HTMLString = self.HTMLString + "<br> الوقت"
         self.HTMLString = self.HTMLString + timeToAppend + "<br>التاريخ"
         self.HTMLString = self.HTMLString + dateToAppend + "<br>  الموظف "
         self.HTMLString = self.HTMLString + self.userName + "</h2><br><table width='880'  cellspacing='0' cellpadding='0'>"
         self.HTMLString = self.HTMLString + "<tr><th><h2> السعر </h2></th> <th><h2> الكمية </h2></th> <th><h2> اسم المنتج</h2></th></tr>"
         
-         ref = Database.database().reference()
         
-        let ch = self.ref.child("receipts").childByAutoId()
         
+       
+        
+      
+        self.title = "فاتورة جديدة رقم #" + String(self.receiptID)
+        
+         let ch = self.ref.child("receipts").childByAutoId()
         ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","RemainingAmount":self.RemainingAmount,"ReceivedAmount":self.ReceivedAmount])
         for ind in shoppingCard {
             ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
@@ -73,6 +98,50 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         //self.navigationItem.hidesBackButton = false
         
             self.webView.loadHTMLString(self.HTMLString , baseURL: nil) //}
+        } else {
+            self.HTMLString = "<html><style type='text/css'>html,body {text-align: center;}, table {align: center; text-align: center;} </style><body>"
+            self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
+                self.picPath = snapshot.childSnapshot(forPath: "picPath").value as! String
+            })
+            
+            
+            self.HTMLString = self.HTMLString + "<img src=" + self.picPath + "><br>"
+            
+            
+            
+            
+            self.HTMLString = self.HTMLString + "<h1>" + companyName + "</h1><h2> مرحباً بك <br> فاتورة رقم #  " + String(self.refundReceipt.id)
+            
+            self.HTMLString = self.HTMLString + "<br> الوقت"
+            self.HTMLString = self.HTMLString + timeToAppend + "<br>التاريخ"
+            self.HTMLString = self.HTMLString + dateToAppend + "<br>  الموظف "
+            self.HTMLString = self.HTMLString + self.userName + "</h2><br><table width='880'  cellspacing='0' cellpadding='0'>"
+            self.HTMLString = self.HTMLString + "<tr><th><h2> السعر </h2></th> <th><h2> الكمية </h2></th> <th><h2> اسم المنتج</h2></th></tr>"
+            
+
+            self.title = "فاتورة جديدة رقم #" + String(self.refundReceipt.id)
+            
+            let ch = self.ref.child("receipts").childByAutoId()
+            ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.refundReceipt.id ,"time": timeToAppend,"totalPrice":self.refundReceipt.totalPrice ,"products": "","RemainingAmount":self.refundReceipt.RemainingAmount,"ReceivedAmount":self.refundReceipt.ReceivedAmount])
+            for ind in self.refundReceipt.products {
+                ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
+                self.HTMLString = self.HTMLString + "<tr border-bottom='1pt'><td align='center'><h3>" + String(ind.price)
+                self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + String(ind.quantity)
+                self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + ind.pname
+                self.HTMLString = self.HTMLString + "</h3></td></tr>"
+                
+                // Do any additional setup after loading the view.
+            }
+            self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.totalPrice) + "</h2></td><td align='right' colspan = '2'><h3>المجموع</h3></td></tr>"
+            self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.ReceivedAmount) + "</h2></td><td align='right' colspan = '2'><h3>المبلغ المستلم</h3></td></tr>"
+            
+            self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.RemainingAmount) + "</h2></td><td align='right' colspan = '2'><h3>الباقي</h3></td></tr></table></body></html>"
+            
+            //self.navigationItem.hidesBackButton = false
+            
+            self.webView.loadHTMLString(self.HTMLString , baseURL: nil)
+            
+        }
         self.navigationItem.hidesBackButton = true
         
         let newBackButton = UIBarButtonItem(title: "رجوع", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ReceiptPageViewController.back(sender:)))

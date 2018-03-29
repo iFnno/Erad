@@ -26,7 +26,7 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         self.title = "الفواتير"
         
-        ref = Database.database().reference().child("receipts")
+        ref = Database.database().reference().child(companyName).child("receipts")
         ref.observe(DataEventType.value, with: { (snapshot) in
             //if the reference have values
             if snapshot.childrenCount > 0 {

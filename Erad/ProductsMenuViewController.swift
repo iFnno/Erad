@@ -22,7 +22,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     @IBAction func inventoryButton(_ sender: Any) {
         performSegue(withIdentifier: "invSeg", sender: self)
     }
-    
+    var refreshControl: UIRefreshControl!
     var shoppingCard : [ShoppingCardItem] = []
      var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     @IBOutlet weak var currentShoppingCardButton: UIButton!
@@ -189,7 +189,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         self.navigationItem.leftBarButtonItem = button
         selectedSegment.removeAllSegments()
         selectedSegment.insertSegment(withTitle: "الكل" , at: i, animated: true)
-        ref = Database.database().reference().child("products")
+        ref = Database.database().reference().child(companyName).child("products")
         ref.observe(DataEventType.value, with: { (snapshot) in
          if snapshot.childrenCount > 0 && self.catNames == [] {
             self.catNumbers.removeAll()
@@ -229,7 +229,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         selectedSegment.setTitleTextAttributes([NSAttributedStringKey.font: font2 as Any , NSAttributedStringKey.foregroundColor: c],
                                                for: .selected)
          selectedSegment.selectedSegmentIndex = 0
-        let ref2 = Database.database().reference().child("products")
+        let ref2 = Database.database().reference().child(companyName).child("products")
         ref2.observe(DataEventType.childAdded, with: { (snapshot) in
             self.childIndex = self.childIndex + 1
             if snapshot.childrenCount > 0 {
@@ -282,7 +282,68 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
             }
         })
         self.ProductsCollectionView.reloadData()
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh:", for: UIControlEvents.valueChanged)
+        ProductsCollectionView.addSubview(refreshControl)
 }
+    func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        let ref2 = Database.database().reference().child(companyName).child("products")
+        ref2.observe(DataEventType.childAdded, with: { (snapshot) in
+            self.childIndex = self.childIndex + 1
+            if snapshot.childrenCount > 0 {
+                for c in snapshot.children.allObjects as! [DataSnapshot] {
+                    let eventsObject = c.value as? [String: AnyObject]
+                    let productName  = eventsObject?["name"] as! String
+                    let productimg  = eventsObject?["picPath"] as! String
+                    let productdesc  = eventsObject?["description"] as! String
+                    let productinv  = eventsObject?["inventory"] as! Int
+                    let productPrice  = eventsObject?["price"] as! Double
+                    let productCategory = eventsObject?["category"] as! String
+                    let productKey = c.key.description as NSString
+                    let url1 = URL(string: productimg)
+                    let data1 = try? Data(contentsOf: url1! )
+                    //NSData(contentsOf: url! as URL)
+                    let img1 : UIImage = UIImage(data: data1! as Data)!
+                    
+                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory)
+                    let inP = Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory)
+                    self.allCat.append(oneProduct)
+                    self.inventoryArray.append(inP)
+                    switch (self.childIndex)
+                    {
+                    case 1 :
+                        self.cat1.append(oneProduct)
+                    case 2 :
+                        self.cat2.append(oneProduct)
+                    case 3 :
+                        self.cat3.append(oneProduct)
+                    case 4 :
+                        self.cat4.append(oneProduct)
+                    case 5 :
+                        self.cat5.append(oneProduct)
+                    case 6 :
+                        self.cat6.append(oneProduct)
+                    case 7 :
+                        self.cat7.append(oneProduct)
+                    case 8 :
+                        self.cat8.append(oneProduct)
+                    case 9 :
+                        self.cat9.append(oneProduct)
+                    case 10 :
+                        self.cat10.append(oneProduct)
+                        
+                    default:
+                        self.allCat.append(oneProduct)
+                    }
+                    
+                }
+            }})
+                    self.ProductsCollectionView.reloadData()
+
+    }
+    
     func addCat(name : String) -> Void {
         selectedSegment.insertSegment(withTitle: catNames[i-1] , at: i, animated: true)
         i += 1
