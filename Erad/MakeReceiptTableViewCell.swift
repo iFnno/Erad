@@ -9,12 +9,28 @@
 import UIKit
 
 class MakeReceiptTableViewCell: UITableViewCell {
+    
+    var onMButtonTapped : (() -> Void)? = nil
+    var onPButtonTapped : (() -> Void)? = nil
 
     @IBOutlet weak var pName: UILabel!
     
     @IBOutlet weak var Quantity: UILabel!
     
     @IBOutlet weak var pamount: UILabel!
+    
+    
+    @IBAction func plusPressed(_ sender: Any) {
+        if let onPButtonTapped = self.onPButtonTapped {
+            onPButtonTapped()}
+    }
+    
+    @IBAction func minusPressed(_ sender: Any) {
+        if let onMButtonTapped = self.onMButtonTapped {
+            onMButtonTapped()
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,7 +9,16 @@
 import UIKit
 
 class WorkingHoursReportTableViewCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var day: UILabel!
+    
+    @IBOutlet weak var stratTime: UILabel!
+    
+    @IBOutlet weak var endTime: UILabel!
+    
+    @IBOutlet weak var totalTime: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

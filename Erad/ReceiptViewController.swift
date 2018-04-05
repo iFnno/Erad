@@ -40,10 +40,14 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let rdate = eventsObject?["date"]
                     let rtotalp = eventsObject?["totalPrice"]
                     let rtime = eventsObject?["time"]
+                    let employeeID = eventsObject?["employeeID"] as! String
+                    let ReceivedAmount = eventsObject?["ReceivedAmount"]
+                    let RemainingAmount = eventsObject?["RemainingAmount"]
+                    
                     let recKey = receipt.key.description as NSString
                     self.count = self.count+1
                     print(recKey)
-                    var receipt = Receipt(id: rid as! Int , date : rdate as! String , time : rtime as! String ,totalPrice :rtotalp as! Double, key: recKey as! String )
+                    var receipt = Receipt(id: rid as! Int , date : rdate as! String , time : rtime as! String ,totalPrice :rtotalp as! Double, employeeID : employeeID as String ,key: recKey as! String ,ReceivedAmount: ReceivedAmount  as! Int , RemainingAmount: RemainingAmount as! Int)
                     //appending to list
                     //receipt.products = self.Rproducts
                     self.receiptList.append(receipt)
@@ -54,7 +58,11 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             }})
         //reloading the tableview
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+            if self.receiptList.count == 0 {
+                self.createAlert(title: "لا يوجد محتوى", message: "لا يوجد معلومات لهذه الصفحة" )
+            }
+        }
         receiptsTable.delegate = self
         receiptsTable.dataSource = self
         searchBar.delegate = self
@@ -139,6 +147,17 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
                     value = receiptList[indexPath.row]
                 }
                 controller.Rdetsils = value}}}
+    func createAlert (title:String, message:String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        //CREATING ON BUTTON
+        alert.addAction(UIAlertAction(title: "حسناً", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     

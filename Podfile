@@ -17,6 +17,11 @@ pod 'Firebase/Crash'
 pod 'Firebase/Performance'
 pod 'Firebase/RemoteConfig'
 
+
+
+
+
+
   target 'إيرادTests' do
     inherit! :search_paths
     # Pods for testing

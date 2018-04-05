@@ -33,26 +33,30 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
     var picPath : String! = ""
     var fromRefund = false
     var refundReceipt : Receipt! = Receipt(id: 0, date: "", time: "", totalPrice: 0, employeeID: "", ReceivedAmount: 0, RemainingAmount: 0, refundEmployeeID: "")
+    var RefundList : [ShoppingCardItem] = []
+    var DeleteReceitKey : String! = ""
     
     var shoppingCard : [ShoppingCardItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         userID = (Auth.auth().currentUser?.uid.description)!
         ref = Database.database().reference().child(companyName)
+        self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
+            let num = snapshot.childSnapshot(forPath: "ReceiptID").value as! Int
+            self.receiptID = num + 1
+            let newnumString = Int(self.receiptID)
+            self.ref.child("manager").updateChildValues(["ReceiptID":newnumString])
+        })
+        
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let dateToAppend = String(formatter.string(from: date))
         formatter.dateFormat = "HH:mm"
         let timeToAppend = String(formatter.string(from: date))
-     //   DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
-        if fromRefund == false {
-            self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
-                let num = snapshot.childSnapshot(forPath: "ReceiptID").value as! Int
-                self.receiptID = num + 1
-                let newnumString = Int(self.receiptID)
-                self.ref.child("manager").updateChildValues(["ReceiptID":newnumString])
-            })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+            if self.fromRefund == false {
+
         self.HTMLString = "<html><style type='text/css'>html,body {text-align: center;}, table {align: center; text-align: center;} </style><body>"
         self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
             self.picPath = snapshot.childSnapshot(forPath: "picPath").value as! String
@@ -71,17 +75,12 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         self.HTMLString = self.HTMLString + dateToAppend + "<br>  الموظف "
         self.HTMLString = self.HTMLString + self.userName + "</h2><br><table width='880'  cellspacing='0' cellpadding='0'>"
         self.HTMLString = self.HTMLString + "<tr><th><h2> السعر </h2></th> <th><h2> الكمية </h2></th> <th><h2> اسم المنتج</h2></th></tr>"
-        
-        
-        
-       
-        
       
         self.title = "فاتورة جديدة رقم #" + String(self.receiptID)
         
          let ch = self.ref.child("receipts").childByAutoId()
-        ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","RemainingAmount":self.RemainingAmount,"ReceivedAmount":self.ReceivedAmount])
-        for ind in shoppingCard {
+                ch.setValue(["date": dateToAppend,"employeeID": self.userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","RemainingAmount":self.RemainingAmount,"ReceivedAmount":self.ReceivedAmount])
+                for ind in self.shoppingCard {
             ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
             self.HTMLString = self.HTMLString + "<tr border-bottom='1pt'><td align='center'><h3>" + String(ind.price)
             self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + String(ind.quantity)
@@ -98,7 +97,21 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         //self.navigationItem.hidesBackButton = false
         
             self.webView.loadHTMLString(self.HTMLString , baseURL: nil) //}
+            
+            
+            
+            
         } else {
+
+            
+                self.ref.child("receipts").child(self.DeleteReceitKey).removeValue(completionBlock: { (error, refer) in
+                if error != nil {
+                    self.print(error)
+                } else {
+                    self.print(refer)
+                    self.print("Child Removed Correctly")
+                }
+            })
             self.HTMLString = "<html><style type='text/css'>html,body {text-align: center;}, table {align: center; text-align: center;} </style><body>"
             self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
                 self.picPath = snapshot.childSnapshot(forPath: "picPath").value as! String
@@ -122,9 +135,16 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
             self.title = "فاتورة جديدة رقم #" + String(self.refundReceipt.id)
             
             let ch = self.ref.child("receipts").childByAutoId()
-            ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.refundReceipt.id ,"time": timeToAppend,"totalPrice":self.refundReceipt.totalPrice ,"products": "","RemainingAmount":self.refundReceipt.RemainingAmount,"ReceivedAmount":self.refundReceipt.ReceivedAmount])
-            for ind in self.refundReceipt.products {
-                ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
+                ch.setValue(["date": dateToAppend,"employeeID": self.userID,"id":self.refundReceipt.id ,"time": timeToAppend,"totalPrice":self.refundReceipt.totalPrice ,"products": "","RemainingAmount":self.refundReceipt.RemainingAmount,"ReceivedAmount":self.refundReceipt.totalPrice, "refundEmployeeID": self.refundReceipt.refundEmployeeID])
+            for ind in self.RefundList {
+                self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
+                        let newnum = num + ind.quantity
+                        let newnumString = Int(newnum)
+                        self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
+                    })
+
+                 ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
                 self.HTMLString = self.HTMLString + "<tr border-bottom='1pt'><td align='center'><h3>" + String(ind.price)
                 self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + String(ind.quantity)
                 self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + ind.pname
@@ -133,14 +153,15 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
                 // Do any additional setup after loading the view.
             }
             self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.totalPrice) + "</h2></td><td align='right' colspan = '2'><h3>المجموع</h3></td></tr>"
-            self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.ReceivedAmount) + "</h2></td><td align='right' colspan = '2'><h3>المبلغ المستلم</h3></td></tr>"
+            self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.ReceivedAmount) + "</h2></td><td align='right' colspan = '2'><h3>المبلغ المستحق</h3></td></tr>"
             
-            self.HTMLString = self.HTMLString + "<tr><td align='center'><h2>" + String(self.refundReceipt.RemainingAmount) + "</h2></td><td align='right' colspan = '2'><h3>الباقي</h3></td></tr></table></body></html>"
+            self.HTMLString = self.HTMLString + "<tr><td align='center'></td><td align='right' colspan = '2'></td></tr></table></body></html>"
             
             //self.navigationItem.hidesBackButton = false
             
             self.webView.loadHTMLString(self.HTMLString , baseURL: nil)
             
+        }
         }
         self.navigationItem.hidesBackButton = true
         

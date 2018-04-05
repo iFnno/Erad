@@ -19,9 +19,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         }
     } */
     
-    @IBAction func inventoryButton(_ sender: Any) {
-        performSegue(withIdentifier: "invSeg", sender: self)
-    }
+
     var refreshControl: UIRefreshControl!
     var shoppingCard : [ShoppingCardItem] = []
      var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
@@ -29,6 +27,10 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     
     @IBAction func currentShoppingCardButton(_ sender: Any) {
             self.performSegue(withIdentifier: "shoppingCard", sender: self)
+    }
+    @objc func goInventory() {
+        performSegue(withIdentifier: "invSeg", sender: self)
+        
     }
     
     
@@ -176,6 +178,12 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "قائمة المنتجات"
+        self.navigationController?.navigationBar.barStyle  = .default
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isOpaque = true
+        self.navigationController?.navigationBar.clearsContextBeforeDrawing = true
+        let color = UIColor(red: 0.2863, green: 0.5373, blue: 0.6471, alpha: 1.0)
+        self.navigationController?.navigationBar.backgroundColor = color
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -185,8 +193,13 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
 
         let image = UIImage(named: "Menu1.png")
         let button = UIBarButtonItem.init(image: image, style: UIBarButtonItemStyle.plain, target: self.splitViewController!.displayModeButtonItem.target, action: self.splitViewController!.displayModeButtonItem.action)
-        button.tintColor = UIColor.black
+        button.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = button
+        let image2 = UIImage(named: "inventory.png")
+        let button2 = UIBarButtonItem.init(image: image2, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goInventory))
+        button2.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = button2
+        
         selectedSegment.removeAllSegments()
         selectedSegment.insertSegment(withTitle: "الكل" , at: i, animated: true)
         ref = Database.database().reference().child(companyName).child("products")
@@ -286,6 +299,12 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: "refresh:", for: UIControlEvents.valueChanged)
         ProductsCollectionView.addSubview(refreshControl)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 14.0){
+            if self.allCat.count == 0 {
+                self.createAlert(title: "لا يوجد محتوى", message: "لا يوجد معلومات لهذه الصفحة" )
+            }
+        }
 }
     func refresh(sender:AnyObject) {
         // Code to refresh table view
@@ -386,28 +405,40 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
 
                 case 0 :
                     controller.productInfo = self.allCat[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 1 :
                      controller.productInfo = self.cat1[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 2 :
                      controller.productInfo = self.cat2[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 3 :
                      controller.productInfo = self.cat3[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 4 :
                      controller.productInfo = self.cat4[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 5 :
                      controller.productInfo = self.cat5[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 6 :
                      controller.productInfo = self.cat6[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 7 :
                      controller.productInfo = self.cat7[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 8 :
                      controller.productInfo = self.cat8[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 9 :
                      controller.productInfo = self.cat9[indexPath.row]
+                    controller.list = self.shoppingCard
                 case 10 :
                      controller.productInfo = self.cat10[indexPath.row]
+                    controller.list = self.shoppingCard
                 default :
                     controller.productInfo = self.allCat[indexPath.row]
+                    controller.list = self.shoppingCard
                   
                 }
             }
@@ -422,6 +453,17 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
             let c = segue.destination as! InventoryViewController
             c.ProductsList = self.inventoryArray
         }
+    }
+    func createAlert (title:String, message:String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        //CREATING ON BUTTON
+        alert.addAction(UIAlertAction(title: "حسناً", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 extension UISegmentedControl {

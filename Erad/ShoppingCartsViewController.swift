@@ -20,6 +20,13 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "عربات التسوق المعلقة"
+        self.navigationController?.navigationBar.barStyle  = .default
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isOpaque = true
+        self.navigationController?.navigationBar.clearsContextBeforeDrawing = true
+        let color = UIColor(red: 0.2863, green: 0.5373, blue: 0.6471, alpha: 1.0)
+        self.navigationController?.navigationBar.backgroundColor = color
+        
         let image = UIImage(named: "Menu1.png")
         let button = UIBarButtonItem.init(image: image, style: UIBarButtonItemStyle.plain, target: self.splitViewController!.displayModeButtonItem.target, action: self.splitViewController!.displayModeButtonItem.action)
         button.tintColor = UIColor.black
@@ -47,6 +54,11 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
                 self.pausedTable.reloadData()
             }
         })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+            if self.pausedList.count == 0 {
+                self.createAlert(title: "لا يوجد محتوى", message: "لا يوجد معلومات لهذه الصفحة" )
+            }
+        }
         
     }
     func tableView( _ booksTable: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,6 +105,17 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
                 controller.passedReceipt = self.pausedList[indexPath.row]
             }
         }
+    }
+    func createAlert (title:String, message:String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        //CREATING ON BUTTON
+        alert.addAction(UIAlertAction(title: "حسناً", style: UIAlertActionStyle.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

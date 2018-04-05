@@ -9,7 +9,13 @@
 import UIKit
 
 class SalesReportTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var day: UILabel!
+    
+    @IBOutlet weak var quantity: UILabel!
+    
 
+    @IBOutlet weak var price: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

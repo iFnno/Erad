@@ -17,6 +17,24 @@ class PersonalProfileViewController: UIViewController {
     @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     
+    @IBOutlet weak var proiflePic: UIImageView!
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var fullName: UILabel!
+    
+    @IBOutlet weak var phoneNum: UILabel!
+    
+    @IBAction func editProfile(_ sender: Any) {
+        self.performSegue(withIdentifier: "editSeg", sender: self)
+    }
+    var userN : String! = ""
+    var fullN : String! = ""
+    var firN : String! = ""
+    var lasN : String! = ""
+    var phone : String! = ""
+    var ref3 : DatabaseReference!
+    
     var hours : Int! = 0
     var minutes : Int! = 0
     var seconds : Int! = 0
@@ -24,12 +42,37 @@ class PersonalProfileViewController: UIViewController {
     var timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "الملف الشخصي"
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let x = String(formatter.string(from: date))
         self.dateLabel.text = x
         // Dovary additional setup after loading the view.
+        let userID1 = (Auth.auth().currentUser?.uid.description)!
+        ref3 = Database.database().reference().child(companyName)
+        ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! NSDictionary
+            let Fname  = value["firstName"] as! String
+            let Lname = value["lastName"] as! String
+            let pho = value["phone"] as! String
+            let im = value["picPATH"] as! String
+            let userna = value["username"] as! String
+            let x = Fname + " " + Lname
+            self.firN = Fname
+            self.lasN = Lname
+            self.fullN = x
+            self.phone = pho
+            self.userN = userna
+            let url1 = URL(string: im)
+            let data1 = try? Data(contentsOf: url1! )
+            let img1 : UIImage = UIImage(data: data1! as Data)!
+            self.proiflePic.image = img1
+            self.fullName.text = self.fullN
+            self.phoneNum.text = self.phone
+            self.userName.text = self.userN
+        })
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         if startedAlready == true  {
@@ -114,7 +157,14 @@ class PersonalProfileViewController: UIViewController {
         if segue.identifier == "timeSeg" {
             let controller = segue.destination as! WorkTimeViewController
             controller.fromTab = true
-            
+        }
+        if segue.identifier == "editSeg" {
+            let controller = segue.destination as! EditProfileViewController
+            controller.firstName = self.firN
+            controller.lastName = self.lasN
+            controller.userName = self.userN
+            controller.phoneNum = self.phone
+            controller.img = self.proiflePic.image
         }
     }
 }

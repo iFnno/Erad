@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(FirebaseApp.app() == nil){
             FirebaseApp.configure()
         }
+        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
         return true
     }
 

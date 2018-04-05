@@ -30,6 +30,8 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var ref3 : DatabaseReference!
     var ref4 : DatabaseReference!
     var passedReceipt : Receipt! = Receipt(id: 0, date: "", totalPrice: 0, time: "", employeeID: "", key: "")
+    var isempty : Bool = false
+    var exisisList : [ShoppingCardItem] = []
     @IBOutlet weak var itemsTable: UITableView!
     
     @IBOutlet weak var amountL: UILabel!
@@ -105,20 +107,65 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView( _ itemsTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = itemsTable.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! MakeReceiptTableViewCell
         if self.paused == true {
-
             cell.selectionStyle = .none
             print("naaamee")
             print(self.pausedShoppingCard[indexPath.row].pname)
             cell.pName.text = self.pausedShoppingCard[indexPath.row].pname
             cell.Quantity.text = String(self.pausedShoppingCard[indexPath.row].quantity)
-            cell.pamount.text = String(self.pausedShoppingCard[indexPath.row].price * Double(self.pausedShoppingCard[indexPath.row].quantity)) + " SR"
+            cell.pamount.text = String(self.pausedShoppingCard[indexPath.row].price * Double(self.pausedShoppingCard[indexPath.row].quantity)) + " ر.س"
+            
+            cell.onMButtonTapped = {
+                let num = self.pausedShoppingCard[indexPath.row].quantity!
+                if(num != 0) // 0 beacuse the user maight not retirn one of the items in the list
+                {
+                    let num = num - 1
+                    cell.Quantity.text = String(num)
+                    self.pausedShoppingCard[indexPath.row].quantity = num
+                    cell.pamount.text = String(self.pausedShoppingCard[indexPath.row].price * Double(self.pausedShoppingCard[indexPath.row].quantity)) + " ر.س"
+                    self.amount = self.amount - self.pausedShoppingCard[indexPath.row].price
+                    self.amountL.text = String(self.amount) + " ر.س"
+                }}
+            cell.onPButtonTapped = {
+                var num = self.pausedShoppingCard[indexPath.row].quantity!
+                num = num + 1
+                cell.Quantity.text = String(num)
+                self.pausedShoppingCard[indexPath.row].quantity = num
+                cell.pamount.text = String(self.pausedShoppingCard[indexPath.row].price * Double(self.pausedShoppingCard[indexPath.row].quantity)) + " ر.س"
+                self.amount = self.amount + self.pausedShoppingCard[indexPath.row].price
+                self.amountL.text = String(self.amount) + " ر.س"
+                
+                
+            }
+            
+            
+            
             
         } else {
         cell.selectionStyle = .none
         cell.pName.text = self.shoppingCard[indexPath.row].pname
         cell.Quantity.text = String(self.shoppingCard[indexPath.row].quantity)
-        cell.pamount.text = String(self.shoppingCard[indexPath.row].price * Double(self.shoppingCard[indexPath.row].quantity)) + " SR"
+        cell.pamount.text = String(self.shoppingCard[indexPath.row].price * Double(self.shoppingCard[indexPath.row].quantity)) + " ر.س"
         self.amount = (self.shoppingCard[indexPath.row].price * Double(self.shoppingCard[indexPath.row].quantity)) + self.amount
+            cell.onMButtonTapped = {
+                let num = self.shoppingCard[indexPath.row].quantity!
+                if(num != 0) // 0 beacuse the user maight not retirn one of the items in the list
+                {
+                    let num = num - 1
+                    cell.Quantity.text = String(num)
+                    self.shoppingCard[indexPath.row].quantity = num
+                    cell.pamount.text = String(self.shoppingCard[indexPath.row].price * Double(self.shoppingCard[indexPath.row].quantity)) + " ر.س"
+                    self.amount = self.amount - self.shoppingCard[indexPath.row].price
+                    self.amountL.text = String(self.amount) + " ر.س"
+                }}
+            cell.onPButtonTapped = {
+                var num = self.shoppingCard[indexPath.row].quantity!
+                num = num + 1
+                cell.Quantity.text = String(num)
+                    self.shoppingCard[indexPath.row].quantity = num
+                cell.pamount.text = String(self.shoppingCard[indexPath.row].price * Double(self.shoppingCard[indexPath.row].quantity)) + " ر.س"
+                    self.amount = self.amount + self.shoppingCard[indexPath.row].price
+                    self.amountL.text = String(self.amount) + " ر.س"
+                }
         
         }
         return cell
@@ -130,52 +177,86 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         }
         //itemsTable.setEditing(true, animated: true)
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
     @IBAction func makeSaleOperationButton(_ sender: Any) {
         if self.paused == true {
             self.ref = Database.database().reference().child(companyName)
             let ch = self.ref.child("receipts").childByAutoId()
             for ind in pausedShoppingCard {
+                self.exisisList.append(ind)
+                //
                 self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
                     let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
-                    if num > 0 {
+                    if num >= ind.quantity {
                         let newnum = num - ind.quantity
                         let newnumString = Int(newnum)
                         self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
+                        if num == 5 {
+                            let composeVC = MFMailComposeViewController()
+                            composeVC.mailComposeDelegate = self
+                            
+                            // Configure the fields of the interface.
+                            self.ref4 = Database.database().reference().child(companyName).child("manager")
+                            self.ref4.observeSingleEvent(of: .value, with: { (snapshot) in
+                                self.email = snapshot.childSnapshot(forPath: "email").value as! String
+                            })
+                            composeVC.setToRecipients([self.email])
+                            let ss = "Low Inventory of prouduct " + ind.pname
+                            composeVC.setSubject(ss)
+                            var mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname
+                            mess = mess  + "من تصنيف " + ind.category + " اقل من 5"
+                            mess = mess + "<br> شكراً </body>,/html>"
+                            composeVC.setMessageBody( mess, isHTML: true)
+                            
+                            // Present the view controller modally.
+                            self.present(composeVC, animated: true, completion: nil)
+                            
+                            
+                        }
+                     //   DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                           // if self.isempty == false {
+                                //   if let cost = Double(self.ReceifedAmount.text!) {
+                                //if self.cost >= self.amount {
+                                // self.ReceivedAmountText = self.cost
+                                self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
+                                self.RemainingAmount = self.ReceivedAmountText - self.amount
+                                self.performSegue(withIdentifier: "showReceipt", sender: self)
+                                self.valid = true
+                                //  }
+                                /*}else {
+                                 while self.valid == false {
+                                 self.emailText()
+                                 if cost >= self.amount {
+                                 print("The user entered a value price of \(cost)")
+                                 self.ReceivedAmountText = cost
+                                 self.RemainingAmount = self.ReceivedAmountText - self.amount
+                                 self.performSegue(withIdentifier: "showReceipt", sender: self)
+                                 self.valid = true
+                                 }
+                                 }
+                                 }
+                                 } */
+                           // }
+                      //  }
+
+                      
                     } else {
-                        let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
+                        self.isempty = true
+                        let mess = "لا يتواجد عدد كافي من المنتج"
                         makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
                     }
             })
             }
             
-            if let cost = Double(self.ReceifedAmount.text!) {
-                if cost >= self.amount {
-                    print("The user entered a value price of \(cost)")
-                    self.ReceivedAmountText = cost
-                    self.RemainingAmount = self.ReceivedAmountText - self.amount
-                    self.performSegue(withIdentifier: "showReceipt", sender: self)
-                    self.valid = true
-                } else {
-                    while self.valid == false {
-                    self.emailText()
-                    if cost >= self.amount {
-                        print("The user entered a value price of \(cost)")
-                        self.ReceivedAmountText = cost
-                        self.RemainingAmount = self.ReceivedAmountText - self.amount
-                        self.performSegue(withIdentifier: "showReceipt", sender: self)
-                        self.valid = true
-                        }
-                }
-            }
-            }
         } else {
             self.ref = Database.database().reference().child(companyName)
             let ch = self.ref.child("receipts").childByAutoId()
         for ind in shoppingCard {
             self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
                 let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
-                if num > 0 {
+                if num >= ind.quantity {
                    
                 let newnum = num - ind.quantity
                 let newnumString = Int(newnum)
@@ -203,33 +284,44 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                         self.present(composeVC, animated: true, completion: nil)
                         
                         
+                        
                     }
+                    //DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                    //  if self.isempty == false {
+                    //   if let cost = Double(self.ReceifedAmount.text!) {
+                    // if self.cost >= self.amount {
+                    // print("The user entered a value price of \(self.cost)")
+                    //  self.ReceivedAmountText = self.cost
+                    self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
+                    self.RemainingAmount = self.ReceivedAmountText - self.amount
+                    self.performSegue(withIdentifier: "showReceipt", sender: self)
+                    self.valid = true
+                    //}
+                    /*} else {
+                     while self.valid == false {
+                     self.emailText()
+                     if cost >= self.amount {
+                     print("The user entered a value price of \(cost)")
+                     self.ReceivedAmountText = cost
+                     self.RemainingAmount = self.ReceivedAmountText - self.amount
+                     self.performSegue(withIdentifier: "showReceipt", sender: self)
+                     self.valid = true
+                     }
+                     }
+                     } */
+                    //  }
+
                 } else {
-                    let mess = "يتواجد فقط عدد " + String(ind.quantity) + " حبة من المنتج"
+                    self.isempty = true
+                    let mess = "لا يتواجد عدد كافي من المنتج"
                     makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
                 }
                 })
         }
-            if let cost = Double(self.ReceifedAmount.text!) {
-                if cost >= self.amount {
-                    print("The user entered a value price of \(cost)")
-                    self.ReceivedAmountText = cost
-                    self.RemainingAmount = self.ReceivedAmountText - self.amount
-                    self.performSegue(withIdentifier: "showReceipt", sender: self)
-                    self.valid = true
-                } else {
-                    while self.valid == false {
-                        self.emailText()
-                        if cost >= self.amount {
-                            print("The user entered a value price of \(cost)")
-                            self.ReceivedAmountText = cost
-                            self.RemainingAmount = self.ReceivedAmountText - self.amount
-                            self.performSegue(withIdentifier: "showReceipt", sender: self)
-                            self.valid = true
-                        }
-                    }
-                }
-            }
+            
+            
+                
+            //}
             
       /*  let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
         previousViewController.shoppingCard.removeAll()
@@ -426,6 +518,7 @@ func emailText () {
     // 4. Present the alert.
     self.present(alert, animated: true, completion: nil)
 }
+    
 }
 extension String {
     func index(from: Int) -> Index {

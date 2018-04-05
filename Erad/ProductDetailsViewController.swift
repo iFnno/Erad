@@ -21,7 +21,8 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productDesc: UILabel!
     
     @IBOutlet weak var productInventory: UILabel!
-    
+    var flag = false
+    var list : [ShoppingCardItem] = []
     
     @IBAction func plus(_ sender: Any) {
         if self.productInfo.inventory > self.quantity {
@@ -44,6 +45,15 @@ class ProductDetailsViewController: UIViewController {
     
     
     @IBAction func addToCart(_ sender: Any) {
+        for inde in list {
+            if self.productInfo.pID == inde.pID   {
+                self.flag = true
+            }
+        }
+        if self.flag == true {
+            makeAlert.ShowAlert(title: "تمت اضافة المنتج لعربة التسوق مسبقاً", message: "فضلاً حدد الكمية المطلوبة في صفحة عربة التسوق", in: self)
+        } else {
+        
         if self.quantity != 0 {
             let item = ShoppingCardItem(pname: self.productInfo.pname, quantity: self.quantity, price: self.productInfo.price, pID: self.productInfo.pID, category: self.productInfo.category)
        // let controller = self.navigationController?.popViewController(animated: true)
@@ -57,7 +67,7 @@ class ProductDetailsViewController: UIViewController {
             makeAlert.ShowAlert(title: "الكمية غير صحيحة", message: "فضلاً حدد الكمية المناسبة", in: self)
         }
     }
-    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

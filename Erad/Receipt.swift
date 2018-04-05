@@ -76,4 +76,11 @@ struct Receipt {
         self.RemainingAmount = RemainingAmount
         self.refundEmployeeID = refundEmployeeID
     }
+    init ( date: String , totalPrice: Double, employeeID : String, key : String) {
+        self.date = date
+        self.totalPrice = totalPrice
+        self.employeeID = employeeID
+        self.key = key
+        
+    }
 }

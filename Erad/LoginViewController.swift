@@ -48,7 +48,7 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
                                     }
                         }}
                         }})
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.0){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5){
                     if self.found == false {
                         self.createAlert(title: "خطأ", message: "الرجاء التأكد من صحة تسجيلك فالنظام")
                     }

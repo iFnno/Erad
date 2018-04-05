@@ -27,20 +27,54 @@
 		604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */; };
 		6058C1DC204B35B2002E108F /* PausedShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */; };
 		6058C1DE204B3CAA002E108F /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058C1DD204B3CAA002E108F /* Receipt.swift */; };
+		605E1BA6206FE0AA00068633 /* TimeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1BA5206FE0AA00068633 /* TimeObject.swift */; };
 		606212C42039546500B9D5A8 /* MakeReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */; };
 		606212C62039574C00B9D5A8 /* MakeReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */; };
 		606212C8203B3CD300B9D5A8 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */; };
 		6072F585205783E1006BCFC3 /* RefundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6072F584205783E1006BCFC3 /* RefundTableViewCell.swift */; };
 		608BD7DD2034244E00E83119 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608BD7DC2034244D00E83119 /* ProductDetailsViewController.swift */; };
 		608BD7E22038C41100E83119 /* ShoppingCardItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608BD7E12038C41100E83119 /* ShoppingCardItems.swift */; };
+		6097A55B2071F0DB00D6B174 /* ReportReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097A55A2071F0DB00D6B174 /* ReportReceipt.swift */; };
 		60ACDC612032A375009E7AE5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ACDC602032A375009E7AE5 /* Product.swift */; };
 		60B19BF8204FCFC0000CEF46 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19BF7204FCFC0000CEF46 /* ReceiptViewController.swift */; };
 		60B19BFA204FD008000CEF46 /* ReceiptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19BF9204FD008000CEF46 /* ReceiptTableViewCell.swift */; };
 		60B19BFC204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19BFB204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift */; };
 		60B19C00204FD1ED000CEF46 /* ReceiptDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19BFF204FD1ED000CEF46 /* ReceiptDetailsViewController.swift */; };
 		60B19C04204FD2DC000CEF46 /* RefundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19C03204FD2DC000CEF46 /* RefundViewController.swift */; };
+		60B4D68D20726FAF00B85E83 /* Charts1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4D68C20726FAF00B85E83 /* Charts1ViewController.swift */; };
+		60B9A8A42070B337001E88C5 /* salesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B9A8A32070B337001E88C5 /* salesObject.swift */; };
+		60BA0ADC206CC325004BB8E2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA0ADB206CC325004BB8E2 /* EditProfileViewController.swift */; };
 		60C5069E2040904800E07077 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5069D2040904800E07077 /* InventoryViewController.swift */; };
 		60C506A0204091E500E07077 /* InventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5069F204091E500E07077 /* InventoryTableViewCell.swift */; };
+		60D464BF20728A6100F754EA /* JBChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D464B620728A6000F754EA /* JBChart.framework */; };
+		60D464C620728A6100F754EA /* JBChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464C520728A6100F754EA /* JBChartTests.m */; };
+		60D464C820728A6100F754EA /* JBChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464B820728A6000F754EA /* JBChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464CB20728A6100F754EA /* JBChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D464B620728A6000F754EA /* JBChart.framework */; };
+		60D464CC20728A6100F754EA /* JBChart.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60D464B620728A6000F754EA /* JBChart.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60D464D720728ACC00F754EA /* NSMutableArray+JBStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464D520728ACC00F754EA /* NSMutableArray+JBStack.m */; };
+		60D464D820728ACC00F754EA /* NSMutableArray+JBStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464D620728ACC00F754EA /* NSMutableArray+JBStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464DB20728AD700F754EA /* JBBarChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464D920728AD700F754EA /* JBBarChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464DC20728AD700F754EA /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464DA20728AD700F754EA /* JBBarChartView.m */; };
+		60D464DF20728AE100F754EA /* JBGradientBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464DD20728AE100F754EA /* JBGradientBarView.m */; };
+		60D464E020728AE100F754EA /* JBGradientBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464DE20728AE100F754EA /* JBGradientBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464E320728AEF00F754EA /* JBChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464E120728AEF00F754EA /* JBChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464E420728AEF00F754EA /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464E220728AEF00F754EA /* JBChartView.m */; };
+		60D464E720728AFB00F754EA /* JBLineChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464E520728AFB00F754EA /* JBLineChartView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464E820728AFB00F754EA /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464E620728AFB00F754EA /* JBLineChartView.m */; };
+		60D464ED20728B1900F754EA /* JBShapeLineLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464E920728B1800F754EA /* JBShapeLineLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464EE20728B1900F754EA /* JBGradientLineLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464EA20728B1800F754EA /* JBGradientLineLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464EF20728B1900F754EA /* JBShapeLineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464EB20728B1800F754EA /* JBShapeLineLayer.m */; };
+		60D464F020728B1900F754EA /* JBGradientLineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464EC20728B1900F754EA /* JBGradientLineLayer.m */; };
+		60D464F520728B2600F754EA /* JBLineChartLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464F120728B2400F754EA /* JBLineChartLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464F620728B2600F754EA /* JBLineChartPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464F220728B2500F754EA /* JBLineChartPoint.m */; };
+		60D464F720728B2600F754EA /* JBLineChartPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464F320728B2500F754EA /* JBLineChartPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D464F820728B2600F754EA /* JBLineChartLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464F420728B2600F754EA /* JBLineChartLine.m */; };
+		60D464FF20728B3300F754EA /* JBLineChartDotsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464F920728B3100F754EA /* JBLineChartDotsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D4650020728B3300F754EA /* JBLineChartDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464FA20728B3100F754EA /* JBLineChartDotsView.m */; };
+		60D4650120728B3300F754EA /* JBLineChartDotView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464FB20728B3200F754EA /* JBLineChartDotView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D4650220728B3300F754EA /* JBLineChartDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464FC20728B3200F754EA /* JBLineChartDotView.m */; };
+		60D4650320728B3300F754EA /* JBLineChartLinesView.h in Headers */ = {isa = PBXBuildFile; fileRef = 60D464FD20728B3200F754EA /* JBLineChartLinesView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60D4650420728B3300F754EA /* JBLineChartLinesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60D464FE20728B3300F754EA /* JBLineChartLinesView.m */; };
 		60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D99F942022DD6900334513 /* WorkTimeViewController.swift */; };
 		60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */; };
 		60EAA9D6205194CD00A43AAF /* EradMovie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 60EAA9D5205194C000A43AAF /* EradMovie.mp4 */; };
@@ -56,6 +90,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		60D464C020728A6100F754EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60D464B520728A6000F754EA;
+			remoteInfo = JBChart;
+		};
+		60D464C220728A6100F754EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD17EDA20207D65003C8C10;
+			remoteInfo = "إيراد";
+		};
+		60D464C920728A6100F754EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60D464B520728A6000F754EA;
+			remoteInfo = JBChart;
+		};
 		8CD17EF220207D65003C8C10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
@@ -72,6 +127,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		60D464D220728A6100F754EA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				60D464CC20728A6100F754EA /* JBChart.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		032CDB9F285AB4A37DB5C569 /* Pods-إيرادTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests.release.xcconfig"; sourceTree = "<group>"; };
 		3CB737C37ECA5D1BDCE1B613 /* Pods-إيراد.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيراد.release.xcconfig"; path = "Pods/Target Support Files/Pods-إيراد/Pods-إيراد.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,26 +153,69 @@
 		602813FE2067FD8700BC973F /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		60373197207271DB0087E004 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		6058C1DD204B3CAA002E108F /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		605E1BA5206FE0AA00068633 /* TimeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeObject.swift; sourceTree = "<group>"; };
 		606212C32039546500B9D5A8 /* MakeReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReceiptViewController.swift; sourceTree = "<group>"; };
 		606212C52039574C00B9D5A8 /* MakeReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		606212C7203B3CD300B9D5A8 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		6065A75E20727ECD00AAB96D /* SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		606FCEDD2072744E001523EF /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		606FCEDF2072746F001523EF /* SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6072F584205783E1006BCFC3 /* RefundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundTableViewCell.swift; sourceTree = "<group>"; };
 		608BD7DC2034244D00E83119 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		608BD7E12038C41100E83119 /* ShoppingCardItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCardItems.swift; sourceTree = "<group>"; };
+		6097A55A2071F0DB00D6B174 /* ReportReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReceipt.swift; sourceTree = "<group>"; };
 		60ACDC602032A375009E7AE5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		60B19BF7204FCFC0000CEF46 /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		60B19BF9204FD008000CEF46 /* ReceiptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTableViewCell.swift; sourceTree = "<group>"; };
 		60B19BFB204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		60B19BFF204FD1ED000CEF46 /* ReceiptDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptDetailsViewController.swift; sourceTree = "<group>"; };
 		60B19C03204FD2DC000CEF46 /* RefundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefundViewController.swift; sourceTree = "<group>"; };
+		60B4D68C20726FAF00B85E83 /* Charts1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charts1ViewController.swift; sourceTree = "<group>"; };
+		60B4D68F2072702100B85E83 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B4D691207270ED00B85E83 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B9A8A32070B337001E88C5 /* salesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = salesObject.swift; sourceTree = "<group>"; };
+		60BA0ADB206CC325004BB8E2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		60C424D9207273BE0046D81A /* SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C5069D2040904800E07077 /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		60C5069F204091E500E07077 /* InventoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTableViewCell.swift; sourceTree = "<group>"; };
+		60D464B620728A6000F754EA /* JBChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D464B820728A6000F754EA /* JBChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBChart.h; sourceTree = "<group>"; };
+		60D464B920728A6000F754EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60D464BE20728A6100F754EA /* JBChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JBChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D464C520728A6100F754EA /* JBChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JBChartTests.m; sourceTree = "<group>"; };
+		60D464C720728A6100F754EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60D464D520728ACC00F754EA /* NSMutableArray+JBStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+JBStack.m"; sourceTree = "<group>"; };
+		60D464D620728ACC00F754EA /* NSMutableArray+JBStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+JBStack.h"; sourceTree = "<group>"; };
+		60D464D920728AD700F754EA /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		60D464DA20728AD700F754EA /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		60D464DD20728AE100F754EA /* JBGradientBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBGradientBarView.m; sourceTree = "<group>"; };
+		60D464DE20728AE100F754EA /* JBGradientBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBGradientBarView.h; sourceTree = "<group>"; };
+		60D464E120728AEF00F754EA /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		60D464E220728AEF00F754EA /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		60D464E520728AFB00F754EA /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		60D464E620728AFB00F754EA /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		60D464E920728B1800F754EA /* JBShapeLineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBShapeLineLayer.h; sourceTree = "<group>"; };
+		60D464EA20728B1800F754EA /* JBGradientLineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBGradientLineLayer.h; sourceTree = "<group>"; };
+		60D464EB20728B1800F754EA /* JBShapeLineLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBShapeLineLayer.m; sourceTree = "<group>"; };
+		60D464EC20728B1900F754EA /* JBGradientLineLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBGradientLineLayer.m; sourceTree = "<group>"; };
+		60D464F120728B2400F754EA /* JBLineChartLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartLine.h; sourceTree = "<group>"; };
+		60D464F220728B2500F754EA /* JBLineChartPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartPoint.m; sourceTree = "<group>"; };
+		60D464F320728B2500F754EA /* JBLineChartPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartPoint.h; sourceTree = "<group>"; };
+		60D464F420728B2600F754EA /* JBLineChartLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartLine.m; sourceTree = "<group>"; };
+		60D464F920728B3100F754EA /* JBLineChartDotsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartDotsView.h; sourceTree = "<group>"; };
+		60D464FA20728B3100F754EA /* JBLineChartDotsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartDotsView.m; sourceTree = "<group>"; };
+		60D464FB20728B3200F754EA /* JBLineChartDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartDotView.h; sourceTree = "<group>"; };
+		60D464FC20728B3200F754EA /* JBLineChartDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartDotView.m; sourceTree = "<group>"; };
+		60D464FD20728B3200F754EA /* JBLineChartLinesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartLinesView.h; sourceTree = "<group>"; };
+		60D464FE20728B3300F754EA /* JBLineChartLinesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartLinesView.m; sourceTree = "<group>"; };
 		60D99F942022DD6900334513 /* WorkTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkTimeViewController.swift; sourceTree = "<group>"; };
 		60DB4197202C1517008A0C3D /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		60EAA9D5205194C000A43AAF /* EradMovie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EradMovie.mp4; sourceTree = "<group>"; };
+		60EAF80F2072773E00A7A8FE /* SwiftCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_______Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7436C82FB8DFF31C8E5C93FC /* Pods-إيرادUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-إيرادUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA94A1B2028BF7C0054D032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -133,11 +245,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		60D464B220728A6000F754EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60D464BB20728A6100F754EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D464BF20728A6100F754EA /* JBChart.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8CD17ED820207D65003C8C10 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9F90D055C0A8552D73FA3C02 /* Pods_______.framework in Frameworks */,
+				60D464CB20728A6100F754EA /* JBChart.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +301,56 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		60D464B720728A6000F754EA /* JBChart */ = {
+			isa = PBXGroup;
+			children = (
+				60D464B820728A6000F754EA /* JBChart.h */,
+				60D464D420728A8E00F754EA /* Classess */,
+				60D464B920728A6000F754EA /* Info.plist */,
+			);
+			path = JBChart;
+			sourceTree = "<group>";
+		};
+		60D464C420728A6100F754EA /* JBChartTests */ = {
+			isa = PBXGroup;
+			children = (
+				60D464C520728A6100F754EA /* JBChartTests.m */,
+				60D464C720728A6100F754EA /* Info.plist */,
+			);
+			path = JBChartTests;
+			sourceTree = "<group>";
+		};
+		60D464D420728A8E00F754EA /* Classess */ = {
+			isa = PBXGroup;
+			children = (
+				60D464F920728B3100F754EA /* JBLineChartDotsView.h */,
+				60D464FA20728B3100F754EA /* JBLineChartDotsView.m */,
+				60D464FB20728B3200F754EA /* JBLineChartDotView.h */,
+				60D464FC20728B3200F754EA /* JBLineChartDotView.m */,
+				60D464FD20728B3200F754EA /* JBLineChartLinesView.h */,
+				60D464FE20728B3300F754EA /* JBLineChartLinesView.m */,
+				60D464F120728B2400F754EA /* JBLineChartLine.h */,
+				60D464F420728B2600F754EA /* JBLineChartLine.m */,
+				60D464F320728B2500F754EA /* JBLineChartPoint.h */,
+				60D464F220728B2500F754EA /* JBLineChartPoint.m */,
+				60D464EA20728B1800F754EA /* JBGradientLineLayer.h */,
+				60D464EC20728B1900F754EA /* JBGradientLineLayer.m */,
+				60D464E920728B1800F754EA /* JBShapeLineLayer.h */,
+				60D464EB20728B1800F754EA /* JBShapeLineLayer.m */,
+				60D464E520728AFB00F754EA /* JBLineChartView.h */,
+				60D464E620728AFB00F754EA /* JBLineChartView.m */,
+				60D464E120728AEF00F754EA /* JBChartView.h */,
+				60D464E220728AEF00F754EA /* JBChartView.m */,
+				60D464DE20728AE100F754EA /* JBGradientBarView.h */,
+				60D464DD20728AE100F754EA /* JBGradientBarView.m */,
+				60D464D920728AD700F754EA /* JBBarChartView.h */,
+				60D464DA20728AD700F754EA /* JBBarChartView.m */,
+				60D464D620728ACC00F754EA /* NSMutableArray+JBStack.h */,
+				60D464D520728ACC00F754EA /* NSMutableArray+JBStack.m */,
+			);
+			path = Classess;
+			sourceTree = "<group>";
+		};
 		8CA94A21202986010054D032 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +364,8 @@
 				8CD17EDD20207D65003C8C10 /* Erad */,
 				8CD17EF420207D65003C8C10 /* EradTests */,
 				8CD17EFF20207D66003C8C10 /* EradUITests */,
+				60D464B720728A6000F754EA /* JBChart */,
+				60D464C420728A6100F754EA /* JBChartTests */,
 				8CD17EDC20207D65003C8C10 /* Products */,
 				B13480D9E8237ADEC8D3CC94 /* Frameworks */,
 				8CA94A21202986010054D032 /* Recovered References */,
@@ -199,6 +379,8 @@
 				8CD17EDB20207D65003C8C10 /* إيراد.app */,
 				8CD17EF120207D65003C8C10 /* إيرادTests.xctest */,
 				8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */,
+				60D464B620728A6000F754EA /* JBChart.framework */,
+				60D464BE20728A6100F754EA /* JBChartTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,11 +389,16 @@
 			isa = PBXGroup;
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
+				60B4D68C20726FAF00B85E83 /* Charts1ViewController.swift */,
+				60BA0ADB206CC325004BB8E2 /* EditProfileViewController.swift */,
 				602323A52068027E00653134 /* SalesReportTableViewCell.swift */,
 				602323A72068029400653134 /* WorkingHoursReportTableViewCell.swift */,
 				602813FE2067FD8700BC973F /* ReportsViewController.swift */,
 				602813FA2067FCE900BC973F /* SalesReportViewController.swift */,
+				6097A55A2071F0DB00D6B174 /* ReportReceipt.swift */,
+				60B9A8A32070B337001E88C5 /* salesObject.swift */,
 				602813FC2067FD0200BC973F /* WorkingHoursReportViewController.swift */,
+				605E1BA5206FE0AA00068633 /* TimeObject.swift */,
 				60B19C03204FD2DC000CEF46 /* RefundViewController.swift */,
 				6072F584205783E1006BCFC3 /* RefundTableViewCell.swift */,
 				60B19BFF204FD1ED000CEF46 /* ReceiptDetailsViewController.swift */,
@@ -280,6 +467,14 @@
 		B13480D9E8237ADEC8D3CC94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6065A75E20727ECD00AAB96D /* SwiftCharts.framework */,
+				60EAF80F2072773E00A7A8FE /* SwiftCharts.framework */,
+				606FCEDF2072746F001523EF /* SwiftCharts.framework */,
+				606FCEDD2072744E001523EF /* nanopb.framework */,
+				60C424D9207273BE0046D81A /* SwiftCharts.framework */,
+				60373197207271DB0087E004 /* Charts.framework */,
+				60B4D691207270ED00B85E83 /* Charts.framework */,
+				60B4D68F2072702100B85E83 /* Charts.framework */,
 				F42E1F9D282DCF8C4FA8A279 /* Pods_______.framework */,
 				666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */,
 				96F94454566D210559B31B2D /* Pods_______UITests.framework */,
@@ -289,7 +484,67 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		60D464B320728A6000F754EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D464F720728B2600F754EA /* JBLineChartPoint.h in Headers */,
+				60D4650320728B3300F754EA /* JBLineChartLinesView.h in Headers */,
+				60D464C820728A6100F754EA /* JBChart.h in Headers */,
+				60D4650120728B3300F754EA /* JBLineChartDotView.h in Headers */,
+				60D464D820728ACC00F754EA /* NSMutableArray+JBStack.h in Headers */,
+				60D464EE20728B1900F754EA /* JBGradientLineLayer.h in Headers */,
+				60D464DB20728AD700F754EA /* JBBarChartView.h in Headers */,
+				60D464FF20728B3300F754EA /* JBLineChartDotsView.h in Headers */,
+				60D464E320728AEF00F754EA /* JBChartView.h in Headers */,
+				60D464ED20728B1900F754EA /* JBShapeLineLayer.h in Headers */,
+				60D464E720728AFB00F754EA /* JBLineChartView.h in Headers */,
+				60D464F520728B2600F754EA /* JBLineChartLine.h in Headers */,
+				60D464E020728AE100F754EA /* JBGradientBarView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		60D464B520728A6000F754EA /* JBChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60D464D120728A6100F754EA /* Build configuration list for PBXNativeTarget "JBChart" */;
+			buildPhases = (
+				60D464B120728A6000F754EA /* Sources */,
+				60D464B220728A6000F754EA /* Frameworks */,
+				60D464B320728A6000F754EA /* Headers */,
+				60D464B420728A6000F754EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JBChart;
+			productName = JBChart;
+			productReference = 60D464B620728A6000F754EA /* JBChart.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60D464BD20728A6100F754EA /* JBChartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60D464D320728A6100F754EA /* Build configuration list for PBXNativeTarget "JBChartTests" */;
+			buildPhases = (
+				60D464BA20728A6100F754EA /* Sources */,
+				60D464BB20728A6100F754EA /* Frameworks */,
+				60D464BC20728A6100F754EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60D464C120728A6100F754EA /* PBXTargetDependency */,
+				60D464C320728A6100F754EA /* PBXTargetDependency */,
+			);
+			name = JBChartTests;
+			productName = JBChartTests;
+			productReference = 60D464BE20728A6100F754EA /* JBChartTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8CD17EDA20207D65003C8C10 /* إيراد */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CD17F0520207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيراد" */;
@@ -300,10 +555,12 @@
 				8CD17ED920207D65003C8C10 /* Resources */,
 				920DD33AD541C021D8B360D7 /* [CP] Embed Pods Frameworks */,
 				EED6F46A6246CCF5A6787294 /* [CP] Copy Pods Resources */,
+				60D464D220728A6100F754EA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				60D464CA20728A6100F754EA /* PBXTargetDependency */,
 			);
 			name = "إيراد";
 			productName = Erad;
@@ -362,6 +619,15 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = KSU;
 				TargetAttributes = {
+					60D464B520728A6000F754EA = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					60D464BD20728A6100F754EA = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8CD17EDA20207D65003C8C10;
+					};
 					8CD17EDA20207D65003C8C10 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -394,11 +660,27 @@
 				8CD17EDA20207D65003C8C10 /* إيراد */,
 				8CD17EF020207D65003C8C10 /* إيرادTests */,
 				8CD17EFB20207D65003C8C10 /* إيرادUITests */,
+				60D464B520728A6000F754EA /* JBChart */,
+				60D464BD20728A6100F754EA /* JBChartTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		60D464B420728A6000F754EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60D464BC20728A6100F754EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8CD17ED920207D65003C8C10 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -591,6 +873,33 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		60D464B120728A6000F754EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D464E820728AFB00F754EA /* JBLineChartView.m in Sources */,
+				60D4650420728B3300F754EA /* JBLineChartLinesView.m in Sources */,
+				60D4650020728B3300F754EA /* JBLineChartDotsView.m in Sources */,
+				60D464F820728B2600F754EA /* JBLineChartLine.m in Sources */,
+				60D464D720728ACC00F754EA /* NSMutableArray+JBStack.m in Sources */,
+				60D464E420728AEF00F754EA /* JBChartView.m in Sources */,
+				60D464DC20728AD700F754EA /* JBBarChartView.m in Sources */,
+				60D464F020728B1900F754EA /* JBGradientLineLayer.m in Sources */,
+				60D464F620728B2600F754EA /* JBLineChartPoint.m in Sources */,
+				60D464DF20728AE100F754EA /* JBGradientBarView.m in Sources */,
+				60D4650220728B3300F754EA /* JBLineChartDotView.m in Sources */,
+				60D464EF20728B1900F754EA /* JBShapeLineLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60D464BA20728A6100F754EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60D464C620728A6100F754EA /* JBChartTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8CD17ED720207D65003C8C10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -599,6 +908,7 @@
 				60B19C00204FD1ED000CEF46 /* ReceiptDetailsViewController.swift in Sources */,
 				8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */,
 				6072F585205783E1006BCFC3 /* RefundTableViewCell.swift in Sources */,
+				60B4D68D20726FAF00B85E83 /* Charts1ViewController.swift in Sources */,
 				602813FF2067FD8700BC973F /* ReportsViewController.swift in Sources */,
 				60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */,
 				600F056C202B42AC002A1815 /* SplitViewController.swift in Sources */,
@@ -607,10 +917,13 @@
 				602323A62068027E00653134 /* SalesReportTableViewCell.swift in Sources */,
 				8CA94A2A2029877E0054D032 /* PersonalProfileViewController.swift in Sources */,
 				8CA94A1E2028E4900054D032 /* ResetPasswordViewController.swift in Sources */,
+				60B9A8A42070B337001E88C5 /* salesObject.swift in Sources */,
 				8CD17EDF20207D65003C8C10 /* AppDelegate.swift in Sources */,
+				60BA0ADC206CC325004BB8E2 /* EditProfileViewController.swift in Sources */,
 				600F056B202B42A4002A1815 /* File.swift in Sources */,
 				60B19C04204FD2DC000CEF46 /* RefundViewController.swift in Sources */,
 				60B19BF8204FCFC0000CEF46 /* ReceiptViewController.swift in Sources */,
+				605E1BA6206FE0AA00068633 /* TimeObject.swift in Sources */,
 				608BD7DD2034244E00E83119 /* ProductDetailsViewController.swift in Sources */,
 				601E80DF204705400038E9E2 /* ReceiptPageViewController.swift in Sources */,
 				602813FD2067FD0200BC973F /* WorkingHoursReportViewController.swift in Sources */,
@@ -628,6 +941,7 @@
 				60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */,
 				60252C52202B410C00E571FC /* AccountingViewController.swift in Sources */,
 				606212C8203B3CD300B9D5A8 /* LaunchScreenViewController.swift in Sources */,
+				6097A55B2071F0DB00D6B174 /* ReportReceipt.swift in Sources */,
 				60ACDC612032A375009E7AE5 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,6 +965,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		60D464C120728A6100F754EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60D464B520728A6000F754EA /* JBChart */;
+			targetProxy = 60D464C020728A6100F754EA /* PBXContainerItemProxy */;
+		};
+		60D464C320728A6100F754EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
+			targetProxy = 60D464C220728A6100F754EA /* PBXContainerItemProxy */;
+		};
+		60D464CA20728A6100F754EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60D464B520728A6000F754EA /* JBChart */;
+			targetProxy = 60D464C920728A6100F754EA /* PBXContainerItemProxy */;
+		};
 		8CD17EF320207D65003C8C10 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
@@ -675,6 +1004,86 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		60D464CD20728A6100F754EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 962VFYAU45;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = JBChart/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jawbone.JBChart;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		60D464CE20728A6100F754EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 962VFYAU45;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = JBChart/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jawbone.JBChart;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		60D464CF20728A6100F754EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 962VFYAU45;
+				INFOPLIST_FILE = JBChartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jawbone.JBChartTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/إيراد.app/إيراد";
+			};
+			name = Debug;
+		};
+		60D464D020728A6100F754EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 962VFYAU45;
+				INFOPLIST_FILE = JBChartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jawbone.JBChartTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/إيراد.app/إيراد";
+			};
+			name = Release;
+		};
 		8CD17F0320207D66003C8C10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -885,6 +1294,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		60D464D120728A6100F754EA /* Build configuration list for PBXNativeTarget "JBChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60D464CD20728A6100F754EA /* Debug */,
+				60D464CE20728A6100F754EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60D464D320728A6100F754EA /* Build configuration list for PBXNativeTarget "JBChartTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60D464CF20728A6100F754EA /* Debug */,
+				60D464D020728A6100F754EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8CD17ED620207D65003C8C10 /* Build configuration list for PBXProject "إيراد" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

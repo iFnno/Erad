@@ -35,7 +35,7 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.title = " تفاصيل الفاتورة"
         self.Rdate.text = Rdetsils.date
         self.rID.text = String(Rdetsils.id)
-        self.RtotalPrice.text = String(Rdetsils.totalPrice) + " SR"
+        self.RtotalPrice.text = String(Rdetsils.totalPrice) + " ر.س"
         // Do any additional setup after loading the view.
         let backItem = UIBarButtonItem()
         backItem.title = "رجوع"
@@ -58,7 +58,10 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
                         let productPrice = value?["price"] as! Double
                         let productCategory = value?["category"] as! String
                         print("here is the other loop")
-                        let oneProduct = ShoppingCardItem(pname: productName, quantity: quantity, price: productPrice, pID: productKey as String)
+                        print(productName)
+                        print(productPrice)
+                        let oneProduct = ShoppingCardItem(pname: productName, quantity: quantity, price: productPrice, pID: productKey as String, category: productCategory)
+
                         self.amount = self.amount + (Double(quantity) * price )
                         self.items.append(oneProduct)
                         self.RproductTable.reloadData()
@@ -73,7 +76,7 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
         RproductTable.dataSource = self
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.RtotalPrice.text = String(self.amount)
+        self.RtotalPrice.text = String(self.amount) + " ر.س"
         
     }
     
@@ -105,7 +108,7 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
             let controller = segue.destination as! RefundViewController
             controller.ReceiptDetsils = Rdetsils
             controller.itemsList = items
-            controller.RefundedItemsList = self.items
+            controller.RefundedItemsList = items
             controller.amount = self.amount
             
         }
