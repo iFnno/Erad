@@ -341,7 +341,20 @@ class SalesReportViewController: UIViewController , UITableViewDelegate, UITable
             }
                         
                         let saleOb = salesObject(totalPrice: rec.totalPrice , totalQuantity: self.quan, day: day1)
+                        var i = 0
+                        var flag  = false
+                        for ind in self.perfList {
+                            if ind.day == day1 {
+                                self.perfList[i].totalQuantity = self.perfList[i].totalQuantity + self.quan
+                                self.perfList[i].totalPrice = self.perfList[i].totalPrice + rec.totalPrice
+                                flag = true
+                                break
+                            }
+                            i = i + 1
+                        }
+                        if flag == false {
                         self.perfList.append(saleOb)
+                        }
                         self.salesTable.reloadData()
             
         }

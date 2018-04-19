@@ -9,13 +9,17 @@
 import UIKit
 import Firebase
 var startedAlready = false
+var globalMin = 0
+var globalSec = 0
+var globalhour = 0
 var startTime : String! = "2017/12/12 00:00:00"
 class WorkTimeViewController: UIViewController {
-    var secon = 0
+
     var timer = Timer()
     var isRunnnig = false
     var min = 0
     var hour = 0
+    var secon = 0
     var date : String! = ""
     var fromTab = false
     var totalTime : String! = ""
@@ -192,12 +196,12 @@ class WorkTimeViewController: UIViewController {
             
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
+/*    override func viewWillDisappear(_ animated: Bool) {
         if self.fromTab == true {
         let previousViewController = self.navigationController?.viewControllers.last as! PersonalProfileViewController
        // previousViewController.started = startedAlready
     }
-}
+} */
 }
 class CustomNavigationBar: UINavigationBar {
     // NavigationBar height

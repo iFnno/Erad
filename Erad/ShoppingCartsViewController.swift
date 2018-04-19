@@ -49,7 +49,6 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
                     let onereceipt = Receipt(id: id, date: date, totalPrice: totalPrice, time: time, employeeID: employeeID, key : key as String)
                     self.pausedList.append(onereceipt)
                     print(self.pausedList)
-                    print("rima")
                 }
                 self.pausedTable.reloadData()
             }
@@ -100,9 +99,9 @@ class ShoppingCartsViewController: UIViewController , UITableViewDelegate, UITab
                 let controller = segue.destination as! MakeReceiptViewController
                 controller.amount = self.pausedList[indexPath.row].totalPrice
                 controller.paused = true
-               // controller.receiptID = self.pausedList[indexPath.row].id!
                 controller.RemainingAmount = 0
                 controller.passedReceipt = self.pausedList[indexPath.row]
+                controller.receiptID = self.pausedList[indexPath.row].id
             }
         }
     }

@@ -160,7 +160,7 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
         
         let end = self.workingList[indexPath.row].end
         var token1 = end?.components(separatedBy: delimiter1)
-        cell.endTime.text = token?[1]
+        cell.endTime.text = token1?[1]
         cell.totalTime.text = String(self.workingList[indexPath.row].total)
         cell.day.text = self.workingList[indexPath.row].day
         return cell

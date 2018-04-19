@@ -170,6 +170,7 @@ class RefundViewController: UIViewController, UITableViewDelegate, UITableViewDa
             controller.RemainingAmount = Double(self.refundedAmount.text!)
             controller.RefundList = self.RefundedItemsList
             controller.DeleteReceitKey = self.ReceiptDetsils.key
+            controller.fromReceiptsPage = true
             
         }
     }

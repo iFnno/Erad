@@ -14,7 +14,7 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
     @IBOutlet weak var passwordField: UITextField!
     var ref: DatabaseReference!
     var found : Bool = false
-    
+    var flag : Bool = false
     @IBAction func loginButton(_ sender: UIButton) {
         //empty field
         if emailField.text == "" || passwordField.text == "" {
@@ -42,7 +42,6 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
                                         self.found = true
                                         companyName = business.key.description
                                         print(business.key.description)
-                                        self.performSegue(withIdentifier: "loginSegue", sender: self)
                                         break
                                     }
                                     }
@@ -51,7 +50,9 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4.5){
                     if self.found == false {
                         self.createAlert(title: "خطأ", message: "الرجاء التأكد من صحة تسجيلك فالنظام")
-                    }
+                    } else {
+                        self.performSegue(withIdentifier: "loginSegue", sender: self)
+                        }
                     }
                     }
                 else { self.createAlert(title: "خطأ", message: "الرجاء التأكد من صحة البريد الالكتروني و كلمة المرور")}

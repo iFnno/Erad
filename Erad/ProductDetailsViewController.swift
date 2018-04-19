@@ -9,7 +9,7 @@
 import UIKit
 
 class ProductDetailsViewController: UIViewController {
-    var productInfo : Product = Product(pname: "", img: #imageLiteral(resourceName: "Logo.png"), inventory: 0, price: 0, desc: "", pID: "", category: "")
+    var productInfo : Product = Product(pname: "", img: #imageLiteral(resourceName: "Logo.png"), inventory: 0, price: 0, desc: "", pID: "", category: "", cost: 0.0)
     var quantity : Int = 1
     @IBOutlet weak var selectedQuantity: UILabel!
     @IBOutlet weak var productImage: UIImageView!
@@ -51,11 +51,15 @@ class ProductDetailsViewController: UIViewController {
             }
         }
         if self.flag == true {
-            makeAlert.ShowAlert(title: "تمت اضافة المنتج لعربة التسوق مسبقاً", message: "فضلاً حدد الكمية المطلوبة في صفحة عربة التسوق", in: self)
+            let item = ShoppingCardItem(pname: self.productInfo.pname, quantity: self.quantity, price: self.productInfo.price, pID: self.productInfo.pID, category: self.productInfo.category, cost: self.productInfo.cost)
+            _ = self.navigationController?.popViewController(animated: true)
+            let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
+            previousViewController.UpdatedItemQuanitity = item
+           // makeAlert.ShowAlert(title: "تمت اضافة المنتج لعربة التسوق مسبقاً", message: "فضلاً حدد الكمية المطلوبة في صفحة عربة التسوق", in: self)
         } else {
         
         if self.quantity != 0 {
-            let item = ShoppingCardItem(pname: self.productInfo.pname, quantity: self.quantity, price: self.productInfo.price, pID: self.productInfo.pID, category: self.productInfo.category)
+            let item = ShoppingCardItem(pname: self.productInfo.pname, quantity: self.quantity, price: self.productInfo.price, pID: self.productInfo.pID, category: self.productInfo.category, cost: self.productInfo.cost)
        // let controller = self.navigationController?.popViewController(animated: true)
         //controller.shoppingCard.append(item)
         _ = self.navigationController?.popViewController(animated: true)

@@ -19,7 +19,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var email : String! = "manager@gmail.com"
     var cost : Double! = 0.0
     var valid : Bool = false
-    
+    var flag : Bool = false
     var ReceivedAmountText : Double! = 0.0
     var RemainingAmount : Double! = 0.0
     var paused = false
@@ -32,6 +32,8 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     var passedReceipt : Receipt! = Receipt(id: 0, date: "", totalPrice: 0, time: "", employeeID: "", key: "")
     var isempty : Bool = false
     var exisisList : [ShoppingCardItem] = []
+    var employeeName : String! = ""
+    var receiptID: Int! = 0
     @IBOutlet weak var itemsTable: UITableView!
     
     @IBOutlet weak var amountL: UILabel!
@@ -57,22 +59,29 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                     let price = eventsObject1!["price"] as! Double
                     let quantity = eventsObject1!["quantity"] as! Int
                     let category = eventsObject1!["category"] as! String
+                    
                     self.ref2 = Database.database().reference().child(companyName).child("products")
                         self.ref2.child(category).child(key as! String).observeSingleEvent(of: .value, with: { (snapshot) in
                             let value = snapshot.value as? NSDictionary
                             let productName  = value?["name"] as! String
                             let productPrice  = value?["price"] as! Double
                             let productCategory = value?["category"] as! String
-                            
-                            let oneProduct = ShoppingCardItem(pname: productName, quantity: quantity, price: productPrice, pID: key as String, category: productCategory)
+                            let cost = eventsObject1!["cost"] as! Double
+                            let oneProduct = ShoppingCardItem(pname: productName, quantity: quantity, price: productPrice, pID: key as String, category: productCategory, cost: cost)
                             self.pausedShoppingCard.append(oneProduct)
                             self.itemsTable.reloadData()
                     })
                 }
             }
         })
+             ref1.child("pausedReceipts").child(self.passedReceipt.key).removeValue(completionBlock: { (error, refer) in
+                            if error != nil {
+                                print(error)
+                            } else {
+                                print(refer)
+                                print("Child Removed Correctly")
+                            }})}
         
-            }
 
         
        
@@ -88,6 +97,19 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
             Swift.print(x, separator: "us ", terminator: "usern")
         })
         // Do any additional setup after loading the view.
+        self.ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
+            let fname = snapshot.childSnapshot(forPath: "firstName").value as! String
+            let lname = snapshot.childSnapshot(forPath: "lastName").value as! String
+            self.employeeName = fname + " " + lname
+        })
+        if self.paused == false {
+        self.ref3.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
+            let num = snapshot.childSnapshot(forPath: "ReceiptID").value as! Int
+            self.receiptID = num + 1
+            let newnumString = Int(self.receiptID)
+            self.ref3.child("manager").updateChildValues(["ReceiptID":newnumString])
+        })
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         self.amountL.text = String(self.amount)
@@ -181,6 +203,8 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         return 100.0
     }
     @IBAction func makeSaleOperationButton(_ sender: Any) {
+        if startedAlready == true {
+
         if self.paused == true {
             self.ref = Database.database().reference().child(companyName)
             let ch = self.ref.child("receipts").childByAutoId()
@@ -222,7 +246,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                                 // self.ReceivedAmountText = self.cost
                                 self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
                                 self.RemainingAmount = self.ReceivedAmountText - self.amount
-                                self.performSegue(withIdentifier: "showReceipt", sender: self)
+                                self.flag = true
                                 self.valid = true
                                 //  }
                                 /*}else {
@@ -249,7 +273,11 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                     }
             })
             }
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+            if self.flag == true {
+                self.performSegue(withIdentifier: "showReceipt", sender: self)
+            }
+            }
         } else {
             self.ref = Database.database().reference().child(companyName)
             let ch = self.ref.child("receipts").childByAutoId()
@@ -294,7 +322,7 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                     //  self.ReceivedAmountText = self.cost
                     self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
                     self.RemainingAmount = self.ReceivedAmountText - self.amount
-                    self.performSegue(withIdentifier: "showReceipt", sender: self)
+                    self.flag = true
                     self.valid = true
                     //}
                     /*} else {
@@ -318,9 +346,11 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 })
         }
-            
-            
-                
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+            if self.flag == true {
+                self.performSegue(withIdentifier: "showReceipt", sender: self)
+            }
+            }
             //}
             
       /*  let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
@@ -328,6 +358,10 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         previousViewController.currentShoppingCardButton.isHidden = true */
         
     }
+        } else {
+            let mess = "لطفاً قم ببدء وقت العمل الخاص بك"
+            makeAlert.ShowAlert(title: "انت في غير وقت العمل الآن", message: mess , in: self)
+        }
     }
     @IBAction func pauseSaleOperationButton(_ sender: Any) {
         if self.paused == true {
@@ -345,11 +379,10 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.ref = Database.database().reference().child(companyName)
         let ch = self.ref.child("pausedReceipts").childByAutoId()
-        receiptID = incrementID()
-        ch.setValue(["date": dateToAppend,"employeeID": userID,"id":receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": ""])
+        ch.setValue(["date": dateToAppend,"employeeID": userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","employeeName":self.employeeName])
         
         for ind in shoppingCard {
-            ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category": ind.category])
+            ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category": ind.category,"name":ind.pname,"cost": ind.cost])
         }
         self.empty()
         }
@@ -466,18 +499,18 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
             controller.userName = self.userN
             }
            // controller.amount = self.amount
-            receiptID = incrementID()
-            controller.receiptID = receiptID
+           // receiptID = incrementID()
+            controller.receiptID = self.receiptID
             controller.ReceivedAmount = self.ReceivedAmountText
             controller.RemainingAmount = self.RemainingAmount
             controller.amount = self.amount
             controller.userName = self.userN
         }
     }
-    func incrementID() -> Int {
+ /*   func incrementID() -> Int {
         receiptID = receiptID + 1
         return receiptID
-    }
+    } */
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result {

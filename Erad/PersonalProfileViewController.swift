@@ -18,8 +18,7 @@ class PersonalProfileViewController: UIViewController {
     @IBOutlet weak var hoursLabel: UILabel!
     
     @IBOutlet weak var proiflePic: UIImageView!
-    
-    @IBOutlet weak var userName: UILabel!
+    var ref : DatabaseReference!
     
     @IBOutlet weak var fullName: UILabel!
     
@@ -33,8 +32,10 @@ class PersonalProfileViewController: UIViewController {
     var firN : String! = ""
     var lasN : String! = ""
     var phone : String! = ""
+    var im : UIImage!
     var ref3 : DatabaseReference!
-    
+    var email: String! = ""
+    var userID1 : String! = ""
     var hours : Int! = 0
     var minutes : Int! = 0
     var seconds : Int! = 0
@@ -49,7 +50,7 @@ class PersonalProfileViewController: UIViewController {
         let x = String(formatter.string(from: date))
         self.dateLabel.text = x
         // Dovary additional setup after loading the view.
-        let userID1 = (Auth.auth().currentUser?.uid.description)!
+         userID1 = (Auth.auth().currentUser?.uid.description)!
         ref3 = Database.database().reference().child(companyName)
         ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as! NSDictionary
@@ -57,24 +58,35 @@ class PersonalProfileViewController: UIViewController {
             let Lname = value["lastName"] as! String
             let pho = value["phone"] as! String
             let im = value["picPATH"] as! String
-            let userna = value["username"] as! String
+            let email = value["email"] as! String
+            self.email = email
             let x = Fname + " " + Lname
             self.firN = Fname
             self.lasN = Lname
             self.fullN = x
             self.phone = pho
-            self.userN = userna
+            if im != "" {
             let url1 = URL(string: im)
             let data1 = try? Data(contentsOf: url1! )
             let img1 : UIImage = UIImage(data: data1! as Data)!
+            self.im = img1
             self.proiflePic.image = img1
+            } else {
+                let url1 = URL(string: "https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62")
+                let data1 = try? Data(contentsOf: url1! )
+                let img1 : UIImage = UIImage(data: data1! as Data)!
+                self.im = img1
+                self.proiflePic.image = img1
+            }
             self.fullName.text = self.fullN
             self.phoneNum.text = self.phone
-            self.userName.text = self.userN
         })
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        self.proiflePic.image = im
+        self.fullName.text = self.fullN
+        self.phoneNum.text = self.phone
         if startedAlready == true  {
             let date = Date()
             let formatter = DateFormatter()
@@ -99,10 +111,40 @@ class PersonalProfileViewController: UIViewController {
         }
         if startedAlready == false {
           timer.invalidate()
+            self.isRunnnig = false
             secondsLabel.text = "0"
             minutesLabel.text = "0"
             hoursLabel.text = "0"
         }
+        ref3.child("employees").child(userID1).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as! NSDictionary
+            let Fname  = value["firstName"] as! String
+            let Lname = value["lastName"] as! String
+            let pho = value["phone"] as! String
+            let im = value["picPATH"] as! String
+            let email = value["email"] as! String
+            self.email = email
+            let x = Fname + " " + Lname
+            self.firN = Fname
+            self.lasN = Lname
+            self.fullN = x
+            self.phone = pho
+            if im != "" {
+                let url1 = URL(string: im)
+                let data1 = try? Data(contentsOf: url1! )
+                let img1 : UIImage = UIImage(data: data1! as Data)!
+                self.im = img1
+                self.proiflePic.image = img1
+            } else {
+                let url1 = URL(string: "https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62")
+                let data1 = try? Data(contentsOf: url1! )
+                let img1 : UIImage = UIImage(data: data1! as Data)!
+                self.im = img1
+                self.proiflePic.image = img1
+            }
+            self.fullName.text = self.fullN
+            self.phoneNum.text = self.phone
+        })
     }
     func run() -> Void {
         if !self.isRunnnig {
@@ -141,6 +183,27 @@ class PersonalProfileViewController: UIViewController {
 @IBAction func logoutButton(_ sender: UIButton) {
     if Auth.auth().currentUser != nil {
         do {
+            if startedAlready == true {
+                let totalTime = String(self.hours) + ":" + String(self.minutes) + ":" + String(self.seconds)
+                let userID = (Auth.auth().currentUser?.uid.description)!
+                let date = Date()
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let todaysDate = String(formatter.string(from: date))
+                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let currentTime = String(formatter.string(from: date))
+                formatter.dateFormat = "yyyy"
+                let year1 = String(formatter.string(from: date))
+                formatter.dateFormat = "MM"
+                let month1 = String(formatter.string(from: date))
+                formatter.dateFormat = "dd"
+                let day1 = String(formatter.string(from: date))
+                
+                
+                self.ref = Database.database().reference().child(companyName)
+                self.ref.child("employees").child(userID).child("workingTime").child(year1).child(month1).child(day1).childByAutoId().setValue(["checkIn": startTime,"checkOut": currentTime ,"totalShiftTime": totalTime])
+                startedAlready = false
+            }
             try Auth.auth().signOut()
             let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
             self.present(ViewController, animated: true, completion: nil)
@@ -162,7 +225,7 @@ class PersonalProfileViewController: UIViewController {
             let controller = segue.destination as! EditProfileViewController
             controller.firstName = self.firN
             controller.lastName = self.lasN
-            controller.userName = self.userN
+            controller.email = self.email
             controller.phoneNum = self.phone
             controller.img = self.proiflePic.image
         }

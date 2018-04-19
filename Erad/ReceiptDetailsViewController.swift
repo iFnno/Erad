@@ -27,7 +27,13 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
     var amount : Double! = 0.0
     
     @IBAction func refundButton1(_ sender: UIButton) {
-        self.performSegue(withIdentifier:"refund", sender: self)}
+        if startedAlready == true {
+        self.performSegue(withIdentifier:"refund", sender: self)
+        } else {
+            let mess = "لطفاً قم ببدء وقت العمل الخاص بك"
+            makeAlert.ShowAlert(title: "انت في غير وقت العمل الآن", message: mess , in: self)
+        }
+        }
    
     
     override func viewDidLoad() {
@@ -52,6 +58,7 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
                     let category = eventsObject1?["category"] as! String
                     let price = eventsObject1?["price"] as! Double
                     let quantity = eventsObject1?["quantity"] as! Int
+                    let cost = eventsObject1!["cost"] as! Double
                     self.ref1.child("products").child(category).child(productKey as String).observeSingleEvent(of: .value, with: { (snapshot) in
                         let value = snapshot.value as? NSDictionary
                         let productName = value?["name"] as! String
@@ -60,7 +67,7 @@ class ReceiptDetailsViewController: UIViewController, UITableViewDelegate, UITab
                         print("here is the other loop")
                         print(productName)
                         print(productPrice)
-                        let oneProduct = ShoppingCardItem(pname: productName, quantity: quantity, price: productPrice, pID: productKey as String, category: productCategory)
+                        let oneProduct = ShoppingCardItem(pname: productName, quantity: quantity, price: productPrice, pID: productKey as String, category: productCategory, cost: cost)
 
                         self.amount = self.amount + (Double(quantity) * price )
                         self.items.append(oneProduct)

@@ -32,20 +32,21 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
     var paused = false
     var picPath : String! = ""
     var fromRefund = false
+    var employeeName : String! = ""
     var refundReceipt : Receipt! = Receipt(id: 0, date: "", time: "", totalPrice: 0, employeeID: "", ReceivedAmount: 0, RemainingAmount: 0, refundEmployeeID: "")
     var RefundList : [ShoppingCardItem] = []
     var DeleteReceitKey : String! = ""
+    var fromReceiptsPage = false
     
     var shoppingCard : [ShoppingCardItem] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         userID = (Auth.auth().currentUser?.uid.description)!
         ref = Database.database().reference().child(companyName)
-        self.ref.child("manager").observeSingleEvent(of: .value, with: { (snapshot) in
-            let num = snapshot.childSnapshot(forPath: "ReceiptID").value as! Int
-            self.receiptID = num + 1
-            let newnumString = Int(self.receiptID)
-            self.ref.child("manager").updateChildValues(["ReceiptID":newnumString])
+        self.ref.child("employees").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            let fname = snapshot.childSnapshot(forPath: "firstName").value as! String
+            let lname = snapshot.childSnapshot(forPath: "lastName").value as! String
+            self.employeeName = fname + " " + lname
         })
         
         let date = Date()
@@ -79,9 +80,9 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         self.title = "فاتورة جديدة رقم #" + String(self.receiptID)
         
          let ch = self.ref.child("receipts").childByAutoId()
-                ch.setValue(["date": dateToAppend,"employeeID": self.userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","RemainingAmount":self.RemainingAmount,"ReceivedAmount":self.ReceivedAmount])
+                ch.setValue(["date": dateToAppend,"employeeID": self.userID,"id":self.receiptID ,"time": timeToAppend,"totalPrice":self.amount,"products": "","RemainingAmount":self.RemainingAmount,"ReceivedAmount":self.ReceivedAmount,"employeeName":self.employeeName])
                 for ind in self.shoppingCard {
-            ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
+                    ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category,"name":ind.pname,"cost":ind.cost])
             self.HTMLString = self.HTMLString + "<tr border-bottom='1pt'><td align='center'><h3>" + String(ind.price)
             self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + String(ind.quantity)
             self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + ind.pname
@@ -135,7 +136,7 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
             self.title = "فاتورة جديدة رقم #" + String(self.refundReceipt.id)
             
             let ch = self.ref.child("receipts").childByAutoId()
-                ch.setValue(["date": dateToAppend,"employeeID": self.userID,"id":self.refundReceipt.id ,"time": timeToAppend,"totalPrice":self.refundReceipt.totalPrice ,"products": "","RemainingAmount":self.refundReceipt.RemainingAmount,"ReceivedAmount":self.refundReceipt.totalPrice, "refundEmployeeID": self.refundReceipt.refundEmployeeID])
+                ch.setValue(["date": dateToAppend,"employeeID": self.userID,"id":self.refundReceipt.id ,"time": timeToAppend,"totalPrice":self.refundReceipt.totalPrice ,"products": "","RemainingAmount":self.refundReceipt.RemainingAmount,"ReceivedAmount":self.refundReceipt.totalPrice, "refundEmployeeID": self.refundReceipt.refundEmployeeID,"employeeName":self.employeeName])
             for ind in self.RefundList {
                 self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
                     let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
@@ -144,7 +145,7 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
                         self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
                     })
 
-                 ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category])
+                 ch.child("products").child(ind.pID).setValue(["price": ind.price,"quantity": ind.quantity,"category":ind.category,"name":ind.pname,"cost":ind.cost])
                 self.HTMLString = self.HTMLString + "<tr border-bottom='1pt'><td align='center'><h3>" + String(ind.price)
                 self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + String(ind.quantity)
                 self.HTMLString = self.HTMLString + "</h3></td><td align='center'><h3>" + ind.pname
@@ -165,7 +166,7 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
         }
         self.navigationItem.hidesBackButton = true
         
-        let newBackButton = UIBarButtonItem(title: "رجوع", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ReceiptPageViewController.back(sender:)))
+        let newBackButton = UIBarButtonItem(title: "إنهاء", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ReceiptPageViewController.back(sender:)))
         self.navigationItem.rightBarButtonItem = newBackButton
     }
     @objc func back(sender: UIBarButtonItem) {
@@ -173,11 +174,15 @@ class ReceiptPageViewController: UIViewController, MFMailComposeViewControllerDe
              _ = navigationController?.popToRootViewController(animated: true)
             
         } else {
+            if self.fromReceiptsPage == false {
         let previousViewController = self.navigationController?.viewControllers.first as! ProductsMenuViewController
         previousViewController.shoppingCard.removeAll()
         previousViewController.currentShoppingCardButton.isHidden = true
         _ = navigationController?.popToRootViewController(animated: true)
+        }  else {
+            _ = navigationController?.popToRootViewController(animated: true)
         }
+    }
     }
     @objc func tappedBackButton() {
         

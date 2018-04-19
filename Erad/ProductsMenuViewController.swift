@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 var num : Int = 3
-class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UICollectionViewDataSource {
+class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UICollectionViewDataSource , UISearchBarDelegate {
     var ref: DatabaseReference!
     var childIndex : Int! = 0
     @IBOutlet weak var ProductsCollectionView: UICollectionView! /* {
@@ -42,6 +42,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     var catNames : [String] = []
     var catNumbers : [Int] = []
     var allCat : [Product] = []
+    var filterAllCat = [Product]()
     var cat1 : [Product] = []
     var cat2 : [Product] = []
     var cat3 : [Product] = []
@@ -53,14 +54,18 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     var cat9 : [Product] = []
     var cat10 : [Product] = []
     var desiredWidthChange : Double = 1500.0
-    
-    
+    var UpdatedItemQuanitity : ShoppingCardItem! = ShoppingCardItem(pname: "", quantity: 0, price: 0.0, pID: "", category: "", cost: 0.0)
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var returnValue = 0
         switch (selectedSegment.selectedSegmentIndex)
         {
         case 0 :
-            returnValue = allCat.count
+            if(searchActive) {
+                returnValue = filterAllCat.count
+            }
+            else {
+                returnValue = allCat.count
+            }
         case 1 :
             returnValue = catNumbers[0]
         case 2 :
@@ -94,10 +99,15 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         switch (selectedSegment.selectedSegmentIndex)
         {
         case 0 :
+            if(searchActive){
+                cell.ProductName.text = self.filterAllCat[indexPath.row].pname
+                cell.imgView.image = self.filterAllCat[indexPath.row].image
+            }
+            else {
              //   fillAllItems()
                 cell.ProductName.text = self.allCat[indexPath.row].pname
                     cell.imgView.image = self.allCat[indexPath.row].image
-
+            }
         case 1 :
                 cell.ProductName.text = cat1[indexPath.row].pname
                cell.imgView.image = self.cat1[indexPath.row].image
@@ -166,6 +176,11 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
     
     @IBAction func selectedSegment(_ sender: Any) {
         self.ProductsCollectionView.reloadData()
+        if selectedSegment.selectedSegmentIndex != 0 {
+            self.searchBar.isHidden = true
+        } else {
+            self.searchBar.isHidden = false
+        }
     }
     
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
@@ -173,6 +188,20 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         if shoppingCard.count != 0 {
             self.currentShoppingCardButton.isHidden = false
  }
+        if self.UpdatedItemQuanitity.quantity != 0 {
+            var i = 0
+            for ind in shoppingCard {
+                if self.UpdatedItemQuanitity.pID == ind.pID {
+                    let quant = self.UpdatedItemQuanitity.quantity + ind.quantity
+                    shoppingCard[i].quantity = quant
+                    self.UpdatedItemQuanitity.quantity = quant
+                    //shoppingCard.append(self.UpdatedItemQuanitity)
+                    self.UpdatedItemQuanitity = ShoppingCardItem(pname: "", quantity: 0, price: 0.0, pID: "", category: "", cost: 0.0)
+                }
+                i = i + 1
+            }
+            i = 0
+        }
     }
 
     override func viewDidLoad() {
@@ -199,7 +228,7 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         let button2 = UIBarButtonItem.init(image: image2, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goInventory))
         button2.tintColor = UIColor.white
         self.navigationItem.rightBarButtonItem = button2
-        
+        searchBar.delegate = self
         selectedSegment.removeAllSegments()
         selectedSegment.insertSegment(withTitle: "الكل" , at: i, animated: true)
         ref = Database.database().reference().child(companyName).child("products")
@@ -254,14 +283,15 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
                     let productinv  = eventsObject?["inventory"] as! Int
                     let productPrice  = eventsObject?["price"] as! Double
                     let productCategory = eventsObject?["category"] as! String
+                    let cost  = eventsObject?["cost"] as! Double
                     let productKey = c.key.description as NSString
                     let url1 = URL(string: productimg)
                     let data1 = try? Data(contentsOf: url1! )
                     //NSData(contentsOf: url! as URL)
                     let img1 : UIImage = UIImage(data: data1! as Data)!
                     
-                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory)
-                    let inP = Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory)
+                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory, cost: cost)
+                    let inP = Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory, cost: cost)
                     self.allCat.append(oneProduct)
                     self.inventoryArray.append(inP)
                     switch (self.childIndex)
@@ -320,16 +350,21 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
                     let productinv  = eventsObject?["inventory"] as! Int
                     let productPrice  = eventsObject?["price"] as! Double
                     let productCategory = eventsObject?["category"] as! String
+                    let cost  = eventsObject?["cost"] as! Double
+
                     let productKey = c.key.description as NSString
                     let url1 = URL(string: productimg)
                     let data1 = try? Data(contentsOf: url1! )
                     //NSData(contentsOf: url! as URL)
                     let img1 : UIImage = UIImage(data: data1! as Data)!
                     
-                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory)
-                    let inP = Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory)
+                    let oneProduct = Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory, cost: cost)
+                        //Product(pname: productName, img: img1, inventory: productinv, price: productPrice, desc: productdesc, pID: productKey as String, category: productCategory, cost: cost)
+                    let inP = Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory, cost: cost)
+                     //   Product(pname: productName, img: img1, inventory: productinv, pID: productKey as String, category: productCategory, cost: cost)
                     self.allCat.append(oneProduct)
                     self.inventoryArray.append(inP)
+
                     switch (self.childIndex)
                     {
                     case 1 :
@@ -404,8 +439,13 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
                 {
 
                 case 0 :
-                    controller.productInfo = self.allCat[indexPath.row]
-                    controller.list = self.shoppingCard
+                    if(searchActive) {
+                        controller.productInfo = self.filterAllCat[indexPath.row]
+                        controller.list = self.shoppingCard                    }
+                    else {
+                        controller.productInfo = self.allCat[indexPath.row]
+                        controller.list = self.shoppingCard                    }
+                    
                 case 1 :
                      controller.productInfo = self.cat1[indexPath.row]
                     controller.list = self.shoppingCard
@@ -465,6 +505,32 @@ class ProductsMenuViewController: UIViewController , UICollectionViewDelegate , 
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searchActive : Bool = false
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filterAllCat = allCat.filter({ (text) -> Bool in
+            
+            let temp1: NSString = " " + String(text.pname) + " " as NSString
+            let temp2: NSString = text.description as NSString
+            
+            return (temp1.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+                || (temp2.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+        })
+        
+        if((filterAllCat.count == 0)&&(searchText=="")){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.ProductsCollectionView?.reloadData()
+        
+    }
+
+
+    
 }
 extension UISegmentedControl {
     func removeBorders() {
