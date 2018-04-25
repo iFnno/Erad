@@ -204,160 +204,13 @@ class MakeReceiptViewController: UIViewController, UITableViewDelegate, UITableV
     }
     @IBAction func makeSaleOperationButton(_ sender: Any) {
         if startedAlready == true {
-
-        if self.paused == true {
-            self.ref = Database.database().reference().child(companyName)
-            let ch = self.ref.child("receipts").childByAutoId()
-            for ind in pausedShoppingCard {
-                self.exisisList.append(ind)
-                //
-                self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
-                    if num >= ind.quantity {
-                        let newnum = num - ind.quantity
-                        let newnumString = Int(newnum)
-                        self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
-                        if num == 5 {
-                            let composeVC = MFMailComposeViewController()
-                            composeVC.mailComposeDelegate = self
-                            
-                            // Configure the fields of the interface.
-                            self.ref4 = Database.database().reference().child(companyName).child("manager")
-                            self.ref4.observeSingleEvent(of: .value, with: { (snapshot) in
-                                self.email = snapshot.childSnapshot(forPath: "email").value as! String
-                            })
-                            composeVC.setToRecipients([self.email])
-                            let ss = "Low Inventory of prouduct " + ind.pname
-                            composeVC.setSubject(ss)
-                            var mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname
-                            mess = mess  + "من تصنيف " + ind.category + " اقل من 5"
-                            mess = mess + "<br> شكراً </body>,/html>"
-                            composeVC.setMessageBody( mess, isHTML: true)
-                            
-                            // Present the view controller modally.
-                            self.present(composeVC, animated: true, completion: nil)
-                            
-                            
-                        }
-                     //   DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
-                           // if self.isempty == false {
-                                //   if let cost = Double(self.ReceifedAmount.text!) {
-                                //if self.cost >= self.amount {
-                                // self.ReceivedAmountText = self.cost
-                                self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
-                                self.RemainingAmount = self.ReceivedAmountText - self.amount
-                                self.flag = true
-                                self.valid = true
-                                //  }
-                                /*}else {
-                                 while self.valid == false {
-                                 self.emailText()
-                                 if cost >= self.amount {
-                                 print("The user entered a value price of \(cost)")
-                                 self.ReceivedAmountText = cost
-                                 self.RemainingAmount = self.ReceivedAmountText - self.amount
-                                 self.performSegue(withIdentifier: "showReceipt", sender: self)
-                                 self.valid = true
-                                 }
-                                 }
-                                 }
-                                 } */
-                           // }
-                      //  }
-
-                      
-                    } else {
-                        self.isempty = true
-                        let mess = "لا يتواجد عدد كافي من المنتج"
-                        makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
-                    }
-            })
+            let receifed = Double(self.ReceifedAmount.text!)
+            if  receifed! >= self.amount! {
+                sale()
+            } else {
+                let mess = "لطفاً ادخل المبلغ المستلم بشكل صحيح"
+                makeAlert.ShowAlert(title: "المبلغ المستلم غير صحيح", message: mess , in: self)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
-            if self.flag == true {
-                self.performSegue(withIdentifier: "showReceipt", sender: self)
-            }
-            }
-        } else {
-            self.ref = Database.database().reference().child(companyName)
-            let ch = self.ref.child("receipts").childByAutoId()
-        for ind in shoppingCard {
-            self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
-                let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
-                if num >= ind.quantity {
-                   
-                let newnum = num - ind.quantity
-                let newnumString = Int(newnum)
-                   self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
-                   // self.ReceivedAmountText = self.ReceifedAmount.text as? Double
-//here
-                    if num == 5 {
-                        let composeVC = MFMailComposeViewController()
-                        composeVC.mailComposeDelegate = self
-                        
-                        // Configure the fields of the interface.
-                        self.ref4 = Database.database().reference().child(companyName).child("manager")
-                        self.ref4.observeSingleEvent(of: .value, with: { (snapshot) in
-                            self.email = snapshot.childSnapshot(forPath: "email").value as! String
-                        })
-                        composeVC.setToRecipients([self.email])
-                        let ss = "Low Inventory of prouduct " + ind.pname
-                        composeVC.setSubject(ss)
-                        var mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname
-                        mess = mess  + "من تصنيف " + ind.category + " اقل من 5"
-                        mess = mess + "<br> شكراً </body>,/html>"
-                        composeVC.setMessageBody( mess, isHTML: true)
-                        
-                        // Present the view controller modally.
-                        self.present(composeVC, animated: true, completion: nil)
-                        
-                        
-                        
-                    }
-                    //DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
-                    //  if self.isempty == false {
-                    //   if let cost = Double(self.ReceifedAmount.text!) {
-                    // if self.cost >= self.amount {
-                    // print("The user entered a value price of \(self.cost)")
-                    //  self.ReceivedAmountText = self.cost
-                    self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
-                    self.RemainingAmount = self.ReceivedAmountText - self.amount
-                    self.flag = true
-                    self.valid = true
-                    //}
-                    /*} else {
-                     while self.valid == false {
-                     self.emailText()
-                     if cost >= self.amount {
-                     print("The user entered a value price of \(cost)")
-                     self.ReceivedAmountText = cost
-                     self.RemainingAmount = self.ReceivedAmountText - self.amount
-                     self.performSegue(withIdentifier: "showReceipt", sender: self)
-                     self.valid = true
-                     }
-                     }
-                     } */
-                    //  }
-
-                } else {
-                    self.isempty = true
-                    let mess = "لا يتواجد عدد كافي من المنتج"
-                    makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
-                }
-                })
-        }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
-            if self.flag == true {
-                self.performSegue(withIdentifier: "showReceipt", sender: self)
-            }
-            }
-            //}
-            
-      /*  let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
-        previousViewController.shoppingCard.removeAll()
-        previousViewController.currentShoppingCardButton.isHidden = true */
-        
-    }
         } else {
             let mess = "لطفاً قم ببدء وقت العمل الخاص بك"
             makeAlert.ShowAlert(title: "انت في غير وقت العمل الآن", message: mess , in: self)
@@ -551,7 +404,169 @@ func emailText () {
     // 4. Present the alert.
     self.present(alert, animated: true, completion: nil)
 }
-    
+    func sale() {
+        
+        if self.paused == true {
+            self.ref = Database.database().reference().child(companyName)
+            let ch = self.ref.child("receipts").childByAutoId()
+            for ind in pausedShoppingCard {
+                self.exisisList.append(ind)
+                //
+                self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
+                    if num >= ind.quantity {
+                        let newnum = num - ind.quantity
+                        let newnumString = Int(newnum)
+                        self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
+                        if num == 5 {
+                            let composeVC = MFMailComposeViewController()
+                            composeVC.mailComposeDelegate = self
+                            
+                            // Configure the fields of the interface.
+                            self.ref4 = Database.database().reference().child(companyName).child("manager")
+                            self.ref4.observeSingleEvent(of: .value, with: { (snapshot) in
+                                self.email = snapshot.childSnapshot(forPath: "email").value as! String
+                            })
+                            composeVC.setToRecipients([self.email])
+                            let ss = "Low Inventory of prouduct " + ind.pname
+                            composeVC.setSubject(ss)
+                            var mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname
+                            mess = mess  + "من تصنيف " + ind.category + " اقل من 5"
+                            mess = mess + "<br> شكراً </body>,/html>"
+                            composeVC.setMessageBody( mess, isHTML: true)
+                            
+                            // Present the view controller modally.
+                            self.present(composeVC, animated: true, completion: nil)
+                            
+                            
+                        }
+                        //   DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                        // if self.isempty == false {
+                        //   if let cost = Double(self.ReceifedAmount.text!) {
+                        //if self.cost >= self.amount {
+                        // self.ReceivedAmountText = self.cost
+                        self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
+                        self.RemainingAmount = self.ReceivedAmountText - self.amount
+                        self.flag = true
+                        self.valid = true
+                        //  }
+                        /*}else {
+                         while self.valid == false {
+                         self.emailText()
+                         if cost >= self.amount {
+                         print("The user entered a value price of \(cost)")
+                         self.ReceivedAmountText = cost
+                         self.RemainingAmount = self.ReceivedAmountText - self.amount
+                         self.performSegue(withIdentifier: "showReceipt", sender: self)
+                         self.valid = true
+                         }
+                         }
+                         }
+                         } */
+                        // }
+                        //  }
+                        
+                        
+                    } else {
+                        self.isempty = true
+                        let mess = "لا يتواجد عدد كافي من المنتج"
+                        makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
+                    }
+                })
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+                if self.flag == true {
+                    self.performSegue(withIdentifier: "showReceipt", sender: self)
+                }
+            }
+        } else {
+            self.ref = Database.database().reference().child(companyName)
+            let ch = self.ref.child("receipts").childByAutoId()
+            for ind in shoppingCard {
+                self.ref.child("products").child(ind.category).child(ind.pID).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let num = snapshot.childSnapshot(forPath: "inventory").value as! Int
+                    if num >= ind.quantity {
+                        
+                        let newnum = num - ind.quantity
+                        let newnumString = Int(newnum)
+                        self.ref.child("products").child(ind.category).child(ind.pID).updateChildValues(["inventory":newnumString])
+                        // self.ReceivedAmountText = self.ReceifedAmount.text as? Double
+                        //here
+                        if num == 5 {
+                            let composeVC = MFMailComposeViewController()
+                            composeVC.mailComposeDelegate = self
+                            
+                            // Configure the fields of the interface.
+                            self.ref4 = Database.database().reference().child(companyName).child("manager")
+                            self.ref4.observeSingleEvent(of: .value, with: { (snapshot) in
+                                self.email = snapshot.childSnapshot(forPath: "email").value as! String
+                            })
+                            composeVC.setToRecipients([self.email])
+                            let ss = "Low Inventory of prouduct " + ind.pname
+                            composeVC.setSubject(ss)
+                            var mess = "<html><body> مرحباً <br> مخزون المنتج " + ind.pname
+                            mess = mess  + "من تصنيف " + ind.category + " اقل من 5"
+                            mess = mess + "<br> شكراً </body>,/html>"
+                            composeVC.setMessageBody( mess, isHTML: true)
+                            
+                            // Present the view controller modally.
+                            self.present(composeVC, animated: true, completion: nil)
+                            
+                            
+                            
+                        }
+                        //DispatchQueue.main.asyncAfter(deadline: .now() + 5.0){
+                        //  if self.isempty == false {
+                        //   if let cost = Double(self.ReceifedAmount.text!) {
+                        // if self.cost >= self.amount {
+                        // print("The user entered a value price of \(self.cost)")
+                        //  self.ReceivedAmountText = self.cost
+                        self.ReceivedAmountText = Double(self.ReceifedAmount.text!)
+                        self.RemainingAmount = self.ReceivedAmountText - self.amount
+                        self.flag = true
+                        self.valid = true
+                        //}
+                        /*} else {
+                         while self.valid == false {
+                         self.emailText()
+                         if cost >= self.amount {
+                         print("The user entered a value price of \(cost)")
+                         self.ReceivedAmountText = cost
+                         self.RemainingAmount = self.ReceivedAmountText - self.amount
+                         self.performSegue(withIdentifier: "showReceipt", sender: self)
+                         self.valid = true
+                         }
+                         }
+                         } */
+                        //  }
+                        
+                    } else {
+                        self.isempty = true
+                        let mess = "لا يتواجد عدد كافي من المنتج"
+                        makeAlert.ShowAlert(title: "المخزون غير كافي", message: mess , in: self)
+                    }
+                })
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+                if self.flag == true {
+                    self.performSegue(withIdentifier: "showReceipt", sender: self)
+                }
+            }
+            //}
+            
+            /*  let previousViewController = self.navigationController?.viewControllers.last as! ProductsMenuViewController
+             previousViewController.shoppingCard.removeAll()
+             previousViewController.currentShoppingCardButton.isHidden = true */
+            
+        }
+    }
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        let allowedChar = CharacterSet.decimalDigits
+        let newCharacters = CharacterSet.init(charactersIn: string)
+        return allowedChar.isSuperset(of: newCharacters)
+    }
 }
 extension String {
     func index(from: Int) -> Index {

@@ -5,8 +5,8 @@
 
 
 import UIKit
-import FirebaseAuth
 import Firebase
+import FirebaseAuth
 var companyName : String! = ""
 class LoginViewController:UIViewController , UITextFieldDelegate{
 
@@ -20,40 +20,12 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
         if emailField.text == "" || passwordField.text == "" {
             self.createAlert(title:"خطأ", message: "الرجاء كتابة البريد الالكتروني وكلمة المرور")}
         else{
-            Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) { (user, error) in
+            let email2 = self.emailField.text!
+            let pass2 = self.passwordField.text!
+            Auth.auth().signIn(withEmail: email2, password: pass2) { (user, error) in
                 if error == nil {
-                    
-                    
-                    self.ref = Database.database().reference()
-                    self.ref.observe(DataEventType.value, with: { (snapshot) in
-                        //if the reference have values
-                        if snapshot.childrenCount > 0 {
-                            //iterating through all the values
-                            
-                            for business in snapshot.children.allObjects as! [DataSnapshot] {
-                            let snap = business.childSnapshot(forPath: "employees")
-                                if snap.childrenCount > 0 {
-                                for employee in snap.children.allObjects as! [DataSnapshot] {
-                                //getting values
-                                let eventsObject = employee.value as? [String: AnyObject]
-                                let email1  = eventsObject?["email"] as! String
-                                print(email1)
-                                    if self.emailField.text == email1 {
-                                        self.found = true
-                                        companyName = business.key.description
-                                        print(business.key.description)
-                                        break
-                                    }
-                                    }
-                        }}
-                        }})
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5){
-                    if self.found == false {
-                        self.createAlert(title: "خطأ", message: "الرجاء التأكد من صحة تسجيلك فالنظام")
-                    } else {
+                    self.compayName()
                         self.performSegue(withIdentifier: "loginSegue", sender: self)
-                        }
-                    }
                     }
                 else { self.createAlert(title: "خطأ", message: "الرجاء التأكد من صحة البريد الالكتروني و كلمة المرور")}
             }}}
@@ -92,5 +64,29 @@ class LoginViewController:UIViewController , UITextFieldDelegate{
     @IBAction func forgetPass(_ sender: Any) {
         self.performSegue(withIdentifier: "forget", sender: self)
     }
-    
+    func compayName() {
+        self.ref = Database.database().reference()
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            //if the reference have values
+            if snapshot.childrenCount > 0 {
+                //iterating through all the values
+                
+                for business in snapshot.children.allObjects as! [DataSnapshot] {
+                    let snap = business.childSnapshot(forPath: "employees")
+                    if snap.childrenCount > 0 {
+                        for employee in snap.children.allObjects as! [DataSnapshot] {
+                            //getting values
+                            let eventsObject = employee.value as? [String: AnyObject]
+                            let email1  = eventsObject?["email"] as! String
+                            print(email1)
+                            if self.emailField.text == email1 {
+                                self.found = true
+                                companyName = business.key.description
+                                print(business.key.description)
+                                break
+                            }
+                        }
+                    }}
+            }})
+    }
 }

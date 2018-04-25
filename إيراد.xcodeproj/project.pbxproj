@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21EC640F8620C5DF61677460 /* Pods_______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F94454566D210559B31B2D /* Pods_______UITests.framework */; };
 		2A03D07912558C862CAF1E5F /* Pods_______Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666ADB8B55370A60C9996A48 /* Pods_______Tests.framework */; };
+		48CB59C309D8C9B99323B4DA /* Pods_______UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F94454566D210559B31B2D /* Pods_______UITests.framework */; };
 		600F0569202B428B002A1815 /* ProductsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A252029868A0054D032 /* ProductsMenuViewController.swift */; };
 		600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A272029868A0054D032 /* ShoppingCartsViewController.swift */; };
 		600F056B202B42A4002A1815 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA94A22202986230054D032 /* File.swift */; };
@@ -22,9 +22,18 @@
 		602813FF2067FD8700BC973F /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602813FE2067FD8700BC973F /* ReportsViewController.swift */; };
 		602E5F892028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
 		602E5F8A2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
-		602E5F8B2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602E5F882028A1ED004A4B88 /* GoogleService-Info.plist */; };
 		602EB01C2027886200B5C05A /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 602EB01B2027886200B5C05A /* Logo.png */; };
 		604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */; };
+		604DDE1A20887DB300BCA693 /* ReceiptTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DDE1320887DB200BCA693 /* ReceiptTest.swift */; };
+		604DDE1B20887DB300BCA693 /* PersonalProfileTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DDE1420887DB200BCA693 /* PersonalProfileTest.swift */; };
+		604DDE1C20887DB300BCA693 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 604DDE1520887DB200BCA693 /* Info.plist */; };
+		604DDE1D20887DB300BCA693 /* SaleOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DDE1620887DB200BCA693 /* SaleOperationTest.swift */; };
+		604DDE1E20887DB300BCA693 /* WorkingShiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DDE1720887DB200BCA693 /* WorkingShiftTest.swift */; };
+		604DDE1F20887DB300BCA693 /* ______UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DDE1820887DB300BCA693 /* ______UITests.swift */; };
+		604DDE2020887DB300BCA693 /* ReportTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DDE1920887DB300BCA693 /* ReportTest.swift */; };
+		605469FC208D51A000CC6514 /* BasicBarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605469FB208D51A000CC6514 /* BasicBarChartViewController.swift */; };
+		60546A03208D55BA00CC6514 /* BasicBarChart copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60546A01208D55B900CC6514 /* BasicBarChart copy.swift */; };
+		60546A04208D55BA00CC6514 /* BeautifulBarChart copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60546A02208D55BA00CC6514 /* BeautifulBarChart copy.swift */; };
 		6058C1DC204B35B2002E108F /* PausedShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */; };
 		6058C1DE204B3CAA002E108F /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058C1DD204B3CAA002E108F /* Receipt.swift */; };
 		605E1BA6206FE0AA00068633 /* TimeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E1BA5206FE0AA00068633 /* TimeObject.swift */; };
@@ -41,7 +50,6 @@
 		60B19BFC204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19BFB204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift */; };
 		60B19C00204FD1ED000CEF46 /* ReceiptDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19BFF204FD1ED000CEF46 /* ReceiptDetailsViewController.swift */; };
 		60B19C04204FD2DC000CEF46 /* RefundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B19C03204FD2DC000CEF46 /* RefundViewController.swift */; };
-		60B4D68D20726FAF00B85E83 /* Charts1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B4D68C20726FAF00B85E83 /* Charts1ViewController.swift */; };
 		60B9A8A42070B337001E88C5 /* salesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B9A8A32070B337001E88C5 /* salesObject.swift */; };
 		60BA0ADC206CC325004BB8E2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA0ADB206CC325004BB8E2 /* EditProfileViewController.swift */; };
 		60C5069E2040904800E07077 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C5069D2040904800E07077 /* InventoryViewController.swift */; };
@@ -85,11 +93,17 @@
 		8CD17EE620207D65003C8C10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE420207D65003C8C10 /* Main.storyboard */; };
 		8CD17EE820207D65003C8C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CD17EE720207D65003C8C10 /* Assets.xcassets */; };
 		8CD17EF620207D65003C8C10 /* EradTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17EF520207D65003C8C10 /* EradTests.swift */; };
-		8CD17F0120207D66003C8C10 /* EradUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD17F0020207D66003C8C10 /* EradUITests.swift */; };
 		9F90D055C0A8552D73FA3C02 /* Pods_______.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42E1F9D282DCF8C4FA8A279 /* Pods_______.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		604DDE0D20887D0400BCA693 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD17EDA20207D65003C8C10;
+			remoteInfo = "إيراد";
+		};
 		60D464C020728A6100F754EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
@@ -112,13 +126,6 @@
 			remoteInfo = JBChart;
 		};
 		8CD17EF220207D65003C8C10 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8CD17EDA20207D65003C8C10;
-			remoteInfo = Erad;
-		};
-		8CD17EFD20207D65003C8C10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8CD17ED320207D65003C8C10 /* Project object */;
 			proxyType = 1;
@@ -155,6 +162,18 @@
 		602EB01B2027886200B5C05A /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		60373197207271DB0087E004 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		604103CA2029A81800E0EF33 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		604DDE0820887D0400BCA693 /* إيرادUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		604DDE1220887DB100BCA693 /* إيرادUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "إيرادUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		604DDE1320887DB200BCA693 /* ReceiptTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTest.swift; sourceTree = "<group>"; };
+		604DDE1420887DB200BCA693 /* PersonalProfileTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalProfileTest.swift; sourceTree = "<group>"; };
+		604DDE1520887DB200BCA693 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		604DDE1620887DB200BCA693 /* SaleOperationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleOperationTest.swift; sourceTree = "<group>"; };
+		604DDE1720887DB200BCA693 /* WorkingShiftTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingShiftTest.swift; sourceTree = "<group>"; };
+		604DDE1820887DB300BCA693 /* ______UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "______UITests.swift"; sourceTree = "<group>"; };
+		604DDE1920887DB300BCA693 /* ReportTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTest.swift; sourceTree = "<group>"; };
+		605469FB208D51A000CC6514 /* BasicBarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBarChartViewController.swift; sourceTree = "<group>"; };
+		60546A01208D55B900CC6514 /* BasicBarChart copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BasicBarChart copy.swift"; sourceTree = "<group>"; };
+		60546A02208D55BA00CC6514 /* BeautifulBarChart copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BeautifulBarChart copy.swift"; sourceTree = "<group>"; };
 		6058C1DB204B35B2002E108F /* PausedShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		6058C1DD204B3CAA002E108F /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		605E1BA5206FE0AA00068633 /* TimeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeObject.swift; sourceTree = "<group>"; };
@@ -174,7 +193,6 @@
 		60B19BFB204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		60B19BFF204FD1ED000CEF46 /* ReceiptDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptDetailsViewController.swift; sourceTree = "<group>"; };
 		60B19C03204FD2DC000CEF46 /* RefundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefundViewController.swift; sourceTree = "<group>"; };
-		60B4D68C20726FAF00B85E83 /* Charts1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charts1ViewController.swift; sourceTree = "<group>"; };
 		60B4D68F2072702100B85E83 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B4D691207270ED00B85E83 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B9A8A32070B337001E88C5 /* salesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = salesObject.swift; sourceTree = "<group>"; };
@@ -234,7 +252,6 @@
 		8CD17EF120207D65003C8C10 /* إيرادTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17EF520207D65003C8C10 /* EradTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradTests.swift; sourceTree = "<group>"; };
 		8CD17EF720207D65003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "إيرادUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD17F0020207D66003C8C10 /* EradUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EradUITests.swift; sourceTree = "<group>"; };
 		8CD17F0220207D66003C8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96F94454566D210559B31B2D /* Pods_______UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_______UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +262,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		604DDE0520887D0400BCA693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48CB59C309D8C9B99323B4DA /* Pods_______UITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60D464B220728A6000F754EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,14 +302,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CD17EF920207D65003C8C10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				21EC640F8620C5DF61677460 /* Pods_______UITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -299,6 +316,21 @@
 				F4C719F719C068C247CFDF9E /* Pods-إيرادUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		604DDE0920887D0400BCA693 /* إيرادUITests */ = {
+			isa = PBXGroup;
+			children = (
+				604DDE1820887DB300BCA693 /* ______UITests.swift */,
+				604DDE1520887DB200BCA693 /* Info.plist */,
+				604DDE1420887DB200BCA693 /* PersonalProfileTest.swift */,
+				604DDE1320887DB200BCA693 /* ReceiptTest.swift */,
+				604DDE1920887DB300BCA693 /* ReportTest.swift */,
+				604DDE1620887DB200BCA693 /* SaleOperationTest.swift */,
+				604DDE1720887DB200BCA693 /* WorkingShiftTest.swift */,
+				604DDE1220887DB100BCA693 /* إيرادUITests-Bridging-Header.h */,
+			);
+			path = "إيرادUITests";
 			sourceTree = "<group>";
 		};
 		60D464B720728A6000F754EA /* JBChart */ = {
@@ -366,6 +398,7 @@
 				8CD17EFF20207D66003C8C10 /* EradUITests */,
 				60D464B720728A6000F754EA /* JBChart */,
 				60D464C420728A6100F754EA /* JBChartTests */,
+				604DDE0920887D0400BCA693 /* إيرادUITests */,
 				8CD17EDC20207D65003C8C10 /* Products */,
 				B13480D9E8237ADEC8D3CC94 /* Frameworks */,
 				8CA94A21202986010054D032 /* Recovered References */,
@@ -378,9 +411,9 @@
 			children = (
 				8CD17EDB20207D65003C8C10 /* إيراد.app */,
 				8CD17EF120207D65003C8C10 /* إيرادTests.xctest */,
-				8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */,
 				60D464B620728A6000F754EA /* JBChart.framework */,
 				60D464BE20728A6100F754EA /* JBChartTests.xctest */,
+				604DDE0820887D0400BCA693 /* إيرادUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -389,7 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				8CD17EE420207D65003C8C10 /* Main.storyboard */,
-				60B4D68C20726FAF00B85E83 /* Charts1ViewController.swift */,
+				605469FB208D51A000CC6514 /* BasicBarChartViewController.swift */,
 				60BA0ADB206CC325004BB8E2 /* EditProfileViewController.swift */,
 				602323A52068027E00653134 /* SalesReportTableViewCell.swift */,
 				602323A72068029400653134 /* WorkingHoursReportTableViewCell.swift */,
@@ -429,6 +462,8 @@
 				60D99F942022DD6900334513 /* WorkTimeViewController.swift */,
 				8CA94A22202986230054D032 /* File.swift */,
 				8CD17EDE20207D65003C8C10 /* AppDelegate.swift */,
+				60546A01208D55B900CC6514 /* BasicBarChart copy.swift */,
+				60546A02208D55BA00CC6514 /* BeautifulBarChart copy.swift */,
 				8CD17EE720207D65003C8C10 /* Assets.xcassets */,
 				60EAA9D5205194C000A43AAF /* EradMovie.mp4 */,
 				8CD17F0E202086D9003C8C10 /* Images */,
@@ -508,6 +543,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		604DDE0720887D0400BCA693 /* إيرادUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 604DDE0F20887D0400BCA693 /* Build configuration list for PBXNativeTarget "إيرادUITests" */;
+			buildPhases = (
+				A967CD5E86FFE8AD28D99FD5 /* [CP] Check Pods Manifest.lock */,
+				604DDE0420887D0400BCA693 /* Sources */,
+				604DDE0520887D0400BCA693 /* Frameworks */,
+				604DDE0620887D0400BCA693 /* Resources */,
+				89E7A905942C8259D58E7869 /* [CP] Embed Pods Frameworks */,
+				AA5A0C5948B51055036EAD02 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				604DDE0E20887D0400BCA693 /* PBXTargetDependency */,
+			);
+			name = "إيرادUITests";
+			productName = "إيرادUITests";
+			productReference = 604DDE0820887D0400BCA693 /* إيرادUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		60D464B520728A6000F754EA /* JBChart */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60D464D120728A6100F754EA /* Build configuration list for PBXNativeTarget "JBChart" */;
@@ -588,37 +644,22 @@
 			productReference = 8CD17EF120207D65003C8C10 /* إيرادTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8CD17EFB20207D65003C8C10 /* إيرادUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيرادUITests" */;
-			buildPhases = (
-				8CC1C3D03CE857FBD236B67D /* [CP] Check Pods Manifest.lock */,
-				8CD17EF820207D65003C8C10 /* Sources */,
-				8CD17EF920207D65003C8C10 /* Frameworks */,
-				8CD17EFA20207D65003C8C10 /* Resources */,
-				8CA306B1187CF2CD47E7193D /* [CP] Embed Pods Frameworks */,
-				518AE22A2A37ADFBD26B4969 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8CD17EFE20207D65003C8C10 /* PBXTargetDependency */,
-			);
-			name = "إيرادUITests";
-			productName = EradUITests;
-			productReference = 8CD17EFC20207D65003C8C10 /* إيرادUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8CD17ED320207D65003C8C10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = KSU;
 				TargetAttributes = {
+					604DDE0720887D0400BCA693 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8CD17EDA20207D65003C8C10;
+					};
 					60D464B520728A6000F754EA = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -633,11 +674,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					8CD17EF020207D65003C8C10 = {
-						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 8CD17EDA20207D65003C8C10;
-					};
-					8CD17EFB20207D65003C8C10 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8CD17EDA20207D65003C8C10;
@@ -659,14 +695,22 @@
 			targets = (
 				8CD17EDA20207D65003C8C10 /* إيراد */,
 				8CD17EF020207D65003C8C10 /* إيرادTests */,
-				8CD17EFB20207D65003C8C10 /* إيرادUITests */,
 				60D464B520728A6000F754EA /* JBChart */,
 				60D464BD20728A6100F754EA /* JBChartTests */,
+				604DDE0720887D0400BCA693 /* إيرادUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		604DDE0620887D0400BCA693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604DDE1C20887DB300BCA693 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60D464B420728A6000F754EA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -701,14 +745,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CD17EFA20207D65003C8C10 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				602E5F8B2028A1ED004A4B88 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -725,21 +761,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		518AE22A2A37ADFBD26B4969 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5557C22E149D3E2E18D9459C /* [CP] Check Pods Manifest.lock */ = {
@@ -760,7 +781,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8CA306B1187CF2CD47E7193D /* [CP] Embed Pods Frameworks */ = {
+		89E7A905942C8259D58E7869 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -773,24 +794,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8CC1C3D03CE857FBD236B67D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-إيرادUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		920DD33AD541C021D8B360D7 /* [CP] Embed Pods Frameworks */ = {
@@ -837,6 +840,39 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-إيرادTests/Pods-إيرادTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A967CD5E86FFE8AD28D99FD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-إيرادUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA5A0C5948B51055036EAD02 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-إيرادUITests/Pods-إيرادUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AD5C7922D40A9832409976A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -873,6 +909,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		604DDE0420887D0400BCA693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				604DDE1E20887DB300BCA693 /* WorkingShiftTest.swift in Sources */,
+				604DDE1D20887DB300BCA693 /* SaleOperationTest.swift in Sources */,
+				604DDE1A20887DB300BCA693 /* ReceiptTest.swift in Sources */,
+				604DDE2020887DB300BCA693 /* ReportTest.swift in Sources */,
+				604DDE1F20887DB300BCA693 /* ______UITests.swift in Sources */,
+				604DDE1B20887DB300BCA693 /* PersonalProfileTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60D464B120728A6000F754EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -908,10 +957,10 @@
 				60B19C00204FD1ED000CEF46 /* ReceiptDetailsViewController.swift in Sources */,
 				8CA94A1C2028BF7C0054D032 /* LoginViewController.swift in Sources */,
 				6072F585205783E1006BCFC3 /* RefundTableViewCell.swift in Sources */,
-				60B4D68D20726FAF00B85E83 /* Charts1ViewController.swift in Sources */,
 				602813FF2067FD8700BC973F /* ReportsViewController.swift in Sources */,
 				60D99F952022DD6900334513 /* WorkTimeViewController.swift in Sources */,
 				600F056C202B42AC002A1815 /* SplitViewController.swift in Sources */,
+				60546A03208D55BA00CC6514 /* BasicBarChart copy.swift in Sources */,
 				60B19BFA204FD008000CEF46 /* ReceiptTableViewCell.swift in Sources */,
 				606212C42039546500B9D5A8 /* MakeReceiptViewController.swift in Sources */,
 				602323A62068027E00653134 /* SalesReportTableViewCell.swift in Sources */,
@@ -932,6 +981,7 @@
 				600F056A202B428F002A1815 /* ShoppingCartsViewController.swift in Sources */,
 				604103CB2029A81800E0EF33 /* MenuTableViewCell.swift in Sources */,
 				60B19BFC204FD04D000CEF46 /* ReceiptDetailsTableViewCell.swift in Sources */,
+				60546A04208D55BA00CC6514 /* BeautifulBarChart copy.swift in Sources */,
 				602813FB2067FCE900BC973F /* SalesReportViewController.swift in Sources */,
 				602323A82068029400653134 /* WorkingHoursReportTableViewCell.swift in Sources */,
 				60C506A0204091E500E07077 /* InventoryTableViewCell.swift in Sources */,
@@ -939,6 +989,7 @@
 				60C5069E2040904800E07077 /* InventoryViewController.swift in Sources */,
 				600F0569202B428B002A1815 /* ProductsMenuViewController.swift in Sources */,
 				60DB4198202C1517008A0C3D /* ProductCollectionViewCell.swift in Sources */,
+				605469FC208D51A000CC6514 /* BasicBarChartViewController.swift in Sources */,
 				60252C52202B410C00E571FC /* AccountingViewController.swift in Sources */,
 				606212C8203B3CD300B9D5A8 /* LaunchScreenViewController.swift in Sources */,
 				6097A55B2071F0DB00D6B174 /* ReportReceipt.swift in Sources */,
@@ -954,17 +1005,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CD17EF820207D65003C8C10 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8CD17F0120207D66003C8C10 /* EradUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		604DDE0E20887D0400BCA693 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
+			targetProxy = 604DDE0D20887D0400BCA693 /* PBXContainerItemProxy */;
+		};
 		60D464C120728A6100F754EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 60D464B520728A6000F754EA /* JBChart */;
@@ -985,11 +1033,6 @@
 			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
 			targetProxy = 8CD17EF220207D65003C8C10 /* PBXContainerItemProxy */;
 		};
-		8CD17EFE20207D65003C8C10 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8CD17EDA20207D65003C8C10 /* إيراد */;
-			targetProxy = 8CD17EFD20207D65003C8C10 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1004,6 +1047,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		604DDE1020887D0400BCA693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7436C82FB8DFF31C8E5C93FC /* Pods-إيرادUITests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 962VFYAU45;
+				INFOPLIST_FILE = "إيرادUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KSU.------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "إيرادUITests/إيرادUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "إيراد";
+			};
+			name = Debug;
+		};
+		604DDE1120887D0400BCA693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4C719F719C068C247CFDF9E /* Pods-إيرادUITests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 962VFYAU45;
+				INFOPLIST_FILE = "إيرادUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "KSU.------UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "إيرادUITests/إيرادUITests-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "إيراد";
+			};
+			name = Release;
+		};
 		60D464CD20728A6100F754EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1199,7 +1281,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 962VFYAU45;
 				INFOPLIST_FILE = Erad/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KSU.Erad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1216,7 +1298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 962VFYAU45;
 				INFOPLIST_FILE = Erad/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KSU.Erad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1259,41 +1341,18 @@
 			};
 			name = Release;
 		};
-		8CD17F0C20207D66003C8C10 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7436C82FB8DFF31C8E5C93FC /* Pods-إيرادUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = EradUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = KSU.EradUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Erad;
-			};
-			name = Debug;
-		};
-		8CD17F0D20207D66003C8C10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4C719F719C068C247CFDF9E /* Pods-إيرادUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = EradUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = KSU.EradUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Erad;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		604DDE0F20887D0400BCA693 /* Build configuration list for PBXNativeTarget "إيرادUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				604DDE1020887D0400BCA693 /* Debug */,
+				604DDE1120887D0400BCA693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		60D464D120728A6100F754EA /* Build configuration list for PBXNativeTarget "JBChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1335,15 +1394,6 @@
 			buildConfigurations = (
 				8CD17F0920207D66003C8C10 /* Debug */,
 				8CD17F0A20207D66003C8C10 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8CD17F0B20207D66003C8C10 /* Build configuration list for PBXNativeTarget "إيرادUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8CD17F0C20207D66003C8C10 /* Debug */,
-				8CD17F0D20207D66003C8C10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -13,12 +13,14 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
 
     
     @IBAction func BarChart(_ sender: Any) {
-        self.performSegue(withIdentifier: "wChart", sender: self)
+        list2()
+        self.performSegue(withIdentifier: "hourSeg", sender: self)
     }
     
     
     @IBOutlet weak var hoursTable: UITableView!
     var workingList : [TimeObject] = []
+    var workingList2 : [TimeObject] = []
     var pickerData: [[String]] = [[String]]()
     var month : String! = ""
     var year : String! = ""
@@ -28,6 +30,7 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
     var hour : Int = 0
     var min : Int = 0
     var sec : Int = 0
+    var monthsNames : [String] = ["January", "February", "March", "April","May","June","July","August","September","October","November","December"]
     
     
     @IBOutlet weak var picker: UIPickerView!
@@ -38,6 +41,7 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
         super.viewDidLoad()
         self.picker.delegate = self
         self.picker.dataSource = self
+        self.title = "تقرير ساعات العمل الخاصة بك"
             pickerData = [["January", "February", "March", "April","May","June","July","August","September","October","November","December"],
                           ["2018", "2019", "2020", "2021","2022","2023","2024","2025","2026","2027","2028","2029"]]
         self.ref = Database.database().reference().child(companyName)
@@ -172,7 +176,7 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140.0
+        return 90.0
     }
 
     
@@ -204,6 +208,7 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
     }
     func loadReport() {
          self.workingList.removeAll()
+        self.workingList2.removeAll()
         self.hour = 0
         self.min = 0
         self.sec = 0
@@ -312,12 +317,9 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
                     let starts = eventsObject1?["checkIn"] as! String
                     let ends = eventsObject1?["checkOut"] as! String
                     let totals = eventsObject1?["totalShiftTime"] as! String
-                            print(starts)
-                            print(ends)
-                            print(totals)
-                            print(days.key.description)
                             let times = TimeObject(start: starts, end: ends, total: totals, day: days.key.description)
                             self.workingList.append(times)
+                         //   self.workingList2.append(times)
                            
                        
                             let delimiter1 = ":"
@@ -325,7 +327,34 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
                              self.sec = self.sec + Int(token1[2])!
                             self.min = self.min + Int(token1[1])!
                             self.hour = self.hour + Int(token1[0])!
-                           
+                            
+                            
+                      /*     var i = 0
+                            for ind in self.workingList2 {
+                                if days.key.description == self.workingList2[i].day && self.workingList2.count > 1 {
+                                    let tot = self.workingList2[i].total
+                                    var token4 = tot?.components(separatedBy: delimiter1)
+                                    let h = 3600 * Int(token4![2])!
+                                    let m = 60 * Int(token4![1])!
+                                    let h2 = 3600 * Int(token1[2])!
+                                    let m2 = 60 * Int(token1[1])!
+                                    
+                                    let interval = h + m + Int(token1[0])! + h2 + m2 + Int(token4![0])!
+                                    let formatter = DateComponentsFormatter()
+                                    formatter.allowedUnits = [.hour, .minute, .second]
+                                    let formattedString = formatter.string(from: TimeInterval(interval))!
+                                    let token30 = formattedString.components(separatedBy: delimiter1)
+                                    if token30.count == 2 {
+                                        self.workingList2[i].total = "0:" + formattedString
+                                    } else {
+                                         self.workingList2[i].total = formattedString
+                                    }
+                                    
+                                } else {
+                                    self.workingList2.append(times)
+                                }
+                                i = i + 1
+                            } */
                             
             }
             
@@ -338,9 +367,7 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
             let hours = token[0]
             let minutes = token[1]
             let seconds = token[2]
-            print(hours)
-            print(minutes)
-            print(seconds)
+        
             let h = 3600 * Int(hours)!
             let m = 60 * Int(minutes)!
             
@@ -361,10 +388,106 @@ class WorkingHoursReportViewController: UIViewController , UITableViewDelegate, 
         
         self.hoursTable.reloadData()
 
+      
+    }
+    
+    
+    func list2() {
+        for ind in workingList {
+            let day1 = ind.day
+            var day1sec = 0
+            var day1min = 0
+            var day1hour = 0
+            var flag = false
+            for inddd in workingList2 {
+                if ind.day == inddd.day {
+                    flag = true
+                }
+            }
+            if flag == false {
+            for ind2 in workingList {
+                if ind2.day == day1 {
+                    let delimiter1 = ":"
+                    let time2 = ind2.total
+                    var token1 = time2?.components(separatedBy: delimiter1)
+                    day1sec = day1sec + Int(token1![2])!
+                    day1min = day1min + Int(token1![1])!
+                    day1hour = day1hour + Int(token1![0])!
+                }
+            }
+            let time1 = ind.total
+            let delimiter1 = ":"
+            var token2 = time1?.components(separatedBy: delimiter1)
+            day1sec = day1sec + Int(token2![2])!
+            day1min = day1min + Int(token2![1])!
+            day1hour = day1hour + Int(token2![0])!
+            let h = 3600 * Int(day1hour)
+            let m = 60 * Int(day1min)
+            var totalis = ""
+            let interval = h + m + Int(day1sec)
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            let formattedString = formatter.string(from: TimeInterval(interval))!
+            let token3 = formattedString.components(separatedBy: delimiter1)
+            if token3.count == 2 {
+                totalis = "0:" + formattedString
+            } else {
+                totalis = formattedString
+            }
+            let tim = TimeObject(total: totalis, day: day1!)
+            self.workingList2.append(tim)
+        }
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "wChart" {
-            let controller = segue.destination as! Charts1ViewController
+        if segue.identifier == "hourSeg" {
+            let controller = segue.destination as! BasicBarChartViewController
+            controller.fromWorkingHours = true
+            controller.workingList = self.workingList2
+            var monthToSend = ""
+            let m = self.picker.selectedRow(inComponent: 0)
+            switch m {
+            case 0:
+                monthToSend = monthsNames[0]
+                break
+            case 1:
+                monthToSend = monthsNames[1]
+                break
+            case 2:
+                monthToSend = monthsNames[2]
+                break
+            case 3:
+                monthToSend = monthsNames[3]
+                break
+            case 4:
+                monthToSend = monthsNames[4]
+                break
+            case 5:
+                monthToSend = monthsNames[5]
+                break
+            case 6:
+                monthToSend = monthsNames[6]
+                break
+            case 7:
+                monthToSend = monthsNames[7]
+                break
+            case 8:
+                monthToSend = monthsNames[8]
+                break
+            case 9:
+                monthToSend = monthsNames[9]
+                break
+            case 10:
+                monthToSend = monthsNames[10]
+                break
+            case 11:
+                monthToSend = monthsNames[11]
+                break
+            default:
+                monthToSend = monthsNames[0]
+                
+            }
+            controller.monthName = monthToSend
         }
     }
     func createAlert (title:String, message:String)

@@ -178,7 +178,7 @@ class EditProfileViewController: UIViewController , UITextFieldDelegate, UINavig
         self.firstNameField.text = self.firstName
         self.lastNameField.text = self.lastName
         self.phoneField.text = self.phoneNum
-        
+        self.phoneField.tag = 0
       
         // Do any additional setup after loading the view.
     }
@@ -246,6 +246,11 @@ class EditProfileViewController: UIViewController , UITextFieldDelegate, UINavig
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.characters.count + string.characters.count - range.length
+        if textField == phoneField {
+        let allowedChar = CharacterSet.decimalDigits
+        let newCharacters = CharacterSet.init(charactersIn: string)
+        return newLength <= 10 && allowedChar.isSuperset(of: newCharacters)
+        }
         return newLength <= 10
     }
 }

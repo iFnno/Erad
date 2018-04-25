@@ -28,7 +28,7 @@ class SalesReportViewController: UIViewController , UITableViewDelegate, UITable
     var allPrices : Double! = 0.0
     var allQuan  : Int! = 0
     var quan  : Int! = 0
-
+    var monthsNames : [String] = ["January", "February", "March", "April","May","June","July","August","September","October","November","December"]
     
     @IBOutlet weak var picker: UIPickerView!
     
@@ -36,6 +36,7 @@ class SalesReportViewController: UIViewController , UITableViewDelegate, UITable
         super.viewDidLoad()
         self.picker.delegate = self
         self.picker.dataSource = self
+        self.title = "تقرير المبيعات الخاصة بك"
         pickerData = [["January", "February", "March", "April","May","June","July","August","September","October","November","December"],
                       ["2018", "2019", "2020", "2021","2022","2023","2024","2025","2026","2027","2028","2029"]]
         self.ref1 = Database.database().reference().child(companyName)
@@ -168,7 +169,7 @@ class SalesReportViewController: UIViewController , UITableViewDelegate, UITable
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140.0
+        return 90.0
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -381,5 +382,60 @@ class SalesReportViewController: UIViewController , UITableViewDelegate, UITable
         }))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func displayChart(_ sender: Any) {
+        self.performSegue(withIdentifier: "saleSeg", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saleSeg" {
+            let controller = segue.destination as! BasicBarChartViewController
+            controller.fromSales = true
+            controller.SalesList = self.perfList
+            var monthToSend = ""
+            let m = self.picker.selectedRow(inComponent: 0)
+            switch m {
+            case 0:
+                monthToSend = monthsNames[0]
+                break
+            case 1:
+                monthToSend = monthsNames[1]
+                break
+            case 2:
+                monthToSend = monthsNames[2]
+                break
+            case 3:
+                monthToSend = monthsNames[3]
+                break
+            case 4:
+                monthToSend = monthsNames[4]
+                break
+            case 5:
+                monthToSend = monthsNames[5]
+                break
+            case 6:
+                monthToSend = monthsNames[6]
+                break
+            case 7:
+                monthToSend = monthsNames[7]
+                break
+            case 8:
+                monthToSend = monthsNames[8]
+                break
+            case 9:
+                monthToSend = monthsNames[9]
+                break
+            case 10:
+                monthToSend = monthsNames[10]
+                break
+            case 11:
+                monthToSend = monthsNames[11]
+                break
+            default:
+                monthToSend = monthsNames[0]
+                
+            }
+            controller.monthName = monthToSend
+        }
     }
 }

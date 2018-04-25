@@ -21,4 +21,8 @@ struct TimeObject {
         self.total = total
         self.day = day
 }
+    init  (total : String, day : String) {
+        self.total = total
+        self.day = day
+    }
 }

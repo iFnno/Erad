@@ -211,7 +211,9 @@ class PersonalProfileViewController: UIViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
-    }}
+    }
+    
+    }
     
     @IBAction func workTime(_ sender: Any) {
         performSegue(withIdentifier: "timeSeg", sender: self)
